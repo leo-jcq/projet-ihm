@@ -18,7 +18,8 @@ export default defineConfig([
                     }
                 }
             ],
-            'vue/singleline-html-element-content-newline': 'off'
+            'vue/singleline-html-element-content-newline': 'off',
+            'vue/multi-word-component-names': 'off'
         },
         languageOptions: {
             sourceType: 'module',
