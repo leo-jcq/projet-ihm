@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@lineiconshq/free-icons": "^1.0.3",
+    "@lineiconshq/vue-lineicons": "^0.0.4",
     "vue": "^3.5.24"
   },
   "devDependencies": {
@@ -22,6 +24,7 @@
     "eslint": "^9.39.1",
     "eslint-plugin-vue": "^10.5.1",
     "globals": "^16.5.0",
+    "sass": "^1.94.2",
     "typescript": "~5.9.3",
     "vite": "^7.2.2",
     "vue-eslint-parser": "^10.2.0",
