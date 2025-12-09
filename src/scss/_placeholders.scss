@@ -19,3 +19,12 @@
 %bigger-shadow {
     box-shadow: 0 20px 25px -5px rgba(v.$black, 10%), 0 8px 10px -6px rgba(v.$black, 10%);
 }
+
+%default-box {
+    @extend %default-shadow;
+
+    background-color: v.$white;
+
+    border: 1px solid v.$gray;
+    border-radius: 0.75rem;
+}

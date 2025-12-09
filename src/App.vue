@@ -33,14 +33,13 @@ import userStore from './stores/user';
         justify-content: center;
 
         &__container {
-            $side-columns-width: 288px;
 
             width: 100%;
             max-width: v.$content-max-width;
 
             display: grid;
             gap: 1.5rem;
-            grid-template-columns: $side-columns-width 1fr $side-columns-width;
+            grid-template-columns: 278px 1fr 308px;
         }
     }
 }
