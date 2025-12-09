@@ -8,38 +8,45 @@ import type { Post, Route } from '@/types/model';
 import { generateNumberId } from '@/utils/generateId';
 import { PlusOutlined } from '@lineiconshq/free-icons';
 import Lineicons from '@lineiconshq/vue-lineicons';
-import { reactive, ref } from 'vue';
+import { ref } from 'vue';
 import ImageInput from './ImageInput.vue';
 import PopUp from './PopUp.vue';
 import PostTypeBtn from './PostTypeBtn.vue';
 import RouteBox from './RouteBox.vue';
 import SearchSelect from './SearchSelect.vue';
 
-// TODO: reset on close
-const { isOpen, open, close } = useOpen();
+const { isOpen, open, close: cClose } = useOpen();
 
-const newPost = reactive<Partial<Post>>({ type: PostType.Success });
+const newPost = ref<Partial<Post>>({ type: PostType.Success });
 const images = ref<ImageFile[]>([]);
 const selectedRoute = ref<Route | null>(null);
 
 const errors = ref<Errors<Post>>({});
 
+function close() {
+    newPost.value = {};
+    images.value = [];
+    selectedRoute.value = null;
+    errors.value = {};
+    cClose();
+}
+
 function setPostType(newType: TPostType) {
-    newPost.type = newType;
+    newPost.value.type = newType;
     if (newType === PostType.Other) {
-        newPost.routeId = undefined;
-        newPost.tryCount = undefined;
+        newPost.value.routeId = undefined;
+        newPost.value.tryCount = undefined;
         selectedRoute.value = null;
     }
 }
 
 function handleTryCountChange(e: Event) {
     const value = parseInt((e.target as HTMLInputElement).value, 10);
-    newPost.tryCount = isNaN(value) ? undefined : value;
+    newPost.value.tryCount = isNaN(value) ? undefined : value;
 }
 
 function selectRoute(route: Route) {
-    newPost.routeId = route.id;
+    newPost.value.routeId = route.id;
     selectedRoute.value = route;
 }
 
@@ -55,14 +62,14 @@ function handleSubmit() {
     let hasError = false;
 
     // Check route id
-    if (newPost.type !== PostType.Other && !newPost.routeId) {
+    if (newPost.value.type !== PostType.Other && !newPost.value.routeId) {
         errors.value.routeId =
             'Veuillez sélectionner une voie, si vous ne la trouvez pas, créez là.';
         hasError = true;
     }
 
     // Check number of try
-    if (newPost.type !== PostType.Other && !newPost.tryCount) {
+    if (newPost.value.type !== PostType.Other && !newPost.value.tryCount) {
         errors.value.tryCount = "Veuillez entrer le nombre 'essais que vous avez mis dans la voie.";
         hasError = true;
     }
@@ -74,11 +81,11 @@ function handleSubmit() {
     dataStore.posts.push({
         id: generateNumberId(),
         authorId: userStore.user!.id,
-        type: newPost.type!,
-        content: newPost.content!,
+        type: newPost.value.type!,
+        content: newPost.value.content!,
         images: images.value.map((image) => image.preview),
-        routeId: newPost.routeId,
-        tryCount: newPost.tryCount,
+        routeId: newPost.value.routeId,
+        tryCount: newPost.value.tryCount,
         likes: 0,
         timestamp: new Date()
     });
@@ -187,6 +194,7 @@ function handleSubmit() {
                 <button
                     type="button"
                     class="new-post__form__bottom__btn new-post__form__bottom__btn--cancel"
+                    @click="close"
                 >
                     Annuler
                 </button>
