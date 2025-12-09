@@ -1,30 +1,47 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue';
+import Header from './layout/Header.vue';
+import NavBar from './layout/NavBar.vue';
+import Login from './pages/Login.vue';
+import userStore from './stores/user';
 </script>
 
 <template>
-    <div>
-        <a href="https://vite.dev" target="_blank">
-            <img src="/vite.svg" class="logo" alt="Vite logo" />
-        </a>
-        <a href="https://vuejs.org/" target="_blank">
-            <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-        </a>
-    </div>
-    <HelloWorld msg="Vite + Vue" />
+    <template v-if="userStore.user">
+        <Header />
+
+        <div class="app__content">
+            <div class="app__content__container">
+                <NavBar />
+                <RouterView />
+            </div>
+        </div>
+    </template>
+
+    <Login v-else />
 </template>
 
-<style scoped>
-.logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-}
-.logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-    filter: drop-shadow(0 0 2em #42b883aa);
+<style lang="scss">
+@use '@/scss/variables' as v;
+
+.app {
+    &__content {
+        width: 100%;
+
+        padding: 1.5rem 1rem;
+
+        display: flex;
+        justify-content: center;
+
+        &__container {
+            $side-columns-width: 288px;
+
+            width: 100%;
+            max-width: v.$content-max-width;
+
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: $side-columns-width 1fr $side-columns-width;
+        }
+    }
 }
 </style>

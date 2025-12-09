@@ -1,0 +1,10 @@
+@mixin size($width, $height: $width) {
+    width: $width;
+    height: $height;
+}
+
+@mixin rounded($size) {
+    @include size($size);
+
+    border-radius: 50%;
+}

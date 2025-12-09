@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Marie Dupont",
+    "pseudo": "marie-dupont",
+    "avatar": "marie-dupont.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Thomas Martin",
+    "pseudo": "thomas.martin",
+    "avatar": "thomas.martin.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Sophie Bernard",
+    "pseudo": "sophie_bernard",
+    "avatar": "sophie_bernard.jpg"
+  }
+]

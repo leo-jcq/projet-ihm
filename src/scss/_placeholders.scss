@@ -1,0 +1,21 @@
+@use "./variables" as v;
+
+%flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+%flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+%default-shadow {
+    box-shadow: 0 1px 3px rgba(v.$black, 10%), 0 1px 2px -1px rgba(v.$black, 10%);
+}
+
+%bigger-shadow {
+    box-shadow: 0 20px 25px -5px rgba(v.$black, 10%), 0 8px 10px -6px rgba(v.$black, 10%);
+}

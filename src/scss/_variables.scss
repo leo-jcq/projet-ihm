@@ -1,0 +1,36 @@
+@use "sass:color";
+
+// Colors
+$white: #fff;
+$black: #000;
+
+$grayish-black: #364153;
+$very-dark-gray: #4a5565;
+$dark-gray: #a1a1a1;
+$gray: #d9d9d9;
+$light-gray: #e5e7eb;
+$very-light-gray: #f3f4f6;
+$grayish-white: #f9fafb;
+
+$green: #008236;
+$light-green: #dcfce7;
+
+$blue: #1447e6;
+$light-blue: #dbeafe;
+
+$orange: #ca3500;
+$light-orange: #fff7ed;
+
+$accent: #ff6900;
+
+$red: #fb2c36;
+
+$main-gradient: linear-gradient(90deg, #ff6900, #e7000b);
+$main-gradient-lighten: linear-gradient(
+    90deg,
+    color.adjust(#ff6900, $lightness: 5%),
+    color.adjust(#e7000b, $lightness: 5%)
+);
+
+// Sizes
+$content-max-width: 1440px;

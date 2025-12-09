@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "name": "La Marie-Rose",
+    "type": "boulder",
+    "grade": "6A+",
+    "location": "Fontainebleau, France",
+    "length": 4
+  },
+  {
+    "id": 2,
+    "name": "L'Angle Allain",
+    "type": "boulder",
+    "grade": "5C",
+    "location": "Fontainebleau, France",
+    "length": 3
+  },
+  {
+    "id": 3,
+    "name": "Duel",
+    "type": "route",
+    "grade": "7a+",
+    "location": "Céüse, France",
+    "length": 35
+  },
+  {
+    "id": 4,
+    "name": "La Rage de Vivre",
+    "type": "route",
+    "grade": "8c",
+    "location": "Céüse, France",
+    "length": 45
+  },
+  {
+    "id": 5,
+    "name": "Biographie",
+    "type": "route",
+    "grade": "9b+",
+    "location": "Céüse, France",
+    "length": 40
+  },
+  {
+    "id": 6,
+    "name": "Big Boss",
+    "type": "boulder",
+    "grade": "7C",
+    "location": "Fontainebleau, France",
+    "length": 5
+  },
+  {
+    "id": 7,
+    "name": "La Rose et le Vampire",
+    "type": "route",
+    "grade": "6c+",
+    "location": "Buoux, France",
+    "length": 28
+  },
+  {
+    "id": 8,
+    "name": "Ça Glisse au Pays des Merveilles",
+    "type": "route",
+    "grade": "7b",
+    "location": "Verdon, France",
+    "length": 180
+  },
+  {
+    "id": 9,
+    "name": "La Demande",
+    "type": "route",
+    "grade": "5c",
+    "location": "Fontainebleau, France",
+    "length": 12
+  },
+  {
+    "id": 10,
+    "name": "Karma",
+    "type": "boulder",
+    "grade": "8A",
+    "location": "Fontainebleau, France",
+    "length": 6
+  },
+  {
+    "id": 11,
+    "name": "Petit Gourmand",
+    "type": "route",
+    "grade": "6a",
+    "location": "Calanques, France",
+    "length": 22
+  },
+  {
+    "id": 12,
+    "name": "L'Ange en Décomposition",
+    "type": "route",
+    "grade": "8a",
+    "location": "Céüse, France",
+    "length": 38
+  },
+  {
+    "id": 13,
+    "name": "Partage",
+    "type": "boulder",
+    "grade": "7A",
+    "location": "Fontainebleau, France",
+    "length": 4
+  },
+  {
+    "id": 14,
+    "name": "Chouca",
+    "type": "route",
+    "grade": "6b+",
+    "location": "Verdon, France",
+    "length": 250
+  },
+  {
+    "id": 15,
+    "name": "La Dalle du Coeur",
+    "type": "route",
+    "grade": "5b",
+    "location": "Chamonix, France",
+    "length": 150
+  },
+  {
+    "id": 16,
+    "name": "L'Éléphant",
+    "type": "boulder",
+    "grade": "4C",
+    "location": "Fontainebleau, France",
+    "length": 3
+  },
+  {
+    "id": 17,
+    "name": "Babar",
+    "type": "route",
+    "grade": "7c",
+    "location": "Presles, France",
+    "length": 55
+  },
+  {
+    "id": 18,
+    "name": "Rubis sur l'Ongle",
+    "type": "route",
+    "grade": "6c",
+    "location": "Buoux, France",
+    "length": 30
+  },
+  {
+    "id": 19,
+    "name": "Le Pilier",
+    "type": "boulder",
+    "grade": "6B",
+    "location": "Fontainebleau, France",
+    "length": 5
+  },
+  {
+    "id": 20,
+    "name": "Les Spécialistes",
+    "type": "route",
+    "grade": "7a",
+    "location": "Buoux, France",
+    "length": 25
+  }
+]
