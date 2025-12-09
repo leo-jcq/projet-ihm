@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { User } from '@/types/model';
+import { getAssetPath } from '@/utils/files';
 import { RouterLink } from 'vue-router';
 
 defineProps<{ user: User; secondary?: string }>();
@@ -7,7 +8,7 @@ defineProps<{ user: User; secondary?: string }>();
 
 <template>
     <RouterLink :to="`/user/${user.id}`" class="user-modal">
-        <img :src="user.avatar" :alt="user.pseudo" class="user-modal__avatar" />
+        <img :src="getAssetPath(user.avatar)" :alt="user.pseudo" class="user-modal__avatar" />
 
         <div class="user-modal__text">
             <span class="user-modal__text__name">{{ user.name }}</span>
@@ -24,14 +25,14 @@ defineProps<{ user: User; secondary?: string }>();
 
 .user-modal {
     display: flex;
-    gap: 0.75rem;
+    gap: 0.75em;
     align-items: center;
 
     color: v.$black;
     text-decoration: none;
 
     &__avatar {
-        @include m.rounded(2.5rem);
+        @include m.rounded(2.5em);
     }
 
     &__text {
@@ -41,7 +42,7 @@ defineProps<{ user: User; secondary?: string }>();
         }
 
         &__secondary {
-            font-size: 0.75rem;
+            font-size: 0.75em;
             font-weight: 300;
             color: v.$very-dark-gray;
         }

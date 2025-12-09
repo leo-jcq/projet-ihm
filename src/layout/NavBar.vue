@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import userStore from '@/stores/user';
+import { getAssetPath } from '@/utils/files';
 import {
     Bolt2Outlined,
     Envelope1Outlined,
@@ -14,8 +15,8 @@ import Lineicons from '@lineiconshq/vue-lineicons';
         <RouterLink :to="`/user/${userStore.user!.id}`" class="nav-bar__user">
             <img
                 class="nav-bar__user__avatar"
-                :src="userStore.user?.avatar"
-                :alt="userStore.user?.name"
+                :src="getAssetPath(userStore.user!.avatar)"
+                :alt="userStore.user!.name"
             />
             <h2 class="nav-bar__user__name">{{ userStore.user!.name }}</h2>
             <span class="nav-bar__user__pseudo">@{{ userStore.user!.pseudo }}</span>
@@ -59,15 +60,10 @@ import Lineicons from '@lineiconshq/vue-lineicons';
 
     padding: 1.5rem;
 
-    background-color: v.$white;
-
-    border: 1px solid v.$gray;
-    border-radius: 14px;
+    @extend %default-box;
 
     position: sticky;
     top: 5.0625rem;
-
-    @extend %default-shadow;
 
     &__user {
         display: flex;

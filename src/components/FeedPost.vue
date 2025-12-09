@@ -104,12 +104,7 @@ const comments = computed(() =>
 .feed-post {
     width: 100%;
 
-    background-color: v.$white;
-
-    border: 1px solid v.$light-gray;
-    border-radius: 0.75rem;
-
-    @extend %default-shadow;
+    @extend %default-box;
 
     &__top {
         @extend %flex-between;

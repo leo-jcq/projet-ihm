@@ -13,6 +13,7 @@ const routes: RouteRecordRaw[] = [
     { path: '/messages', component: Messages },
     { path: '/user/:id', component: User },
     { path: '/settings', component: Settings },
+    { path: '/not-found', component: NotFound },
     { path: '/:pathMatch(.*)*', component: NotFound }
 ];
 
