@@ -133,7 +133,9 @@ const comments = computed(() =>
 
         background-color: v.$grayish-white;
 
-        @extend %flex-between;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
 
         &--success {
             border-color: v.$light-green;
