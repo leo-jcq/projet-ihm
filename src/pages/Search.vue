@@ -137,47 +137,7 @@ const isAllTab = computed(() => currentTab.value === 'all');
             }
 
             &__input {
-                appearance: none;
-
-                @include m.size(1rem);
-
-                cursor: pointer;
-
-                position: relative;
-
-                border-radius: 0.125rem;
-                border: 1px solid v.$very-dark-gray;
-
-                @extend %flex-center;
-
-                background-color: v.$white;
-
-                &:checked {
-                    background-color: v.$accent;
-
-                    border: none;
-
-                    &::after {
-                        display: block;
-                    }
-                }
-
-                &::after {
-                    content: '';
-
-                    @include m.size(0.625rem);
-
-                    display: none;
-
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-
-                    background-color: v.$white;
-
-                    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
-                }
+                @extend %custom-checkbox;
             }
         }
     }

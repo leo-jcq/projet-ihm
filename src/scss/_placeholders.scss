@@ -1,3 +1,4 @@
+@use "./mixins" as m;
 @use "./variables" as v;
 
 %flex-center {
@@ -27,4 +28,48 @@
 
     border: 1px solid v.$gray;
     border-radius: 0.75rem;
+}
+
+%custom-checkbox {
+    appearance: none;
+
+    @include m.size(1em);
+
+    cursor: pointer;
+
+    position: relative;
+
+    border-radius: 0.125em;
+    border: 1px solid v.$very-dark-gray;
+
+    @extend %flex-center;
+
+    background-color: v.$white;
+
+    &:checked {
+        background-color: v.$accent;
+
+        border: none;
+
+        &::after {
+            display: block;
+        }
+    }
+
+    &::after {
+        content: "";
+
+        @include m.size(0.625em);
+
+        display: none;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        background-color: v.$white;
+
+        clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    }
 }
