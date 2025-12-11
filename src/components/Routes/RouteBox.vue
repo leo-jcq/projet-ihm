@@ -4,20 +4,20 @@ import GradeBox from './GradeBox.vue';
 
 withDefaults(
     defineProps<{
-        item: Route;
+        route: Route;
         interactive?: boolean;
     }>(),
     {
-        interactive: true
+        interactive: false
     }
 );
 </script>
 
 <template>
     <div class="route-box" :class="{ 'route-box--interactive': interactive }">
-        <span class="route-box__name">{{ item.name }}, {{ item.location }}</span>
-        <GradeBox :grade="item.grade" />
-        <span class="route-box__length">{{ item.length }}m</span>
+        <span class="route-box__name">{{ route.name }}, {{ route.location }}</span>
+        <GradeBox :grade="route.grade" />
+        <span class="route-box__length">{{ route.length }}m</span>
     </div>
 </template>
 

@@ -12,8 +12,8 @@ import { ref } from 'vue';
 import ImageInput from '../ImageInput.vue';
 import PopUp from '../PopUp.vue';
 import RouteBox from '../Routes/RouteBox.vue';
-import PostTypeBtn from './PostTypeBtn.vue';
 import SearchSelect from '../SearchSelect.vue';
+import PostTypeBtn from './PostTypeBtn.vue';
 
 const { isOpen, open, close: cClose } = useOpen();
 
@@ -124,18 +124,19 @@ function handleSubmit() {
                         <label for="route" class="new-post__form__label">Voie</label>
                         <SearchSelect
                             id="route"
+                            v-slot="{ item }"
                             :options="dataStore.routes"
                             :selected="selectedRoute"
                             placeholder="Rechercher une voie..."
                             :search-keys="['name', 'location']"
-                            :item-component="RouteBox"
                             @select="selectRoute"
-                        />
+                        >
+                            <RouteBox :route="item" />
+                        </SearchSelect>
 
                         <RouteBox
                             v-if="selectedRoute"
-                            :item="selectedRoute"
-                            :interactive="false"
+                            :route="selectedRoute"
                             class="new-post__form__route"
                         />
                         <span v-if="errors.routeId" class="new-post__form__error">

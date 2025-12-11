@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T">
 import useOpen from '@/composables/useOpen';
-import { computed, ref, useTemplateRef, type Component } from 'vue';
+import { computed, ref, useTemplateRef } from 'vue';
 
 const props = defineProps<{
     options: T[];
@@ -8,7 +8,6 @@ const props = defineProps<{
     id: string;
     placeholder: string;
     searchKeys?: (keyof T)[];
-    itemComponent?: Component<{ item: T }>;
 }>();
 
 const emits = defineEmits<{
@@ -62,8 +61,7 @@ function onSelect(option: T) {
                     class="search-select__options__option"
                     @click="onSelect(option)"
                 >
-                    <component :is="itemComponent" v-if="itemComponent" :item="option" />
-                    <span v-else>{{ String(option) }}</span>
+                    <slot :item="option">{{ String(option) }}</slot>
                 </li>
                 <li v-if="filteredOptions.length === 0" name="search-select__options__no-result">
                     Aucun résultat trouvé

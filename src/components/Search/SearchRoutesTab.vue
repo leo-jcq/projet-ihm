@@ -25,7 +25,7 @@ const routes = computed(() => {
 
         <ul class="search-routes-tab__list">
             <li v-for="r in routes" :key="r.id" class="search-routes-tab__list__route">
-                <RouteBox :item="r" :interactive="false" />
+                <RouteBox :route="r" />
             </li>
             <li v-if="routes.length === 0" class="search-routes-tab__list__empty">
                 Aucune voie trouvée.
