@@ -24,7 +24,7 @@ const selectedRoute = ref<Route | null>(null);
 const errors = ref<Errors<Post>>({});
 
 function close() {
-    newPost.value = {};
+    newPost.value = { type: PostType.Success };
     images.value = [];
     selectedRoute.value = null;
     errors.value = {};
