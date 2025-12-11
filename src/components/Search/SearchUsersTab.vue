@@ -33,6 +33,8 @@ const users = computed(() => {
                 Aucun utilisateur trouvé.
             </li>
         </ul>
+        
+        <hr v-if="preDisplay" class="search__content__divider" />
     </div>
 </template>
 

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import SearchGymsTab from '@/components/Search/SearchGymsTab.vue';
 import SearchPostsTab from '@/components/Search/SearchPostsTab.vue';
 import SearchRoutesTab from '@/components/Search/SearchRoutesTab.vue';
 import SearchTabs from '@/components/Search/SearchTabs.vue';
@@ -26,10 +27,9 @@ const isAllTab = computed(() => currentTab.value === 'all');
         <SearchTabs :current-tab="currentTab" />
 
         <SearchUsersTab v-if="isAllTab || currentTab === 'users'" :pre-display="isAllTab" />
-        <hr v-if="isAllTab" class="search__content__divider" />
-        <SearchPostsTab v-if="isAllTab || currentTab === 'posts'" :pre-display="isAllTab" />
-        <hr v-if="isAllTab" class="search__content__divider" />
         <SearchRoutesTab v-if="isAllTab || currentTab === 'routes'" :pre-display="isAllTab" />
+        <SearchGymsTab v-if="isAllTab || currentTab === 'gyms'" :pre-display="isAllTab" />
+        <SearchPostsTab v-if="isAllTab || currentTab === 'posts'" :pre-display="isAllTab" />
     </div>
 
     <div class="search__filters">
@@ -139,7 +139,7 @@ const isAllTab = computed(() => currentTab.value === 'all');
             &__input {
                 appearance: none;
 
-                @include m.size(0.875rem);
+                @include m.size(1rem);
 
                 cursor: pointer;
 
@@ -165,19 +165,18 @@ const isAllTab = computed(() => currentTab.value === 'all');
                 &::after {
                     content: '';
 
-                    @include m.size(0.25rem, 0.5rem);
+                    @include m.size(0.625rem);
 
                     display: none;
 
                     position: absolute;
                     top: 50%;
                     left: 50%;
-                    transform: translate(-50%, -50%) rotate(45deg);
+                    transform: translate(-50%, -50%);
 
-                    border: {
-                        bottom: 0.125rem solid v.$white;
-                        right: 0.125rem solid v.$white;
-                    }
+                    background-color: v.$white;
+
+                    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
                 }
             }
         }

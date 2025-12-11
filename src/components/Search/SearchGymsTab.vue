@@ -31,6 +31,8 @@ const gyms = computed(() => {
                 Aucune salle trouvée.
             </li>
         </ul>
+
+        <hr v-if="preDisplay" class="search__content__divider" />
     </div>
 </template>
 

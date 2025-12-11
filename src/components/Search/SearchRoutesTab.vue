@@ -32,6 +32,8 @@ const routes = computed(() => {
             </li>
         </ul>
     </div>
+
+    <hr v-if="preDisplay" class="search__content__divider" />
 </template>
 
 <style lang="scss">
