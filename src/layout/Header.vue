@@ -9,10 +9,10 @@ import UserActions from '@/components/Users/UserActions.vue';
 <template>
     <header class="header">
         <div class="header__content">
-            <div class="header__content__left">
+            <RouterLink to="/" class="header__content__left">
                 <img :src="logo" alt="Logo" class="header__logo" />
                 <h1 class="header__title">VerticalMeet</h1>
-            </div>
+            </RouterLink>
 
             <SearchBar />
 
@@ -60,6 +60,10 @@ import UserActions from '@/components/Users/UserActions.vue';
 
         &__left {
             gap: 0.5rem;
+
+            text-decoration: none;
+
+            color: v.$black;
         }
 
         &__right {
