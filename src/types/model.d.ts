@@ -46,6 +46,35 @@ export interface Comment {
 }
 
 /**
+ * Salle d'escalade.
+ *
+ * @interface Gym
+ */
+interface Gym {
+    /**
+     * Identifiant unique de la salle.
+     *
+     * @type {number}
+     * @memberof Gym
+     */
+    id: number;
+    /**
+     * Nom de la salle.
+     *
+     * @type {string}
+     * @memberof Gym
+     */
+    name: string;
+    /**
+     * Localisation de la salle.
+     *
+     * @type {string}
+     * @memberof Gym
+     */
+    location: string;
+}
+
+/**
  * Notification d'un utilisateur.
  *
  * @export
@@ -233,6 +262,13 @@ export interface User {
      * @memberof User
      */
     pseudo: string;
+    /**
+     * Description ou biographie de l'utilisateur.
+     *
+     * @type {string}
+     * @memberof User
+     */
+    description: string;
     /**
      * URL de l'avatar de l'utilisateur.
      *

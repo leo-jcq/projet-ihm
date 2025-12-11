@@ -11,7 +11,7 @@ import {
 import Lineicons from '@lineiconshq/vue-lineicons';
 import { useTemplateRef } from 'vue';
 import { useRouter } from 'vue-router';
-import GlassBtn from './GlassBtn.vue';
+import GlassBtn from '../GlassBtn.vue';
 import UserModal from './UserModal.vue';
 
 const router = useRouter();

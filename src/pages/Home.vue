@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import FeedPost from '@/components/FeedPost.vue';
-import UserModal from '@/components/UserModal.vue';
+import FeedPost from '@/components/Posts/FeedPost.vue';
+import FollowBtn from '@/components/Users/FollowBtn.vue';
+import UserModal from '@/components/Users/UserModal.vue';
 import dataStore from '@/stores/data';
 import { Bolt2Outlined, HeartStroke } from '@lineiconshq/free-icons';
 import Lineicons from '@lineiconshq/vue-lineicons';
@@ -32,13 +33,7 @@ const suggestions = computed(() => dataStore.users.slice(0, 3));
                 >
                     <UserModal :user="user" />
 
-                    <button class="home__suggestions__suggestion__like">
-                        <Lineicons
-                            :icon="HeartStroke"
-                            class="home__suggestions__suggestion__like__icon"
-                        />
-                        Liker
-                    </button>
+                    <FollowBtn text="Liker" followed-text="Liké" :icon="HeartStroke" />
                 </li>
             </ul>
         </div>
@@ -97,33 +92,6 @@ const suggestions = computed(() => dataStore.users.slice(0, 3));
 
         &__suggestion {
             @extend %flex-between;
-
-            &__like {
-                display: flex;
-                gap: 0.5rem;
-                align-items: center;
-
-                font-size: 0.75rem;
-
-                padding: 0.25rem 0.75rem;
-
-                cursor: pointer;
-
-                color: v.$white;
-
-                background-image: v.$main-gradient;
-
-                border: none;
-                border-radius: 9999px;
-
-                &:hover {
-                    background-image: v.$main-gradient-lighten;
-                }
-
-                &__icon {
-                    width: 1.5em;
-                }
-            }
         }
     }
 }

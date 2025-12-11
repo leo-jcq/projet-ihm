@@ -33,12 +33,11 @@ import userStore from './stores/user';
         justify-content: center;
 
         &__container {
-
             width: 100%;
             max-width: v.$content-max-width;
 
             display: grid;
-            gap: 1.5rem;
+            gap: v.$top-gap;
             grid-template-columns: 278px 1fr 308px;
         }
     }

@@ -3,18 +3,21 @@
     "id": 1,
     "name": "Marie Dupont",
     "pseudo": "marie-dupont",
+    "description": "Passionnée de photographie et de voyages.",
     "avatar": "marie-dupont.jpg"
   },
   {
     "id": 2,
     "name": "Thomas Martin",
     "pseudo": "thomas.martin",
+    "description": "Développeur web et amateur de musique.",
     "avatar": "thomas.martin.jpg"
   },
   {
     "id": 3,
     "name": "Sophie Bernard",
     "pseudo": "sophie_bernard",
+    "description": "Adepte de cuisine et de lecture.",
     "avatar": "sophie_bernard.jpg"
   }
 ]

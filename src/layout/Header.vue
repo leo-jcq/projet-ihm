@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import logo from '@/assets/logo.svg';
-import NewPost from '@/components/NewPost.vue';
 import Notifications from '@/components/Notifications.vue';
-import SearchBar from '@/components/SearchBar.vue';
-import UserActions from '@/components/UserActions.vue';
+import NewPost from '@/components/Posts/NewPost.vue';
+import SearchBar from '@/components/Search/SearchBar.vue';
+import UserActions from '@/components/Users/UserActions.vue';
 </script>
 
 <template>
@@ -26,15 +26,16 @@ import UserActions from '@/components/UserActions.vue';
 </template>
 
 <style lang="scss">
+@use "@/scss/mixins" as m;
 @use '@/scss/placeholders';
 @use '@/scss/variables' as v;
 
 .header {
-    width: 100%;
+    @include m.size(100%, v.$header-height);
 
     background-color: v.$white;
 
-    padding: 0.5rem 1rem;
+    padding: 0 1rem;
 
     display: flex;
     justify-content: center;

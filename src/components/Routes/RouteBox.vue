@@ -14,10 +14,10 @@ withDefaults(
 </script>
 
 <template>
-    <div class="route-for-select" :class="{ 'route-for-select--interactive': interactive }">
-        <span class="route-for-select__name">{{ item.name }}, {{ item.location }}</span>
+    <div class="route-box" :class="{ 'route-box--interactive': interactive }">
+        <span class="route-box__name">{{ item.name }}, {{ item.location }}</span>
         <GradeBox :grade="item.grade" />
-        <span class="route-for-select__length">{{ item.length }}m</span>
+        <span class="route-box__length">{{ item.length }}m</span>
     </div>
 </template>
 
@@ -25,7 +25,7 @@ withDefaults(
 @use '@/scss/placeholders';
 @use '@/scss/variables' as v;
 
-.route-for-select {
+.route-box {
     display: flex;
     gap: 0.75rem;
     align-items: center;

@@ -6,12 +6,14 @@ import Messages from './pages/Messages.vue';
 import NotFound from './pages/NotFound.vue';
 import Settings from './pages/Settings.vue';
 import User from './pages/User.vue';
+import Search from './pages/Search.vue';
 
 const routes: RouteRecordRaw[] = [
     { path: '/', component: Home },
     { path: '/matchs', component: Matchs },
     { path: '/messages', component: Messages },
     { path: '/user/:id', component: User },
+    { path: '/search', component: Search },
     { path: '/settings', component: Settings },
     { path: '/not-found', component: NotFound },
     { path: '/:pathMatch(.*)*', component: NotFound }

@@ -63,7 +63,7 @@ import Lineicons from '@lineiconshq/vue-lineicons';
     @extend %default-box;
 
     position: sticky;
-    top: 5.0625rem;
+    top: calc(v.$header-height + v.$top-gap);
 
     &__user {
         display: flex;

@@ -13,9 +13,9 @@ import {
 } from '@lineiconshq/free-icons';
 import Lineicons from '@lineiconshq/vue-lineicons';
 import { computed, ref } from 'vue';
-import GradeBox from './GradeBox.vue';
 import PostTypeBox from './PostTypeBox.vue';
-import UserModal from './UserModal.vue';
+import GradeBox from '../Routes/GradeBox.vue';
+import UserModal from '../Users/UserModal.vue';
 
 const props = defineProps<{ post: Post }>();
 

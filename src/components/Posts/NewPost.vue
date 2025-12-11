@@ -9,11 +9,11 @@ import { generateNumberId } from '@/utils/generateId';
 import { PlusOutlined } from '@lineiconshq/free-icons';
 import Lineicons from '@lineiconshq/vue-lineicons';
 import { ref } from 'vue';
-import ImageInput from './ImageInput.vue';
-import PopUp from './PopUp.vue';
+import ImageInput from '../ImageInput.vue';
+import PopUp from '../PopUp.vue';
+import RouteBox from '../Routes/RouteBox.vue';
 import PostTypeBtn from './PostTypeBtn.vue';
-import RouteBox from './RouteBox.vue';
-import SearchSelect from './SearchSelect.vue';
+import SearchSelect from '../SearchSelect.vue';
 
 const { isOpen, open, close: cClose } = useOpen();
 
