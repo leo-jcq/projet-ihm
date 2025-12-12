@@ -19,7 +19,7 @@ function openMessage(id: number) {
 </script>
 
 <template>
-    <div class="messages">
+    <main class="messages">
         <Tabs :tabs="tabs" :current-tab="activeTab" @change="handleTabChange" />
 
         <div class="messages__list">
@@ -30,7 +30,7 @@ function openMessage(id: number) {
                 @open="openMessage"
             />
         </div>
-    </div>
+    </main>
 </template>
 
 <style lang="scss">

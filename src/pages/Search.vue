@@ -24,14 +24,14 @@ const isAllTab = computed(() => currentTab.value === 'all');
 </script>
 
 <template>
-    <div class="search__content">
+    <main class="search__content">
         <SearchTabs :current-tab="currentTab" />
 
         <SearchUsersTab v-if="isAllTab || currentTab === 'users'" :pre-display="isAllTab" />
         <SearchRoutesTab v-if="isAllTab || currentTab === 'routes'" :pre-display="isAllTab" />
         <SearchGymsTab v-if="isAllTab || currentTab === 'gyms'" :pre-display="isAllTab" />
         <SearchPostsTab v-if="isAllTab || currentTab === 'posts'" :pre-display="isAllTab" />
-    </div>
+    </main>
 
     <div class="search__filters">
         <div class="search__filters__category">

@@ -100,15 +100,15 @@ import Lineicons from '@lineiconshq/vue-lineicons';
 
     &__nav {
         display: flex;
-        flex-direction: column;
         gap: 0.75rem;
+        flex-direction: column;
 
         &__link {
             width: 100%;
 
             padding: 1.375rem;
 
-            display: inline-flex;
+            display: flex;
             gap: 0.75rem;
             align-items: center;
 

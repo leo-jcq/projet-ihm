@@ -37,7 +37,7 @@ const user = computed(() => {
 </script>
 
 <template>
-    <div class="matchs">
+    <main class="matchs">
         <div class="matchs__top">
             <div class="matchs__top__right">
                 <h2 class="matchs__title">Trouvez votre partenaire</h2>
@@ -65,7 +65,7 @@ const user = computed(() => {
         <MatchCard :user="user" :max-distance="distance" />
 
         <MatchsActions />
-    </div>
+    </main>
 </template>
 
 <style lang="scss">
@@ -88,8 +88,9 @@ const user = computed(() => {
     }
 
     &__sub-title {
-        font-size: v.$very-dark-gray;
+        font-size: 1rem;
         font-weight: 400;
+        color: v.$very-dark-gray;
     }
 
     &__open-filters {

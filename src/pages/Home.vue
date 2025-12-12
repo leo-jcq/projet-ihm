@@ -15,9 +15,9 @@ const suggestions = computed(() => dataStore.users.slice(0, 3));
 </script>
 
 <template>
-    <div class="home__feed">
+    <main class="home__feed">
         <FeedPost v-for="post in sortedPosts" :key="post.id" :post="post" />
-    </div>
+    </main>
     <div class="home__side">
         <div class="home__suggestions">
             <h3 class="home__suggestions__title">
