@@ -53,12 +53,14 @@ const user = computed(() => {
             </button>
         </div>
 
-        <MatchsFilters
-            v-if="isOpen"
-            :raw-distance="rawDistance"
-            :distance="distance"
-            @input="handleInput"
-        />
+        <Transition name="matchs__filters">
+            <MatchsFilters
+                v-if="isOpen"
+                :raw-distance="rawDistance"
+                :distance="distance"
+                @input="handleInput"
+            />
+        </Transition>
 
         <MatchCard :user="user" :max-distance="distance" />
 
@@ -106,6 +108,24 @@ const user = computed(() => {
 
         &:hover {
             border-color: v.$accent;
+        }
+    }
+
+    &__filters {
+        &-enter-active,
+        &-leave-active {
+            height: 154px;
+
+            transition-property: opacity, height;
+            transition-duration: 0.3s;
+            transition-timing-function: ease;
+        }
+
+        &-enter-from,
+        &-leave-to {
+            height: 0;
+
+            opacity: 0;
         }
     }
 }
