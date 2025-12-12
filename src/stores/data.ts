@@ -1,15 +1,17 @@
 import comments from '@/data/comments.json';
 import gyms from '@/data/gyms.json';
+import messages from '@/data/messages.json';
 import notifications from '@/data/notifications.json';
 import posts from '@/data/posts.json';
 import routes from '@/data/routes.json';
 import users from '@/data/users.json';
-import type { Comment, Gym, Notification, Post, Route, User } from '@/types/model';
+import type { Comment, Gym, Message, Notification, Post, Route, User } from '@/types/model';
 import { reactive } from 'vue';
 
 interface IDataStore {
     comments: Comment[];
     gyms: Gym[];
+    messages: Message[];
     notifications: Notification[];
     posts: Post[];
     routes: Route[];
@@ -19,16 +21,20 @@ interface IDataStore {
 const dataStore = reactive<IDataStore>({
     comments: comments.map((comment) => ({
         ...comment,
-        timestamp: new Date(comment.timestamp)
+        date: new Date(comment.date)
     })) as Comment[],
     gyms,
+    messages: messages.map((message) => ({
+        ...message,
+        date: new Date(message.date)
+    })),
     notifications: notifications.map((notification) => ({
         ...notification,
-        timestamp: new Date(notification.timestamp)
+        date: new Date(notification.date)
     })) as Notification[],
-    posts: posts.map((post) => ({ ...post, timestamp: new Date(post.timestamp) })) as Post[],
+    posts: posts.map((post) => ({ ...post, date: new Date(post.date) })) as Post[],
     routes: routes as Route[],
-    users
+    users: users as User[]
 });
 
 export default dataStore;

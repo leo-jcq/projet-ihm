@@ -1,15 +1,18 @@
 import type { User } from '@/types/model';
-import { generateNumberId } from '@/utils/generateId';
 import { reactive } from 'vue';
 import dataStore from './data';
 
 // TODO: remove default user ?
 const userStore = reactive<{ user: User | null }>({
     user: {
-        id: generateNumberId(),
+        id: -1,
         name: 'John Doe',
         pseudo: 'john-doe',
-        avatar: 'connected.jpg'
+        description: '',
+        avatar: 'connected.jpg',
+        styles: [],
+        gymsIds: [],
+        availabilities: []
     }
 });
 

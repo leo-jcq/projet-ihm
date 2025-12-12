@@ -8,7 +8,7 @@ import Lineicons from '@lineiconshq/vue-lineicons';
 import { computed } from 'vue';
 
 const sortedPosts = computed(() =>
-    dataStore.posts.sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime())
+    dataStore.posts.sort((a, b) => b.date.getTime() - a.date.getTime())
 );
 
 const suggestions = computed(() => dataStore.users.slice(0, 3));

@@ -3,11 +3,14 @@ import type { User } from '@/types/model';
 import { getAssetPath } from '@/utils/files';
 import { RouterLink } from 'vue-router';
 
-defineProps<{ user: User; secondary?: string }>();
+withDefaults(defineProps<{ user: User; secondary?: string; link?: boolean }>(), {
+    secondary: undefined,
+    link: true
+});
 </script>
 
 <template>
-    <RouterLink :to="`/user/${user.id}`" class="user-modal">
+    <RouterLink :to="link ? `/user/${user.id}` : ''" class="user-modal">
         <img :src="getAssetPath(user.avatar)" :alt="user.pseudo" class="user-modal__avatar" />
 
         <div class="user-modal__text">

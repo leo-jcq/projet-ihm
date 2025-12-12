@@ -8,7 +8,7 @@
     "routeId": 3,
     "tryCount": 12,
     "likes": 123,
-    "timestamp": "2025-12-08T12:13:38.057Z"
+    "date": "2025-12-08T12:13:38.057Z"
   },
   {
     "id": 2,
@@ -19,7 +19,7 @@
     "routeId": 6,
     "tryCount": 12,
     "likes": 47,
-    "timestamp": "2025-12-08T11:13:38.057Z"
+    "date": "2025-12-08T11:13:38.057Z"
   },
   {
     "id": 3,
@@ -28,6 +28,6 @@
     "content": "Quelqu'un a des suggestions de chaussures adaptées pour les voies en dévers ? J'hésite entre plusieurs modèles.",
     "images": [],
     "likes": 23,
-    "timestamp": "2025-12-08T10:10:38.057Z"
+    "date": "2025-12-08T10:10:38.057Z"
   }
 ]

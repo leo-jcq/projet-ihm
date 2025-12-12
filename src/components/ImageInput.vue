@@ -123,7 +123,7 @@ function handleChange(e: Event) {
         gap: 1.25rem;
 
         &__image {
-            border: 1px solid v.$light-gray;
+            @extend %default-border;
             border-radius: 0.5rem;
 
             position: relative;

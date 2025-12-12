@@ -2,7 +2,7 @@
  * Convertit une date en une chaîne représentant le temps écoulé depuis cette date.
  *
  * @export
- * @param {Date} date - Le timestamp à convertir.
+ * @param {Date} date - Le date à convertir.
  * @return {string} Une chaîne représentant le temps écoulé.
  */
 export function dateToSince(date: Date): string {

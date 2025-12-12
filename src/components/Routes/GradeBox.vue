@@ -9,12 +9,13 @@ defineProps<{ grade: string }>();
 </template>
 
 <style lang="scss">
+@use "@/scss/placeholders";
 @use '@/scss/variables' as v;
 
 .grade-box {
     padding: 0.125rem 0.375rem;
 
-    border: 1px solid v.$light-gray;
+    @extend %default-border;
     border-radius: 0.25rem;
 
     font-size: 0.875rem;

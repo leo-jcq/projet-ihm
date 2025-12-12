@@ -34,7 +34,7 @@ withDefaults(
 
     background-color: v.$white;
 
-    border: 1px solid v.$light-gray;
+    @extend %default-border;
     border-radius: 0.5rem;
 
     transition: all 0.2s ease;

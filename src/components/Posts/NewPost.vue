@@ -87,7 +87,7 @@ function handleSubmit() {
         routeId: newPost.value.routeId,
         tryCount: newPost.value.tryCount,
         likes: 0,
-        timestamp: new Date()
+        date: new Date()
     });
 
     close();
@@ -287,7 +287,7 @@ function handleSubmit() {
 
             padding: 1rem 1.5rem;
 
-            border: 1px solid v.$light-gray;
+            @extend %default-border;
             border-radius: 0.5rem;
             outline-color: v.$accent;
         }
@@ -299,7 +299,7 @@ function handleSubmit() {
 
             padding: 0.5rem 1rem;
 
-            border: 1px solid v.$light-gray;
+            @extend %default-border;
             border-radius: 0.5rem;
             outline-color: v.$accent;
         }

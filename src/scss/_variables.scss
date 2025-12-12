@@ -21,15 +21,18 @@ $light-blue: #dbeafe;
 $orange: #ca3500;
 $light-orange: #fff7ed;
 
+$red: #fb2c36;
+$light-red: #fee2e2;
+
 $accent: #ff6900;
 
-$red: #fb2c36;
-
-$main-gradient: linear-gradient(90deg, #ff6900, #e7000b);
+$main-gradient-start: #ff6900;
+$main-gradient-end: #e7000b;
+$main-gradient: linear-gradient(90deg, $main-gradient-start, $main-gradient-end);
 $main-gradient-lighten: linear-gradient(
     90deg,
-    color.adjust(#ff6900, $lightness: 5%),
-    color.adjust(#e7000b, $lightness: 5%)
+    color.adjust($main-gradient-start, $lightness: 5%),
+    color.adjust($main-gradient-end, $lightness: 5%)
 );
 
 // Sizes

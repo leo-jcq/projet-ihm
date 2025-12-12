@@ -1,3 +1,4 @@
+import type { TAvailability } from '@/enums/Availability';
 import type { TPostType } from '@/enums/PostType';
 import type { TRouteType } from '@/enums/RouteType';
 
@@ -42,7 +43,7 @@ export interface Comment {
      * @type {Date}
      * @memberof Comment
      */
-    timestamp: Date;
+    date: Date;
 }
 
 /**
@@ -72,6 +73,44 @@ interface Gym {
      * @memberof Gym
      */
     location: string;
+}
+
+/**
+ * Un message.
+ *
+ * @export
+ * @interface Message
+ */
+export interface Message {
+    /**
+     * L'identifiant du message.
+     *
+     * @type {number}
+     * @memberof Message
+     */
+    id: number;
+    /**
+     * L'identifiant de l'utilisateur
+     *
+     * @type {number}
+     * @memberof Message
+     */
+    userId: number;
+    /**
+     * Le contenu du message.
+     *
+     * @type {string}
+     * @memberof Message
+     */
+    text: string;
+    /**
+     * La date du message.
+     *
+     * @type {Date}
+     * @memberof Message
+     */
+    date: Date;
+    read: boolean;
 }
 
 /**
@@ -108,7 +147,7 @@ export interface Notification {
      * @type {Date}
      * @memberof Notification
      */
-    timestamp: Date;
+    date: Date;
 }
 
 /**
@@ -180,7 +219,7 @@ export interface Post {
      * @type {Date}
      * @memberof Post
      */
-    timestamp: Date;
+    date: Date;
 }
 
 /**
@@ -256,6 +295,13 @@ export interface User {
      */
     name: string;
     /**
+     * Âge de l'utilisateur.
+     *
+     * @type {number}
+     * @memberof User
+     */
+    age?: number;
+    /**
      * Pseudo de l'utilisateur.
      *
      * @type {string}
@@ -276,4 +322,25 @@ export interface User {
      * @memberof User
      */
     avatar: string;
+    /**
+     * Les styles d'escalade préférés de l'utilisateur.
+     *
+     * @type {TRouteType[]}
+     * @memberof User
+     */
+    styles: TRouteType[];
+    /**
+     * Identifiants des salles d'escalade fréquentées par l'utilisateur.
+     *
+     * @type {number[]}
+     * @memberof User
+     */
+    gymsIds: number[];
+    /**
+     * Les disponibilités de l'utilisateur.
+     *
+     * @type {TAvailability[]}
+     * @memberof User
+     */
+    availabilities: TAvailability[];
 }

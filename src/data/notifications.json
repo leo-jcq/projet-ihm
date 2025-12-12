@@ -3,18 +3,18 @@
     "id": 1,
     "content": "Vous avez reçu un message !",
     "read": false,
-    "timestamp": "2025-12-09T12:15:38.057Z"
+    "date": "2025-12-09T12:15:38.057Z"
   },
   {
     "id": 2,
     "content": "Vous avez reçu un message !",
     "read": true,
-    "timestamp": "2025-12-09T10:15:38.057Z"
+    "date": "2025-12-09T10:15:38.057Z"
   },
   {
     "id": 3,
     "content": "Vous avez reçu un message !",
     "read": true,
-    "timestamp": "2025-12-08T12:15:38.057Z"
+    "date": "2025-12-08T12:15:38.057Z"
   }
 ]

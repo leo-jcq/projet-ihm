@@ -71,7 +71,7 @@ watch(
 
         padding: 0 1rem 0 2.5rem;
 
-        border: 1px solid v.$light-gray;
+        @extend %default-border;
         border-radius: 9999px;
         outline-color: v.$accent;
 
@@ -111,7 +111,7 @@ watch(
 
         padding: 0.5rem 1rem;
 
-        border: 1px solid v.$light-gray;
+        @extend %default-border;
         border-radius: 0.25rem;
 
         font-size: 0.875rem;

@@ -26,7 +26,7 @@ const display = computed(() => PostTypeToDisplay[props.type]);
 .post-type-btn {
     @include m.size(200px, 50px);
 
-    border: 1px solid v.$light-gray;
+    @extend %default-border;
     border-radius: 0.5rem;
 
     background-color: v.$white;

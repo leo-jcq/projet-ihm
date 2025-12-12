@@ -85,7 +85,7 @@ function onSelect(option: T) {
 
         padding: 1rem 1.5rem;
 
-        border: 1px solid v.$light-gray;
+        @extend %default-border;
         border-radius: 0.5rem;
         outline-color: v.$accent;
 
@@ -108,7 +108,7 @@ function onSelect(option: T) {
 
         background-color: v.$white;
 
-        border: 1px solid v.$light-gray;
+        @extend %default-border;
         border-radius: 0.5rem;
 
         padding: 0.25rem;

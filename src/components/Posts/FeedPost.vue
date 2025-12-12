@@ -13,15 +13,15 @@ import {
 } from '@lineiconshq/free-icons';
 import Lineicons from '@lineiconshq/vue-lineicons';
 import { computed, ref } from 'vue';
-import PostTypeBox from './PostTypeBox.vue';
 import GradeBox from '../Routes/GradeBox.vue';
 import UserModal from '../Users/UserModal.vue';
+import PostTypeBox from './PostTypeBox.vue';
 
 const props = defineProps<{ post: Post }>();
 
 const hasLiked = ref(false);
 
-const timeSincePost = computed(() => dateToSince(props.post.timestamp));
+const timeSincePost = computed(() => dateToSince(props.post.date));
 const user = computed(() => dataStore.users.find((user) => user.id === props.post.authorId)!);
 const route = computed(() => dataStore.routes.find((route) => route.id === props.post.routeId));
 const comments = computed(() =>

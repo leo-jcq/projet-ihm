@@ -12,7 +12,7 @@ const notificationsRef = useTemplateRef('notifications');
 const { isOpen, toggle, close } = useOpen(notificationsRef);
 
 const sortedNotifications = computed(() =>
-    dataStore.notifications.sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime())
+    dataStore.notifications.sort((a, b) => b.date.getTime() - a.date.getTime())
 );
 const hasNewNotifications = computed(() => dataStore.notifications.some((notif) => !notif.read));
 
@@ -53,7 +53,7 @@ function deleteNotification(id: number) {
                         <div class="notifications__notification__content">
                             <p class="notifications__notification__text">{{ notif.content }}</p>
                             <time class="notifications__notification__time">
-                                {{ dateToSince(notif.timestamp) }}
+                                {{ dateToSince(notif.date) }}
                             </time>
                         </div>
                         <GlassBtn
