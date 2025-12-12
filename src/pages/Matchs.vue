@@ -3,6 +3,7 @@ import MatchCard from '@/components/Matchs/MatchCard.vue';
 import MatchsActions from '@/components/Matchs/MatchsActions.vue';
 import MatchsFilters from '@/components/Matchs/MatchsFilters.vue';
 import useOpen from '@/composables/useOpen';
+import usePageTitle from '@/composables/usePageTitle';
 import { DEFAULT_DISTANCE, DISTANCES } from '@/constants/matchs';
 import dataStore from '@/stores/data';
 import userStore from '@/stores/user';
@@ -10,6 +11,8 @@ import { getRandomInt } from '@/utils/random';
 import { Funnel1Outlined } from '@lineiconshq/free-icons';
 import Lineicons from '@lineiconshq/vue-lineicons';
 import { computed, ref } from 'vue';
+
+usePageTitle('Matchs');
 
 const { isOpen, toggle } = useOpen();
 

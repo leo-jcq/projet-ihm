@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import usePageTitle from '@/composables/usePageTitle';
 import router from '@/router';
 import dataStore from '@/stores/data';
 import userStore from '@/stores/user';
@@ -18,6 +19,8 @@ const user = computed(() => {
 if (!user.value) {
     router.push('/not-found');
 }
+
+usePageTitle(user.value!.name);
 </script>
 
 <template>

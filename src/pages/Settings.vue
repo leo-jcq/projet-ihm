@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import usePageTitle from '@/composables/usePageTitle';
+
+usePageTitle('Paramètres');
+</script>
 
 <template>
     <main class="main">

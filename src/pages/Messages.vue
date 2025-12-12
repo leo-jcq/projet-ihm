@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import ConvPreview from '@/components/Messages/ConvPreview.vue';
 import Tabs from '@/components/Tabs.vue';
+import usePageTitle from '@/composables/usePageTitle';
 import dataStore from '@/stores/data';
 import { ref } from 'vue';
+
+usePageTitle('Messages');
 
 const tabs = ['Tout', 'Non lus', 'Epinglés', 'Masqués'];
 const activeTab = ref('Tout');

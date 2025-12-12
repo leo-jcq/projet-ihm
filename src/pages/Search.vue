@@ -4,6 +4,7 @@ import SearchPostsTab from '@/components/Search/SearchPostsTab.vue';
 import SearchRoutesTab from '@/components/Search/SearchRoutesTab.vue';
 import SearchTabs from '@/components/Search/SearchTabs.vue';
 import SearchUsersTab from '@/components/Search/SearchUsersTab.vue';
+import usePageTitle from '@/composables/usePageTitle';
 import dataStore from '@/stores/data';
 import { Route1Outlined, User4Outlined } from '@lineiconshq/free-icons';
 import Lineicons from '@lineiconshq/vue-lineicons';
@@ -11,6 +12,8 @@ import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
+
+usePageTitle(`${route.query.q ? `${route.query.q} - ` : ''}Recherche`);
 
 const DEFAULT_TAB = 'all';
 
