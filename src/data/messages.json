@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "Jeanne",
+    "handle": "@jeanne",
+    "avatar": "sophie_bernard.jpg",
+    "text": "Hello, dispo pour grimper demain à 14h ?",
+    "time": "18min",
+    "unread": true
+  },
+  {
+    "id": 2,
+    "name": "Thomas",
+    "handle": "@thomas",
+    "avatar": "sophie_bernard.jpg",
+    "text": "Top séance aujourd'hui 👍",
+    "time": "1h",
+    "unread": false
+  },
+  {
+    "id": 3,
+    "name": "Léa",
+    "handle": "@lea",
+    "avatar": "sophie_bernard.jpg",
+    "text": "On se retrouve au mur samedi ?",
+    "time": "2h",
+    "unread": true
+  },
+  {
+    "id": 4,
+    "name": "Marc",
+    "handle": "@marc",
+    "avatar": "sophie_bernard.jpg",
+    "text": "J'ai mis à jour mon matos.",
+    "time": "3h",
+    "unread": false
+  },
+  {
+    "id": 5,
+    "name": "Sofia",
+    "handle": "@sofia",
+    "avatar": "sophie_bernard.jpg",
+    "text": "Super session, merci !",
+    "time": "5h",
+    "unread": false
+  },
+  {
+    "id": 6,
+    "name": "Alex",
+    "handle": "@alex",
+    "avatar": "sophie_bernard.jpg",
+    "text": "Tu connais ce spot en extérieur ?",
+    "time": "1j",
+    "unread": true
+  },
+  {
+    "id": 7,
+    "name": "Camille",
+    "handle": "@camille",
+    "avatar": "sophie_bernard.jpg",
+    "text": "Je suis dispo demain matin.",
+    "time": "2j",
+    "unread": false
+  },
+  {
+    "id": 8,
+    "name": "Nora",
+    "handle": "@nora",
+    "avatar": "sophie_bernard.jpg",
+    "text": "On s'organise un trajet ?",
+    "time": "3j",
+    "unread": false
+  }
+]
