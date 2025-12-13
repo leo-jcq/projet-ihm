@@ -14,7 +14,9 @@ usePageTitle('Paramètres');
             <div class="field">
                 <span class="field-title">Âge</span>
                 <div class="options">
-                    <label class="opt"><input type="radio" name="age" checked /> Tout le monde</label>
+                    <label class="opt">
+                        <input type="radio" name="age" checked /> Tout le monde
+                    </label>
                     <label class="opt">
                         <input type="radio" name="age" /> Uniquement pour les amis
                     </label>
@@ -25,44 +27,52 @@ usePageTitle('Paramètres');
             <div class="field">
                 <span class="field-title">Niveau d'escalade</span>
                 <div class="options">
-                    <label class="opt"><input type="radio" name="age" checked /> Tout le monde</label>
                     <label class="opt">
-                        <input type="radio" name="age" /> Uniquement pour les amis
+                        <input type="radio" name="level" checked /> Tout le monde
                     </label>
-                    <label class="opt"><input type="radio" name="age" /> Privé</label>
+                    <label class="opt">
+                        <input type="radio" name="level" /> Uniquement pour les amis
+                    </label>
+                    <label class="opt"><input type="radio" name="level" /> Privé</label>
                 </div>
             </div>
 
             <div class="field">
                 <span class="field-title">Style(s) d'escalade pratiqué(s)</span>
                 <div class="options">
-                    <label class="opt"><input type="radio" name="age" checked /> Tout le monde</label>
                     <label class="opt">
-                        <input type="radio" name="age" /> Uniquement pour les amis
+                        <input type="radio" name="styles" checked />Tout le monde
                     </label>
-                    <label class="opt"><input type="radio" name="age" /> Privé</label>
+                    <label class="opt">
+                        <input type="radio" name="styles" /> Uniquement pour les amis
+                    </label>
+                    <label class="opt"><input type="radio" name="styles" /> Privé</label>
                 </div>
             </div>
 
             <div class="field">
                 <span class="field-title">Salles fréquentées</span>
                 <div class="options">
-                    <label class="opt"><input type="radio" name="age" checked /> Tout le monde</label>
                     <label class="opt">
-                        <input type="radio" name="age" /> Uniquement pour les amis
+                        <input type="radio" name="gyms" checked /> Tout le monde
                     </label>
-                    <label class="opt"><input type="radio" name="age" /> Privé</label>
+                    <label class="opt">
+                        <input type="radio" name="gyms" /> Uniquement pour les amis
+                    </label>
+                    <label class="opt"><input type="radio" name="gyms" /> Privé</label>
                 </div>
             </div>
 
             <div class="field">
                 <span class="field-title">Journal d'ascension</span>
                 <div class="options">
-                    <label class="opt"><input type="radio" name="age" checked /> Tout le monde</label>
                     <label class="opt">
-                        <input type="radio" name="age" /> Uniquement pour les amis
+                        <input type="radio" name="ascents" checked /> Tout le monde
                     </label>
-                    <label class="opt"><input type="radio" name="age" /> Privé</label>
+                    <label class="opt">
+                        <input type="radio" name="ascents" /> Uniquement pour les amis
+                    </label>
+                    <label class="opt"><input type="radio" name="ascents" /> Privé</label>
                 </div>
             </div>
         </section>
