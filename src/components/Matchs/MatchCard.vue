@@ -29,7 +29,7 @@ const distance = computed(() => getRandomNumber(0, props.maxDistance));
             </div>
 
             <div class="match-card__picture__bottom">
-                {{ user.name }}{{ user.age ? `, ${user.age}` : '' }}
+                {{ user.name }}, {{ user.age }}
             </div>
         </div>
 

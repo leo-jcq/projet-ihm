@@ -8,6 +8,7 @@ const userStore = reactive<{ user: User | null }>({
         id: -1,
         name: 'John Doe',
         pseudo: 'john-doe',
+        age: 20,
         description: '',
         avatar: 'connected.jpg',
         styles: [],

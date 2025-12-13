@@ -300,7 +300,7 @@ export interface User {
      * @type {number}
      * @memberof User
      */
-    age?: number;
+    age: number;
     /**
      * Pseudo de l'utilisateur.
      *
