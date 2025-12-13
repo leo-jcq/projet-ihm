@@ -16,7 +16,7 @@ withDefaults(
 <template>
     <div class="route-box" :class="{ 'route-box--interactive': interactive }">
         <span class="route-box__name">{{ route.name }}, {{ route.location }}</span>
-        <GradeBox :grade="route.grade" />
+        <GradeBox :grade="route.grade" :route-type="route.type" />
         <span class="route-box__length">{{ route.length }}m</span>
     </div>
 </template>

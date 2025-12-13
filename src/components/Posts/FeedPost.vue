@@ -52,7 +52,7 @@ const comments = computed(() =>
                 <span class="feed-post__route__name">{{ route.name }}</span>
 
                 <div class="feed-post__route__left__infos">
-                    <GradeBox :grade="route.grade" />
+                    <GradeBox :grade="route.grade" :route-type="route.type" />
                     <span class="feed-post__route__type">{{ RouteTypeToString[route.type] }}</span>
                     <span class="feed-post__route__location">
                         <Lineicons

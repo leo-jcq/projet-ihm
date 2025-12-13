@@ -1,15 +1,27 @@
 <script setup lang="ts">
-defineProps<{ grade: string }>();
+import type { TRouteType } from '@/enums/RouteType';
+import RouteType from '@/enums/RouteType';
+import gradeSystemStore from '@/stores/gradeSystem';
+import { convertBoulderGradeFromFontainebleau, convertRouteGradeFromFrench } from '@/utils/grades';
+import { computed } from 'vue';
 
-// TODO: convertir type de cotation
+const props = defineProps<{ grade: string; routeType: TRouteType }>();
+
+const converted = computed(() => {
+    if (props.routeType === RouteType.Route) {
+        return convertRouteGradeFromFrench(props.grade, gradeSystemStore.route);
+    }
+
+    return convertBoulderGradeFromFontainebleau(props.grade, gradeSystemStore.boulder);
+});
 </script>
 
 <template>
-    <span class="grade-box">{{ grade }}</span>
+    <span class="grade-box">{{ converted }}</span>
 </template>
 
 <style lang="scss">
-@use "@/scss/placeholders";
+@use '@/scss/placeholders';
 @use '@/scss/variables' as v;
 
 .grade-box {

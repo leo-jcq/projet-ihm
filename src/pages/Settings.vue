@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import usePageTitle from '@/composables/usePageTitle';
+import BoulderGradeSystem, { BoulderGradeSystemToString } from '@/enums/BoulderGradeSystem';
+import RouteGradeSystem, { RouteGradeSystemToString } from '@/enums/RouteGradeSystem';
+import gradeSystemStore from '@/stores/gradeSystem';
 
 usePageTitle('Paramètres');
 </script>
@@ -138,12 +141,38 @@ usePageTitle('Paramètres');
             </div>
 
             <div class="field">
-                <span class="field-title">Système de cotation</span>
+                <span class="field-title">Système de cotation (voie)</span>
                 <div class="options rating">
-                    <label class="opt"><input type="radio" name="rating" checked /> FR (7A)</label>
-                    <label class="opt"><input type="radio" name="rating" /> US (V6)</label>
-                    <label class="opt"><input type="radio" name="rating" /> JAP (1 kyu)</label>
-                    <label class="opt"><input type="radio" name="rating" /> UK (B7)</label>
+                    <label
+                        v-for="gradeSystem in Object.values(RouteGradeSystem)"
+                        :key="gradeSystem"
+                        class="opt"
+                    >
+                        <input
+                            type="radio"
+                            :checked="gradeSystemStore.route === gradeSystem"
+                            @click="gradeSystemStore.route = gradeSystem"
+                        />
+                        {{ RouteGradeSystemToString[gradeSystem] }}
+                    </label>
+                </div>
+            </div>
+
+            <div class="field">
+                <span class="field-title">Système de cotation (bloc)</span>
+                <div class="options rating">
+                    <label
+                        v-for="gradeSystem in Object.values(BoulderGradeSystem)"
+                        :key="gradeSystem"
+                        class="opt"
+                    >
+                        <input
+                            type="radio"
+                            :checked="gradeSystemStore.boulder === gradeSystem"
+                            @click="gradeSystemStore.boulder = gradeSystem"
+                        />
+                        {{ BoulderGradeSystemToString[gradeSystem] }}
+                    </label>
                 </div>
             </div>
         </section>
