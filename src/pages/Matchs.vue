@@ -8,7 +8,7 @@ import { DEFAULT_DISTANCE, DISTANCES } from '@/constants/matchs';
 import dataStore from '@/stores/data';
 import userStore from '@/stores/user';
 import { getRandomInt } from '@/utils/random';
-import { Funnel1Outlined } from '@lineiconshq/free-icons';
+import { Funnel1Outlined, UserMultiple4Outlined } from '@lineiconshq/free-icons';
 import Lineicons from '@lineiconshq/vue-lineicons';
 import { computed, ref } from 'vue';
 
@@ -28,15 +28,32 @@ function handleInput(e: Event) {
 
 const distance = computed(() => DISTANCES[rawDistance.value]!);
 
-const otherUsers = computed(() => dataStore.users.filter((u) => u.id !== userStore.user!.id));
-
 // Matchs
+const passedIds = ref<number[]>([userStore.user!.id]);
+
+const usersToMatch = computed(() =>
+    dataStore.users.filter((u) => passedIds.value.indexOf(u.id) === -1)
+);
+
+const NB_USERS_TO_MATCHS = usersToMatch.value.length;
+
 const user = computed(() => {
     // Forcer nouvel utilisateur lorsque la distance change
     rawDistance.value;
 
-    return otherUsers.value[getRandomInt(0, otherUsers.value.length - 1)]!;
+    return usersToMatch.value[getRandomInt(0, usersToMatch.value.length - 1)];
 });
+
+function handleAction(action: 'no' | 'like' | 'message') {
+    if (action === 'message') {
+        // TODO
+        return;
+    }
+
+    if (!user.value) return;
+
+    passedIds.value.push(user.value.id);
+}
 </script>
 
 <template>
@@ -65,9 +82,25 @@ const user = computed(() => {
             />
         </Transition>
 
-        <MatchCard :user="user" :max-distance="distance" />
+        <template v-if="user">
+            <MatchCard :user="user" :max-distance="distance" />
 
-        <MatchsActions />
+            <MatchsActions @action="handleAction" />
+
+            <span class="matchs__indicator">
+                {{ passedIds.length }}/{{ NB_USERS_TO_MATCHS }} grimpeurs
+            </span>
+        </template>
+        <div v-else class="matchs__empty">
+            <Lineicons :icon="UserMultiple4Outlined" class="matchs__empty__icon" />
+            <p class="matchs__empty__text">
+                Plus de grimpeurs pour le moment <br />
+                Revenez plus tard ou ajustez vos filtres
+            </p>
+            <button class="matchs__empty__reset" @click="passedIds = [userStore.user!.id]">
+                Recommencer
+            </button>
+        </div>
     </main>
 </template>
 
@@ -130,6 +163,61 @@ const user = computed(() => {
             height: 0;
 
             opacity: 0;
+        }
+    }
+
+    &__indicator {
+        width: 100%;
+
+        display: inline-block;
+
+        margin-top: 1.5rem;
+
+        font-size: 0.875rem;
+        text-align: center;
+        color: v.$dark-gray;
+    }
+
+    &__empty {
+        display: flex;
+        gap: 1rem;
+        flex-direction: column;
+        align-items: center;
+
+        &__icon {
+            @include m.size(4rem);
+
+            color: v.$dark-gray;
+        }
+
+        &__text {
+            text-align: center;
+            line-height: 2;
+            color: v.$grayish-black;
+        }
+
+        &__reset {
+            font-size: 0.875rem;
+            color: v.$white;
+
+            background-image: v.$main-gradient;
+
+            padding: 0.5rem 1.5rem;
+
+            cursor: pointer;
+
+            border: none;
+            border-radius: 9999px;
+
+            transition: scale 0.3s ease;
+
+            &:hover {
+                background-image: v.$main-gradient-lighten;
+            }
+
+            &:active {
+                scale: 0.9;
+            }
         }
     }
 }

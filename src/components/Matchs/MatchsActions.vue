@@ -1,17 +1,32 @@
 <script setup lang="ts">
 import { Comment1Outlined, HeartStroke, XmarkOutlined } from '@lineiconshq/free-icons';
 import Lineicons from '@lineiconshq/vue-lineicons';
+
+defineEmits<{
+    action: ['no' | 'like' | 'message'];
+}>();
 </script>
 
 <template>
     <div class="match-actions">
-        <button class="match-actions__action match-actions__action--no">
+        <button
+            class="match-actions__action match-actions__action--no"
+            @click="$emit('action', 'no')"
+        >
             <Lineicons :icon="XmarkOutlined" class="match-actions__action__icon" size="38" />
         </button>
-        <button class="match-actions__action match-actions__action--like" title="Liker">
+        <button
+            class="match-actions__action match-actions__action--like"
+            title="Liker"
+            @click="$emit('action', 'like')"
+        >
             <Lineicons :icon="HeartStroke" class="match-actions__action__icon" size="42" />
         </button>
-        <button class="match-actions__action match-actions__action--message" title="Envoyer un message">
+        <button
+            class="match-actions__action match-actions__action--message"
+            title="Envoyer un message"
+            @click="$emit('action', 'message')"
+        >
             <Lineicons :icon="Comment1Outlined" class="match-actions__action__icon" size="32" />
         </button>
     </div>
