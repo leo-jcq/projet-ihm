@@ -18,14 +18,14 @@ import PostTypeBtn from './PostTypeBtn.vue';
 const { isOpen, open, close: cClose } = useOpen();
 
 const newPost = ref<Partial<Post>>({ type: PostType.Success });
-const images = ref<ImageFile[]>([]);
+const image = ref<ImageFile | null>(null);
 const selectedRoute = ref<Route | null>(null);
 
 const errors = ref<Errors<Post>>({});
 
 function close() {
     newPost.value = { type: PostType.Success };
-    images.value = [];
+    image.value = null;
     selectedRoute.value = null;
     errors.value = {};
     cClose();
@@ -51,11 +51,14 @@ function selectRoute(route: Route) {
 }
 
 function addImages(newImages: ImageFile[]) {
-    images.value = images.value.concat(newImages);
+    image.value = newImages[0] ?? null;
 }
 
-function removeImage(id: string) {
-    images.value = images.value.filter((image) => image.id !== id);
+function removeImage() {
+    if (image.value) {
+        URL.revokeObjectURL(image.value.preview);
+        image.value = null;
+    }
 }
 
 function handleSubmit() {
@@ -78,16 +81,16 @@ function handleSubmit() {
         return;
     }
 
-    dataStore.posts.push({
+    dataStore.posts.unshift({
         id: generateNumberId(),
         authorId: userStore.user!.id,
         type: newPost.value.type!,
         content: newPost.value.content!,
-        images: images.value.map((image) => image.preview),
+        image: image.value?.preview,
         routeId: newPost.value.routeId,
         tryCount: newPost.value.tryCount,
         likes: 0,
-        date: new Date()
+        date: "à l'instant"
     });
 
     close();
@@ -167,12 +170,12 @@ function handleSubmit() {
                     <label for="photos" class="new-post__form__label">Photo(s)</label>
                     <ImageInput
                         id="photos"
-                        :images="images"
+                        :images="image ? [image] : []"
                         @add="addImages"
                         @remove="removeImage"
                     />
-                    <span v-if="errors.images" class="new-post__form__error">
-                        {{ errors.images }}
+                    <span v-if="errors.image" class="new-post__form__error">
+                        {{ errors.image }}
                     </span>
                 </div>
 
@@ -191,6 +194,7 @@ function handleSubmit() {
                 </div>
             </div>
 
+            <!-- Actions -->
             <div class="new-post__form__bottom">
                 <button
                     type="button"

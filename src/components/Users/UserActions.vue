@@ -10,18 +10,11 @@ import {
 } from '@lineiconshq/free-icons';
 import Lineicons from '@lineiconshq/vue-lineicons';
 import { useTemplateRef } from 'vue';
-import { useRouter } from 'vue-router';
 import GlassBtn from '../GlassBtn.vue';
 import UserModal from './UserModal.vue';
 
-const router = useRouter();
 const userActionsRef = useTemplateRef('user-actions');
 const { isOpen, toggle, close } = useOpen(userActionsRef);
-
-const handleLogout = () => {
-    userStore.user = null;
-    router.push('/');
-};
 </script>
 
 <template>
@@ -56,7 +49,6 @@ const handleLogout = () => {
                     <button
                         class="user-actions__item user-actions__item--danger"
                         title="Se déconnecter"
-                        @click="handleLogout"
                     >
                         <Lineicons :icon="ExitOutlined" class="user-actions__item__icon" />
                         <span class="user-actions__item__text">Se déconnecter</span>

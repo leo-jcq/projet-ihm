@@ -3,7 +3,6 @@ import dataStore from '@/stores/data';
 import type { Message } from '@/types/model';
 import { computed } from 'vue';
 import UserModal from '../Users/UserModal.vue';
-import { dateToSince } from '@/utils/time';
 
 const props = defineProps<{ message: Message }>();
 
@@ -24,7 +23,7 @@ const user = computed(() => dataStore.users.find((u) => u.id === props.message.u
         <UserModal :user="user" :secondary="message.text" :link="false" />
 
         <div class="conv-preview__right">
-            <div class="conv-preview__time">{{ dateToSince(message.date) }}</div>
+            <div class="conv-preview__time">{{ message.date }}</div>
             <div v-if="!message.read" class="conv-preview__dot" />
         </div>
     </article>

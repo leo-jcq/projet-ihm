@@ -3,31 +3,77 @@
     "id": 1,
     "authorId": 1,
     "type": "success",
-    "content": "Enfin ! Après 3 semaines d'essais, j'ai réussi à enchainer cette voie mythique. Les prises sont vraiment petites mais la gestuelle est magnifique 🔥",
-    "images": ["post-1.jpg"],
-    "routeId": 3,
-    "tryCount": 12,
-    "likes": 123,
-    "date": "2025-12-08T12:13:38.057Z"
+    "content": "Enfin réussi à enchaîner Big Boss ! Après 8 tentatives, la satisfaction est immense 🔥",
+    "image": "https://images.unsplash.com/photo-1522163182402-834f871fd851?w=800",
+    "routeId": 6,
+    "tryCount": 8,
+    "likes": 24,
+    "date": "2 heures"
   },
   {
     "id": 2,
-    "authorId": 2,
-    "type": "project",
-    "content": "Projet en cours ! Je bloque au dernier mouvement, mais je sens que ça va passer bientôt. Des conseils pour le jeté final ?",
-    "images": ["post-2.jpg"],
-    "routeId": 6,
-    "tryCount": 12,
-    "likes": 47,
-    "date": "2025-12-08T11:13:38.057Z"
+    "authorId": 3,
+    "type": "other",
+    "content": "Super session ce matin avec @alex_grip ! On a travaillé la technique de talon-crochet. Mes mollets crient au secours 😅",
+    "image": "https://images.unsplash.com/photo-1564769662533-4f00a87b4056?w=800",
+    "likes": 15,
+    "date": "45 minutes"
   },
   {
     "id": 3,
-    "authorId": 3,
+    "authorId": 7,
+    "type": "success",
+    "content": "Premier 7a en tête aujourd'hui à Céüse ! Je suis sur un petit nuage ☁️",
+    "image": "https://images.unsplash.com/photo-1601224748193-d24f166b5c77?w=800",
+    "routeId": 3,
+    "tryCount": 1,
+    "likes": 42,
+    "date": "3 heures"
+  },
+  {
+    "id": 4,
+    "authorId": 10,
     "type": "other",
-    "content": "Quelqu'un a des suggestions de chaussures adaptées pour les voies en dévers ? J'hésite entre plusieurs modèles.",
-    "images": [],
-    "likes": 23,
-    "date": "2025-12-08T10:10:38.057Z"
+    "content": "Quelqu'un aurait des tips pour améliorer sa résistance en continu ? Je pompe trop vite sur les voies longues 💪",
+    "likes": 8,
+    "date": "5 heures"
+  },
+  {
+    "id": 5,
+    "authorId": 4,
+    "type": "other",
+    "content": "Astuce du jour : n'oubliez pas de bien échauffer vos doigts avant de grimper ! 5 minutes de mobilité peuvent éviter des blessures. Voici ma routine 👇",
+    "image": "https://images.unsplash.com/photo-1630432328419-bee5f50d6390?w=800",
+    "likes": 31,
+    "date": "8 heures"
+  },
+  {
+    "id": 6,
+    "authorId": 6,
+    "type": "other",
+    "content": "Week-end à Bleau ! Conditions parfaites, température idéale et super ambiance. Le paradis des grimpeurs 🌲",
+    "image": "https://images.unsplash.com/photo-1593132517397-ceb31d77194a?w=800",
+    "likes": 56,
+    "date": "1 jour"
+  },
+  {
+    "id": 7,
+    "authorId": 11,
+    "type": "success",
+    "content": "La Rage de Vivre enfin dans la poche ! Mon projet depuis 3 mois, tellement heureuse 😭",
+    "image": "https://images.unsplash.com/photo-1507034589631-9433cc6bc453?w=800",
+    "routeId": 4,
+    "tryCount": 15,
+    "likes": 89,
+    "date": "1 jour"
+  },
+  {
+    "id": 8,
+    "authorId": 2,
+    "type": "other",
+    "content": "Découverte d'un nouveau secteur aux Calanques, des voies magnifiques avec vue sur la mer ! Je recommande à 100%",
+    "image": "https://images.unsplash.com/photo-1594669778020-9116ec3fb745?w=800",
+    "likes": 38,
+    "date": "1 jour"
   }
 ]

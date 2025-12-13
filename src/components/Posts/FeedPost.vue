@@ -3,7 +3,6 @@ import PostType from '@/enums/PostType';
 import { RouteTypeToString } from '@/enums/RouteType';
 import dataStore from '@/stores/data';
 import type { Post } from '@/types/model';
-import { dateToSince } from '@/utils/time';
 import {
     Comment1Outlined,
     HeartSolid,
@@ -21,7 +20,6 @@ const props = defineProps<{ post: Post }>();
 
 const hasLiked = ref(false);
 
-const timeSincePost = computed(() => dateToSince(props.post.date));
 const user = computed(() => dataStore.users.find((user) => user.id === props.post.authorId)!);
 const route = computed(() => dataStore.routes.find((route) => route.id === props.post.routeId));
 const comments = computed(() =>
@@ -32,18 +30,16 @@ const comments = computed(() =>
 <template>
     <article class="feed-post">
         <div class="feed-post__top">
-            <UserModal :user="user" :secondary="timeSincePost" />
+            <UserModal :user="user" :secondary="props.post.date" />
 
             <PostTypeBox v-if="post.type !== PostType.Other" :type="post.type" />
         </div>
 
-        <div v-if="post.images.length > 0" class="feed-post__images">
+        <div v-if="post.image" class="feed-post__image">
             <img
-                v-for="image in post.images"
-                :key="image"
-                :src="image"
+                :src="post.image"
                 alt="Image postée"
-                class="feed-post__images__img"
+                class="feed-post__image__img"
             />
         </div>
 
@@ -112,7 +108,9 @@ const comments = computed(() =>
         padding: 1rem 1.625rem;
     }
 
-    &__images {
+    &__image {
+        width: 100%;
+
         aspect-ratio: 4/3;
 
         background-color: v.$grayish-white;

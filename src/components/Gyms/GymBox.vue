@@ -36,9 +36,12 @@ const finalGym = computed(() =>
 
 .gym-box {
     @extend %default-border;
+    border-radius: 0.3125rem;
 
     padding: 0.375rem 0.5rem;
 
     @extend %default-shadow;
+
+    background-color: v.$white;
 }
 </style>

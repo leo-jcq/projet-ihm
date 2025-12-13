@@ -1,1 +1,102 @@
-[]
+[
+  {
+    "id": 1,
+    "name": "Arkose Grenoble",
+    "location": "Grenoble, France"
+  },
+  {
+    "id": 2,
+    "name": "Climb Up Lyon",
+    "location": "Lyon, France"
+  },
+  {
+    "id": 3,
+    "name": "Block'Out Paris",
+    "location": "Paris, France"
+  },
+  {
+    "id": 4,
+    "name": "Vertical'Art Marseille",
+    "location": "Marseille, France"
+  },
+  {
+    "id": 5,
+    "name": "MurMur Grenoble",
+    "location": "Grenoble, France"
+  },
+  {
+    "id": 6,
+    "name": "Arkose Nation Paris",
+    "location": "Paris, France"
+  },
+  {
+    "id": 7,
+    "name": "Climb Up Lille",
+    "location": "Lille, France"
+  },
+  {
+    "id": 8,
+    "name": "Sharma Climbing Bordeaux",
+    "location": "Bordeaux, France"
+  },
+  {
+    "id": 9,
+    "name": "Vertical'Art Nantes",
+    "location": "Nantes, France"
+  },
+  {
+    "id": 10,
+    "name": "Climb Up Toulouse",
+    "location": "Toulouse, France"
+  },
+  {
+    "id": 11,
+    "name": "Block'Out Strasbourg",
+    "location": "Strasbourg, France"
+  },
+  {
+    "id": 12,
+    "name": "Arkose Massy",
+    "location": "Massy, France"
+  },
+  {
+    "id": 13,
+    "name": "Entre-Prises Nice",
+    "location": "Nice, France"
+  },
+  {
+    "id": 14,
+    "name": "Climb Up Montpellier",
+    "location": "Montpellier, France"
+  },
+  {
+    "id": 15,
+    "name": "Vertige Rennes",
+    "location": "Rennes, France"
+  },
+  {
+    "id": 16,
+    "name": "Arkose Lyon Confluence",
+    "location": "Lyon, France"
+  },
+  {
+    "id": 17,
+    "name": "Block'Out Annecy",
+    "location": "Annecy, France"
+  },
+  {
+    "id": 18,
+    "name": "Climb Up Aix-en-Provence",
+    "location": "Aix-en-Provence, France"
+  },
+  {
+    "id": 19,
+    "name": "Vertical'Art Toulon",
+    "location": "Toulon, France"
+  },
+  {
+    "id": 20,
+    "name": "Arkose Montparnasse",
+    "location": "Paris, France"
+  }
+]

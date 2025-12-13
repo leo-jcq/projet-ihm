@@ -38,12 +38,12 @@ export interface Comment {
      */
     likes: number;
     /**
-     * Date de création du commentaire.
+     * Temps depuis la création du commentaire.
      *
-     * @type {Date}
+     * @type {string}
      * @memberof Comment
      */
-    date: Date;
+    date: string;
 }
 
 /**
@@ -104,12 +104,12 @@ export interface Message {
      */
     text: string;
     /**
-     * La date du message.
+     * Temps depuis le message.
      *
-     * @type {Date}
+     * @type {string}
      * @memberof Message
      */
-    date: Date;
+    date: string;
     read: boolean;
 }
 
@@ -142,12 +142,12 @@ export interface Notification {
      */
     read: boolean;
     /**
-     * Date de création de la notification.
+     * Temps depuis la création de la notification.
      *
-     * @type {Date}
+     * @type {string}
      * @memberof Notification
      */
-    date: Date;
+    date: string;
 }
 
 /**
@@ -186,12 +186,12 @@ export interface Post {
      */
     content: string;
     /**
-     * Images associées au post.
+     * Image associée au post.
      *
-     * @type {string[]}
+     * @type {(string | undefined)}
      * @memberof Post
      */
-    images: string[];
+    image?: string;
     /**
      * Identifiant de la voie.
      *
@@ -214,12 +214,12 @@ export interface Post {
      */
     likes: number;
     /**
-     * Date de création du post.
+     * Temps passé création du post.
      *
-     * @type {Date}
+     * @type {string}
      * @memberof Post
      */
-    date: Date;
+    date: string;
 }
 
 /**

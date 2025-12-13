@@ -1,20 +1,50 @@
 [
   {
     "id": 1,
-    "content": "Vous avez reçu un message !",
+    "content": "Alex Grip a aimé votre post",
     "read": false,
-    "date": "2025-12-09T12:15:38.057Z"
+    "date": "5 minutes"
   },
   {
     "id": 2,
-    "content": "Vous avez reçu un message !",
-    "read": true,
-    "date": "2025-12-09T10:15:38.057Z"
+    "content": "Emma Sends a commenté : \"Bravo, belle réalisation ! 💪\"",
+    "read": false,
+    "date": "1 heure"
   },
   {
     "id": 3,
-    "content": "Vous avez reçu un message !",
+    "content": "Thomas Martin vous a mentionné dans un commentaire",
+    "read": false,
+    "date": "3 heures"
+  },
+  {
+    "id": 4,
+    "content": "Léa Petit a commencé à vous suivre",
     "read": true,
-    "date": "2025-12-08T12:15:38.057Z"
+    "date": "1 jour"
+  },
+  {
+    "id": 5,
+    "content": "Nouvelle session de groupe organisée ce week-end à Fontainebleau",
+    "read": true,
+    "date": "2 jours"
+  },
+  {
+    "id": 6,
+    "content": "Nicolas Roux a partagé votre post",
+    "read": true,
+    "date": "3 jours"
+  },
+  {
+    "id": 7,
+    "content": "Camille Bernard a répondu à votre question sur les chaussons",
+    "read": true,
+    "date": "4 jours"
+  },
+  {
+    "id": 8,
+    "content": "Marie Blanc a validé la voie \"Big Boss\" que vous suivez en projet",
+    "read": true,
+    "date": "5 jours"
   }
 ]

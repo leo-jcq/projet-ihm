@@ -3,20 +3,25 @@ import type { ImageFile } from '@/types/app';
 import { generateId } from '@/utils/generateId';
 import { GalleryOutlined, XmarkOutlined } from '@lineiconshq/free-icons';
 import Lineicons from '@lineiconshq/vue-lineicons';
+import { useTemplateRef } from 'vue';
 
-defineProps<{ id: string; images: ImageFile[] }>();
+const props = withDefaults(defineProps<{ id: string; images: ImageFile[]; multiple?: boolean }>(), {
+    multiple: false
+});
 
-const emits = defineEmits<{
+const emit = defineEmits<{
     add: [ImageFile[]];
     remove: [string];
 }>();
+
+const inputRef = useTemplateRef('input');
 
 function handleChange(e: Event) {
     const target = e.target as HTMLInputElement;
     if (target.files) {
         const files = Array.from(target.files);
 
-        emits(
+        emit(
             'add',
             files.map((file) => ({
                 id: generateId(),
@@ -26,15 +31,24 @@ function handleChange(e: Event) {
         );
     }
 }
+
+function handleRemove(id: string) {
+    if (!props.multiple && inputRef.value) {
+        // Clear input
+        inputRef.value.value = '';
+    }
+    emit('remove', id);
+}
 </script>
 
 <template>
     <input
         :id="id"
+        ref="input"
         type="file"
         class="image-input__input"
         accept=".png,.jpeg,.jpg"
-        multiple
+        :multiple="multiple"
         @change="handleChange"
     />
 
@@ -54,7 +68,7 @@ function handleChange(e: Event) {
                 <button
                     class="image-input__images__image__remove"
                     title="Supprimer l'image"
-                    @mousedown.stop="$emit('remove', image.id)"
+                    @mousedown.stop="handleRemove(image.id)"
                 >
                     <Lineicons :icon="XmarkOutlined" />
                 </button>
@@ -121,6 +135,7 @@ function handleChange(e: Event) {
         display: flex;
         flex-wrap: wrap;
         gap: 1.25rem;
+        justify-content: center;
 
         &__image {
             @extend %default-border;

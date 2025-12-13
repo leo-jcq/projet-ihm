@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import useOpen from '@/composables/useOpen';
 import dataStore from '@/stores/data';
-import { dateToSince } from '@/utils/time';
 import { Bell1Outlined, XmarkOutlined } from '@lineiconshq/free-icons';
 import { Lineicons } from '@lineiconshq/vue-lineicons';
 import { computed, useTemplateRef } from 'vue';
@@ -11,9 +10,6 @@ const notificationsRef = useTemplateRef('notifications');
 
 const { isOpen, toggle, close } = useOpen(notificationsRef);
 
-const sortedNotifications = computed(() =>
-    dataStore.notifications.sort((a, b) => b.date.getTime() - a.date.getTime())
-);
 const hasNewNotifications = computed(() => dataStore.notifications.some((notif) => !notif.read));
 
 function deleteNotification(id: number) {
@@ -38,11 +34,11 @@ function deleteNotification(id: number) {
                 </div>
 
                 <div class="notifications__list">
-                    <p v-if="sortedNotifications.length === 0" class="notifications__empty">
+                    <p v-if="dataStore.notifications.length === 0" class="notifications__empty">
                         Aucune notification
                     </p>
                     <div
-                        v-for="notif in sortedNotifications"
+                        v-for="notif in dataStore.notifications"
                         :key="notif.id"
                         :class="[
                             'notifications__notification',
@@ -53,7 +49,7 @@ function deleteNotification(id: number) {
                         <div class="notifications__notification__content">
                             <p class="notifications__notification__text">{{ notif.content }}</p>
                             <time class="notifications__notification__time">
-                                {{ dateToSince(notif.date) }}
+                                {{ notif.date }}
                             </time>
                         </div>
                         <GlassBtn

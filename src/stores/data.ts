@@ -19,20 +19,11 @@ interface IDataStore {
 }
 
 const dataStore = reactive<IDataStore>({
-    comments: comments.map((comment) => ({
-        ...comment,
-        date: new Date(comment.date)
-    })) as Comment[],
+    comments: comments,
     gyms,
-    messages: messages.map((message) => ({
-        ...message,
-        date: new Date(message.date)
-    })),
-    notifications: notifications.map((notification) => ({
-        ...notification,
-        date: new Date(notification.date)
-    })) as Notification[],
-    posts: posts.map((post) => ({ ...post, date: new Date(post.date) })) as Post[],
+    messages: messages,
+    notifications: notifications,
+    posts: posts as Post[],
     routes: routes as Route[],
     users: users as User[]
 });

@@ -7,16 +7,12 @@ import { Bolt2Outlined, HeartStroke } from '@lineiconshq/free-icons';
 import Lineicons from '@lineiconshq/vue-lineicons';
 import { computed } from 'vue';
 
-const sortedPosts = computed(() =>
-    dataStore.posts.sort((a, b) => b.date.getTime() - a.date.getTime())
-);
-
 const suggestions = computed(() => dataStore.users.slice(0, 3));
 </script>
 
 <template>
     <main class="home__feed">
-        <FeedPost v-for="post in sortedPosts" :key="post.id" :post="post" />
+        <FeedPost v-for="post in dataStore.posts" :key="post.id" :post="post" />
     </main>
     <div class="home__side">
         <div class="home__suggestions">

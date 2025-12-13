@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import type { User } from '@/types/model';
-import { getAssetPath } from '@/utils/files';
+import type { User } from '@/types/model';  
 import { RouterLink } from 'vue-router';
 
 withDefaults(defineProps<{ user: User; secondary?: string; link?: boolean }>(), {
@@ -11,7 +10,7 @@ withDefaults(defineProps<{ user: User; secondary?: string; link?: boolean }>(), 
 
 <template>
     <RouterLink :to="link ? `/user/${user.id}` : ''" class="user-modal">
-        <img :src="getAssetPath(user.avatar)" :alt="user.pseudo" class="user-modal__avatar" />
+        <img :src="user.avatar" :alt="user.pseudo" class="user-modal__avatar" />
 
         <div class="user-modal__text">
             <span class="user-modal__text__name">{{ user.name }}</span>
