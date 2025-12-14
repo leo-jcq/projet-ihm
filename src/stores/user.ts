@@ -10,6 +10,7 @@ const userStore = reactive<{ user: User | null }>({
         age: 20,
         description: '',
         avatar: 'connected.jpg',
+        level: '6a',
         styles: [],
         gymsIds: [],
         availabilities: []

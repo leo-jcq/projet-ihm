@@ -2,101 +2,141 @@
   {
     "id": 1,
     "name": "Arkose Grenoble",
-    "location": "Grenoble, France"
+    "location": "Grenoble, France",
+    "routeTypes": ["boulder"],
+    "styles": ["physical", "overhang", "dynamic"]
   },
   {
     "id": 2,
     "name": "Climb Up Lyon",
-    "location": "Lyon, France"
+    "location": "Lyon, France",
+    "routeTypes": ["boulder", "route"],
+    "styles": ["technical", "crimpy", "overhang"]
   },
   {
     "id": 3,
     "name": "Block'Out Paris",
-    "location": "Paris, France"
+    "location": "Paris, France",
+    "routeTypes": ["boulder"],
+    "styles": ["physical", "dynamic", "overhang"]
   },
   {
     "id": 4,
     "name": "Vertical'Art Marseille",
-    "location": "Marseille, France"
+    "location": "Marseille, France",
+    "routeTypes": ["boulder"],
+    "styles": ["technical", "slab", "finger"]
   },
   {
     "id": 5,
     "name": "MurMur Grenoble",
-    "location": "Grenoble, France"
+    "location": "Grenoble, France",
+    "routeTypes": ["boulder", "route"],
+    "styles": ["crimpy", "technical", "finger"]
   },
   {
     "id": 6,
     "name": "Arkose Nation Paris",
-    "location": "Paris, France"
+    "location": "Paris, France",
+    "routeTypes": ["boulder"],
+    "styles": ["dynamic", "physical", "overhang"]
   },
   {
     "id": 7,
     "name": "Climb Up Lille",
-    "location": "Lille, France"
+    "location": "Lille, France",
+    "routeTypes": ["boulder", "route"],
+    "styles": ["technical", "crimpy", "slab"]
   },
   {
     "id": 8,
     "name": "Sharma Climbing Bordeaux",
-    "location": "Bordeaux, France"
+    "location": "Bordeaux, France",
+    "routeTypes": ["route"],
+    "styles": ["physical", "dynamic", "overhang"]
   },
   {
     "id": 9,
     "name": "Vertical'Art Nantes",
-    "location": "Nantes, France"
+    "location": "Nantes, France",
+    "routeTypes": ["boulder"],
+    "styles": ["technical", "finger", "slab"]
   },
   {
     "id": 10,
     "name": "Climb Up Toulouse",
-    "location": "Toulouse, France"
+    "location": "Toulouse, France",
+    "routeTypes": ["boulder"],
+    "styles": ["crimpy", "technical", "overhang"]
   },
   {
     "id": 11,
     "name": "Block'Out Strasbourg",
-    "location": "Strasbourg, France"
+    "location": "Strasbourg, France",
+    "routeTypes": ["boulder"],
+    "styles": ["dynamic", "physical", "overhang"]
   },
   {
     "id": 12,
     "name": "Arkose Massy",
-    "location": "Massy, France"
+    "location": "Massy, France",
+    "routeTypes": ["boulder"],
+    "styles": ["physical", "dynamic", "crimpy"]
   },
   {
     "id": 13,
     "name": "Entre-Prises Nice",
-    "location": "Nice, France"
+    "location": "Nice, France",
+    "routeTypes": ["route"],
+    "styles": ["technical", "slab", "finger"]
   },
   {
     "id": 14,
     "name": "Climb Up Montpellier",
-    "location": "Montpellier, France"
+    "location": "Montpellier, France",
+    "routeTypes": ["route"],
+    "styles": ["overhang", "physical", "dynamic"]
   },
   {
     "id": 15,
     "name": "Vertige Rennes",
-    "location": "Rennes, France"
+    "location": "Rennes, France",
+    "routeTypes": ["boulder", "route"],
+    "styles": ["technical", "crimpy", "finger"]
   },
   {
     "id": 16,
     "name": "Arkose Lyon Confluence",
-    "location": "Lyon, France"
+    "location": "Lyon, France",
+    "routeTypes": ["boulder"],
+    "styles": ["dynamic", "overhang", "physical"]
   },
   {
     "id": 17,
     "name": "Block'Out Annecy",
-    "location": "Annecy, France"
+    "location": "Annecy, France",
+    "routeTypes": ["boulder"],
+    "styles": ["physical", "crimpy", "dynamic"]
   },
   {
     "id": 18,
     "name": "Climb Up Aix-en-Provence",
-    "location": "Aix-en-Provence, France"
+    "location": "Aix-en-Provence, France",
+    "routeTypes": ["boulder", "route"],
+    "styles": ["technical", "slab", "finger"]
   },
   {
     "id": 19,
     "name": "Vertical'Art Toulon",
-    "location": "Toulon, France"
+    "location": "Toulon, France",
+    "routeTypes": ["route"],
+    "styles": ["technical", "slab", "crimpy"]
   },
   {
     "id": 20,
     "name": "Arkose Montparnasse",
-    "location": "Paris, France"
+    "location": "Paris, France",
+    "routeTypes": ["boulder", "route"],
+    "styles": ["overhang", "dynamic", "physical"]
   }
 ]

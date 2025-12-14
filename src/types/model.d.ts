@@ -1,4 +1,5 @@
 import type { TAvailability } from '@/enums/Availability';
+import type { TClimbStyle } from '@/enums/ClimbStyle';
 import type { TPostType } from '@/enums/PostType';
 import type { TRouteType } from '@/enums/RouteType';
 
@@ -73,6 +74,20 @@ interface Gym {
      * @memberof Gym
      */
     location: string;
+    /**
+     * Les types de voies disponibles dans la salle.
+     *
+     * @type {TRouteType[]}
+     * @memberof Gym
+     */
+    routeTypes: TRouteType[];
+    /**
+     * Les styles d'escalade disponibles dans la salle.
+     *
+     * @type {TClimbStyle[]}
+     * @memberof Gym
+     */
+    styles: TClimbStyle[];
 }
 
 /**
@@ -110,6 +125,12 @@ export interface Message {
      * @memberof Message
      */
     date: string;
+    /**
+     * Indique si le message a été lu.
+     *
+     * @type {boolean}
+     * @memberof Message
+     */
     read: boolean;
 }
 
@@ -271,6 +292,13 @@ export interface Route {
      * @memberof Route
      */
     length: number;
+    /**
+     * Styles d'escalade de la voie.
+     *
+     * @type {TClimbStyle}
+     * @memberof Route
+     */
+    styles: TClimbStyle[];
 }
 
 /**
@@ -322,6 +350,13 @@ export interface User {
      * @memberof User
      */
     avatar: string;
+    /**
+     * Niveau d'escalade de l'utilisateur.
+     *
+     * @type {string}
+     * @memberof User
+     */
+    level: string;
     /**
      * Les styles d'escalade préférés de l'utilisateur.
      *

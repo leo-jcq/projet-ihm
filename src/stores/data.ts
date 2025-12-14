@@ -20,7 +20,7 @@ interface IDataStore {
 
 const dataStore = reactive<IDataStore>({
     comments: comments,
-    gyms,
+    gyms: gyms as Gym[],
     messages: messages,
     notifications: notifications,
     posts: posts as Post[],
