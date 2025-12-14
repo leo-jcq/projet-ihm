@@ -17,13 +17,13 @@ const WeekDay = {
 export default WeekDay;
 
 export const WeekDayToString: Record<TWeekDay, string> = {
-    monday: 'Lundi',
-    tuesday: 'Mardi',
-    wednesday: 'Mercredi',
-    thursday: 'Jeudi',
-    friday: 'Vendredi',
-    saturday: 'Samedi',
-    sunday: 'Dimanche'
+    [WeekDay.Monday]: 'Lundi',
+    [WeekDay.Tuesday]: 'Mardi',
+    [WeekDay.Wednesday]: 'Mercredi',
+    [WeekDay.Thursday]: 'Jeudi',
+    [WeekDay.Friday]: 'Vendredi',
+    [WeekDay.Saturday]: 'Samedi',
+    [WeekDay.Sunday]: 'Dimanche'
 };
 
 export type TWeekDay = (typeof WeekDay)[keyof typeof WeekDay];

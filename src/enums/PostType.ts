@@ -25,9 +25,9 @@ const PostType = {
 export default PostType;
 
 export const PostTypeToDisplay: Record<TPostType, { text: string; icon: IconData }> = {
-    success: { text: 'Succès', icon: CheckOutlined },
-    project: { text: 'Projet', icon: MapPin5Outlined },
-    other: { text: 'Autre', icon: SignPostLeftOutlined }
+    [PostType.Success]: { text: 'Succès', icon: CheckOutlined },
+    [PostType.Project]: { text: 'Projet', icon: MapPin5Outlined },
+    [PostType.Other]: { text: 'Autre', icon: SignPostLeftOutlined }
 };
 
 export type TPostType = (typeof PostType)[keyof typeof PostType];

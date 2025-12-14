@@ -12,8 +12,8 @@ const BoulderGradeSystem = {
 export default BoulderGradeSystem;
 
 export const BoulderGradeSystemToString: Record<TBoulderGradeSystem, string> = {
-    fontainebleau: 'FR (7A)',
-    'v-grade': 'V-GRADE (V6)'
+    [BoulderGradeSystem.Fontainebleau]: 'FR (7A)',
+    [BoulderGradeSystem.VGrade]: 'V-GRADE (V6)'
 };
 
 export type TBoulderGradeSystem = (typeof BoulderGradeSystem)[keyof typeof BoulderGradeSystem];

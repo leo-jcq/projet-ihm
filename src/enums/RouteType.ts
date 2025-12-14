@@ -18,8 +18,8 @@ const RouteType = {
 export default RouteType;
 
 export const RouteTypeToString: Record<TRouteType, string> = {
-    route: 'Voie',
-    boulder: 'Bloc'
+    [RouteType.Route]: 'Voie',
+    [RouteType.Boulder]: 'Bloc'
 };
 
 export type TRouteType = (typeof RouteType)[keyof typeof RouteType];

@@ -17,9 +17,9 @@ export default Availability;
 
 export const AvailabilityToString: Record<TAvailability, string> = {
     ...WeekDayToString,
-    flexible: 'Flexible',
-    'week-ends': 'Week-ends',
-    'week-evenings': 'Soirées en semaine'
+    [Availability.Flexible]: 'Flexible',
+    [Availability.WeekEnds]: 'Week-ends',
+    [Availability.WeekEvenings]: 'Soirées en semaine'
 };
 
 export type TAvailability = (typeof Availability)[keyof typeof Availability];
