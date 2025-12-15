@@ -57,9 +57,7 @@ defineEmits<{
 
         cursor: pointer;
 
-        transition-property: color, background-color;
-        transition-duration: 0.3s;
-        transition-timing-function: ease;
+        @include m.transition-group(0.3s, ease, color, background-color);
 
         &--no {
             &:hover {

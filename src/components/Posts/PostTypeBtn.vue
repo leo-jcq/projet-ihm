@@ -36,9 +36,7 @@ const display = computed(() => PostTypeToDisplay[props.type]);
     @extend %flex-center;
     gap: 0.25rem;
 
-    transition-property: color, background-color, border-color;
-    transition-duration: 0.3s;
-    transition-timing-function: ease;
+    @include m.transition-group(0.3s, ease, color, background-color, border-color);
 
     &--success {
         &:hover,

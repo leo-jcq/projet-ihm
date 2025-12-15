@@ -105,9 +105,7 @@ function deleteNotification(id: number) {
 
         &-enter-active,
         &-leave-active {
-            transition-property: opacity, transform;
-            transition-duration: 0.2s;
-            transition-timing-function: ease-in-out;
+            @include m.transition-group(0.2s, ease-in-out, opacity, transform);
         }
 
         &-enter-from,

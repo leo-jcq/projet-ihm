@@ -159,7 +159,7 @@ const { isOpen, toggle, close } = useOpen(userActionsRef);
 
     &-enter-active,
     &-leave-active {
-        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        @include m.transition-group(0.2s, ease-in-out, opacity, transform);
     }
 
     &-enter-from,

@@ -153,9 +153,7 @@ function handleAction(action: 'no' | 'like' | 'message') {
         &-leave-active {
             height: 154px;
 
-            transition-property: opacity, height;
-            transition-duration: 0.3s;
-            transition-timing-function: ease;
+            @include m.transition-group(0.2s, ease-in-out, color, opacity, height);
         }
 
         &-enter-from,
