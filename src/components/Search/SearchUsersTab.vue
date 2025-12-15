@@ -26,7 +26,7 @@ const users = computed(() => {
 
         <ul class="search-users-tab__list">
             <li v-for="user in users" :key="user.id" class="search-users-tab__list__user">
-                <UserModal :user="user" />
+                <UserModal :user="user" link />
                 <FollowBtn />
             </li>
             <li v-if="users.length === 0" class="search-users-tab__list__empty">

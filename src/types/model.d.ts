@@ -16,6 +16,13 @@ export interface Comment {
      * @type {number}
      * @memberof Comment
      */
+    id: number;
+    /**
+     * Identifiant de l'utilisateur.
+     *
+     * @type {number}
+     * @memberof Comment
+     */
     userId: number;
     /**
      * Identifiant du post associé.
@@ -88,6 +95,42 @@ interface Gym {
      * @memberof Gym
      */
     styles: TClimbStyle[];
+}
+
+/**
+ * Note d'une salle d'escalade par un utilisateur.
+ *
+ * @interface GymGrade
+ */
+interface GymGrade {
+    /**
+     * Identifiant de la salle d'escalade.
+     *
+     * @type {number}
+     * @memberof GymGrade
+     */
+    gymId: number;
+    /**
+     * Identifiant de l'utilisateur.
+     *
+     * @type {number}
+     * @memberof GymGrade
+     */
+    userId: number;
+    /**
+     * Note attribuée à la salle d'escalade.
+     *
+     * @type {number}
+     * @memberof GymGrade
+     */
+    grade: number;
+    /**
+     * Commentaire.
+     *
+     * @type {string}
+     * @memberof GymGrade
+     */
+    comment?: string;
 }
 
 /**

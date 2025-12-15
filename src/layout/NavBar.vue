@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import userStore from '@/stores/user';
-import { getAssetPath } from '@/utils/files';
 import {
     Bolt2Outlined,
     Envelope1Outlined,
@@ -15,7 +14,7 @@ import Lineicons from '@lineiconshq/vue-lineicons';
         <RouterLink :to="`/user/${userStore.user!.id}`" class="nav-bar__user">
             <img
                 class="nav-bar__user__avatar"
-                :src="getAssetPath(userStore.user!.avatar)"
+                :src="userStore.user!.avatar"
                 :alt="userStore.user!.name"
             />
             <h2 class="nav-bar__user__name">{{ userStore.user!.name }}</h2>

@@ -1,9 +1,130 @@
 [
   {
-    "userId": 2,
+    "id": 1,
+    "userId": 4,
     "postId": 1,
-    "content": "Super !",
+    "content": "Bravo Sophie ! Big Boss c'est du lourd, bien mérité 💪",
+    "likes": 5,
+    "date": "1 heure"
+  },
+  {
+    "id": 2,
+    "userId": 6,
+    "postId": 1,
+    "content": "GG ! Tu vas pouvoir attaquer les 7C+ maintenant 🔥",
+    "likes": 3,
+    "date": "2 heures"
+  },
+  {
+    "id": 3,
+    "userId": 1,
+    "postId": 2,
+    "content": "Merci pour la session @lea_on_rock ! On remet ça la semaine prochaine ?",
     "likes": 2,
-    "date": "2025-12-08T12:15:38.057Z"
+    "date": "30 minutes"
+  },
+  {
+    "id": 4,
+    "userId": 10,
+    "postId": 2,
+    "content": "Le talon-crochet c'est la vie ! Indispensable pour progresser en bloc",
+    "likes": 4,
+    "date": "40 minutes"
+  },
+  {
+    "id": 5,
+    "userId": 2,
+    "postId": 3,
+    "content": "Félicitations Emma ! C'est quelle voie exactement ?",
+    "likes": 1,
+    "date": "2 heures"
+  },
+  {
+    "id": 6,
+    "userId": 11,
+    "postId": 3,
+    "content": "Trop fort ! Céüse c'est magique, profite bien 🌄",
+    "likes": 6,
+    "date": "3 heures"
+  },
+  {
+    "id": 7,
+    "userId": 4,
+    "postId": 4,
+    "content": "Fais des enchaînements de voies faciles sans repos, ça aide beaucoup pour la résistance !",
+    "likes": 8,
+    "date": "4 heures"
+  },
+  {
+    "id": 8,
+    "userId": 8,
+    "postId": 4,
+    "content": "Le 4x4 est aussi excellent : 4 voies d'affilée, 4 fois. Dur mais efficace 💪",
+    "likes": 5,
+    "date": "5 heures"
+  },
+  {
+    "id": 9,
+    "userId": 1,
+    "postId": 5,
+    "content": "Merci pour le conseil Alex ! Tu fais quels exercices exactement ?",
+    "likes": 2,
+    "date": "7 heures"
+  },
+  {
+    "id": 10,
+    "userId": 9,
+    "postId": 5,
+    "content": "Super important ! J'ai eu une pulley il y a 2 ans pour avoir négligé l'échauffement",
+    "likes": 4,
+    "date": "8 heures"
+  },
+  {
+    "id": 11,
+    "userId": 14,
+    "postId": 6,
+    "content": "Trop jaloux ! J'y vais le week-end prochain, hâte 🌲",
+    "likes": 3,
+    "date": "1 jour"
+  },
+  {
+    "id": 12,
+    "userId": 3,
+    "postId": 6,
+    "content": "Les photos sont magnifiques ! C'était quel secteur ?",
+    "likes": 2,
+    "date": "1 jour"
+  },
+  {
+    "id": 13,
+    "userId": 2,
+    "postId": 7,
+    "content": "Énorme Marie ! 3 mois de projet, la satisfaction doit être immense 🎉",
+    "likes": 7,
+    "date": "1 jour"
+  },
+  {
+    "id": 14,
+    "userId": 4,
+    "postId": 7,
+    "content": "La Rage c'est mythique ! Quelle était la séquence la plus dure ?",
+    "likes": 4,
+    "date": "1 jour"
+  },
+  {
+    "id": 15,
+    "userId": 7,
+    "postId": 8,
+    "content": "C'est noté ! Je cherchais justement de nouveaux spots aux Calanques",
+    "likes": 3,
+    "date": "1 jour"
+  },
+  {
+    "id": 16,
+    "userId": 13,
+    "postId": 8,
+    "content": "La vue doit être incroyable ! Tu peux partager les coordonnées GPS ?",
+    "likes": 5,
+    "date": "1 jour"
   }
 ]

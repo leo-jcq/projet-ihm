@@ -6,7 +6,12 @@ import SearchTabs from '@/components/Search/SearchTabs.vue';
 import SearchUsersTab from '@/components/Search/SearchUsersTab.vue';
 import usePageTitle from '@/composables/usePageTitle';
 import dataStore from '@/stores/data';
-import { Route1Outlined, User4Outlined } from '@lineiconshq/free-icons';
+import {
+    Mountains2Outlined,
+    Route1Outlined,
+    SlidersHorizontalSquare2Outlined,
+    User4Outlined
+} from '@lineiconshq/free-icons';
 import Lineicons from '@lineiconshq/vue-lineicons';
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
@@ -37,7 +42,10 @@ const isAllTab = computed(() => currentTab.value === 'all');
     </main>
 
     <div class="search__filters">
-        <div class="search__filters__category">
+        <div
+            v-if="currentTab !== 'routes' && currentTab !== 'gyms'"
+            class="search__filters__category"
+        >
             <h3 class="search__filters__title">
                 <Lineicons :icon="User4Outlined" class="search__filters__title__icon" />
                 Personnes
@@ -64,6 +72,7 @@ const isAllTab = computed(() => currentTab.value === 'all');
                 />
             </div>
         </div>
+
         <div class="search__filters__category">
             <h3 class="search__filters__title">
                 <Lineicons :icon="Route1Outlined" class="search__filters__title__icon" />
@@ -80,11 +89,73 @@ const isAllTab = computed(() => currentTab.value === 'all');
                 />
             </div>
             <div class="search__filters__filter">
-                <label for="near" class="search__filters__filter__label">Proche de vous</label>
+                <label for="near" class="search__filters__filter__label">Proche de moi</label>
                 <input
                     id="near"
                     type="radio"
                     name="distance"
+                    class="search__filters__filter__input"
+                />
+            </div>
+        </div>
+
+        <div v-if="currentTab !== 'gyms'" class="search__filters__category">
+            <h3 class="search__filters__title">
+                <Lineicons :icon="Mountains2Outlined" class="search__filters__title__icon" />
+                Niveau
+            </h3>
+            <div class="search__filters__filter">
+                <label for="all" class="search__filters__filter__label">Tous</label>
+                <input
+                    id="all"
+                    type="radio"
+                    name="level"
+                    class="search__filters__filter__input"
+                    checked
+                />
+            </div>
+            <div class="search__filters__filter">
+                <label for="like" class="search__filters__filter__label">Similaire au mien</label>
+                <input id="like" type="radio" name="level" class="search__filters__filter__input" />
+            </div>
+        </div>
+
+        <div
+            v-if="currentTab !== 'users' && currentTab !== 'posts'"
+            class="search__filters__category"
+        >
+            <h3 class="search__filters__title">
+                <Lineicons
+                    :icon="SlidersHorizontalSquare2Outlined"
+                    class="search__filters__title__icon"
+                />
+                Disciplines
+            </h3>
+            <div class="search__filters__filter">
+                <label for="both" class="search__filters__filter__label">Les deux</label>
+                <input
+                    id="both"
+                    type="radio"
+                    name="routeTypes"
+                    class="search__filters__filter__input"
+                    checked
+                />
+            </div>
+            <div class="search__filters__filter">
+                <label for="boulder" class="search__filters__filter__label">Bloc</label>
+                <input
+                    id="boulder"
+                    type="radio"
+                    name="routeTypes"
+                    class="search__filters__filter__input"
+                />
+            </div>
+            <div class="search__filters__filter">
+                <label for="route" class="search__filters__filter__label">Voie</label>
+                <input
+                    id="route"
+                    type="radio"
+                    name="routeTypes"
                     class="search__filters__filter__input"
                 />
             </div>

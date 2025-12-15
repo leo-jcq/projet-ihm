@@ -26,7 +26,7 @@ const { isOpen, toggle, close } = useOpen(userActionsRef);
         <Transition name="user-actions">
             <div v-if="isOpen" class="user-actions__content">
                 <div class="user-actions__header">
-                    <UserModal :user="userStore.user!" />
+                    <UserModal :user="userStore.user!" link />
 
                     <GlassBtn class="user-actions__close" title="Fermer" @click="close">
                         <Lineicons :icon="XmarkOutlined" />

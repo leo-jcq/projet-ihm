@@ -20,7 +20,7 @@ const user = computed(() => dataStore.users.find((u) => u.id === props.message.u
         :class="{ 'conv-preview--unread': !message.read }"
         @click="$emit('open', message.id)"
     >
-        <UserModal :user="user" :secondary="message.text" :link="false" />
+        <UserModal :user="user" :secondary="message.text" />
 
         <div class="conv-preview__right">
             <div class="conv-preview__time">{{ message.date }}</div>

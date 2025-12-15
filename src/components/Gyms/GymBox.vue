@@ -1,7 +1,11 @@
 <script setup lang="ts">
+import { ClimStyleToString } from '@/enums/ClimbStyle';
 import dataStore from '@/stores/data';
 import type { Gym } from '@/types/model';
 import { computed } from 'vue';
+import { RouterLink } from 'vue-router';
+import RatingStars from '../RatingStars.vue';
+import { RouteTypeToString } from '@/enums/RouteType';
 
 const props = withDefaults(
     defineProps<
@@ -16,24 +20,54 @@ const props = withDefaults(
               }
         ) & {
             interactive?: boolean;
-            showRate?: boolean;
+            link?: boolean;
+            showDetails?: boolean;
         }
     >(),
     {
         interactive: false,
-        showRate: false
+        link: false,
+        showDetails: false
     }
 );
 
 const finalGym = computed(() =>
-    props.gym ? props.gym : dataStore.gyms.find((g) => g.id === props.id)
+    props.gym ? props.gym : dataStore.gyms.find((g) => g.id === props.id)!
 );
+
+const averageGrade = computed(() => {
+    const grades = dataStore.gymGrades.filter((grade) => grade.gymId === finalGym.value.id);
+
+    if (grades.length === 0) return null;
+
+    let total = 0;
+
+    for (let i = 0; i < grades.length; i++) {
+        total += grades[i]!.grade;
+    }
+
+    return total / grades.length;
+});
 </script>
 
 <template>
-    <div v-if="finalGym" class="gym-box" :class="{ 'gym-box--interractive': interactive }">
-        {{ finalGym.name }}, {{ finalGym.location }}
-    </div>
+    <component
+        :is="link ? RouterLink : 'div'"
+        v-if="finalGym"
+        :to="`/gym/${finalGym.id}`"
+        class="gym-box"
+        :class="{ 'gym-box--link': link, 'gym-box--interractive': interactive }"
+    >
+        <div class="gym-box__top">
+            <span class="gym-box__name">{{ finalGym.name }}, {{ finalGym.location }}</span>
+            <RatingStars v-if="showDetails" :rating="averageGrade" />
+        </div>
+        <div v-if="showDetails" class="gym-box__types">
+            <span v-for="routeType in finalGym.routeTypes" :key="routeType" class="gym-box__types__type">
+                {{ RouteTypeToString[routeType] }}
+            </span>
+        </div>
+    </component>
 </template>
 
 <style lang="scss">
@@ -44,10 +78,45 @@ const finalGym = computed(() =>
     @extend %default-border;
     border-radius: 0.3125rem;
 
+    display: block;
+
     padding: 0.375rem 0.5rem;
 
     @extend %default-shadow;
 
     background-color: v.$white;
+
+    text-decoration: none;
+    color: v.$black;
+
+    &__top {
+        @extend %flex-between;
+    }
+
+    &--link:hover &__name {
+        text-decoration: underline;
+    }
+
+    &__types {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        align-items: center;
+
+        margin-top: 0.25rem;
+
+        &__type {
+            width: fit-content;
+
+            padding: 0.375rem 0.75rem;
+
+            font-size: 0.875rem;
+            color: v.$grayish-black;
+
+            border-radius: 9999px;
+
+            background-color: v.$very-light-gray;
+        }
+    }
 }
 </style>

@@ -9,7 +9,7 @@ const userStore = reactive<{ user: User | null }>({
         pseudo: 'john-doe',
         age: 20,
         description: '',
-        avatar: 'connected.jpg',
+        avatar: `${import.meta.env.BASE_URL}connected.jpg`,
         level: '6a',
         styles: [],
         gymsIds: [],

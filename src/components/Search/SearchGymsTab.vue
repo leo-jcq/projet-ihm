@@ -25,7 +25,7 @@ const gyms = computed(() => {
 
         <ul class="search-gyms-tab__list">
             <li v-for="gym in gyms" :key="gym.id" class="search-gyms-tab__list__gym">
-                <GymBox :gym="gym" :interactive="false" />
+                <GymBox :gym="gym" link show-details />
             </li>
             <li v-if="gyms.length === 0" class="search-gyms-tab__list__empty">
                 Aucune salle trouvée.

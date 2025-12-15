@@ -1,24 +1,54 @@
 <script setup lang="ts">
-import type { User } from '@/types/model';  
+import RouteType from '@/enums/RouteType';
+import dataStore from '@/stores/data';
+import type { User } from '@/types/model';
+import { computed } from 'vue';
 import { RouterLink } from 'vue-router';
+import GradeBox from '../Routes/GradeBox.vue';
 
-withDefaults(defineProps<{ user: User; secondary?: string; link?: boolean }>(), {
-    secondary: undefined,
-    link: true
-});
+const props = withDefaults(
+    defineProps<
+        ({ user: User; userId: undefined } | { user: undefined; userId: number }) & {
+            secondary?: string;
+            link?: boolean;
+            displayLevel?: boolean;
+        }
+    >(),
+    {
+        secondary: undefined,
+        link: false,
+        displayLevel: false
+    }
+);
+
+const finalUser = computed(() =>
+    props.user ? props.user : dataStore.users.find((user) => user.id === props.userId)
+);
 </script>
 
 <template>
-    <RouterLink :to="link ? `/user/${user.id}` : ''" class="user-modal">
-        <img :src="user.avatar" :alt="user.pseudo" class="user-modal__avatar" />
+    <component
+        :is="link ? RouterLink : 'div'"
+        v-if="finalUser"
+        :to="`/user/${finalUser.id}`"
+        class="user-modal"
+    >
+        <img :src="finalUser.avatar" :alt="finalUser.pseudo" class="user-modal__avatar" />
 
         <div class="user-modal__text">
-            <span class="user-modal__text__name">{{ user.name }}</span>
+            <span class="user-modal__text__name">{{ finalUser.name }}</span>
             <span class="user-modal__text__secondary">
-                {{ secondary ?? `@${user.pseudo}` }}
+                {{ secondary ?? `@${finalUser.pseudo}` }}
             </span>
         </div>
-    </RouterLink>
+
+        <GradeBox
+            v-if="displayLevel"
+            :grade="finalUser.level"
+            :route-type="RouteType.Route"
+            class="user-modal__level"
+        />
+    </component>
 </template>
 
 <style lang="scss">
@@ -40,8 +70,7 @@ withDefaults(defineProps<{ user: User; secondary?: string; link?: boolean }>(), 
     }
 
     &__text {
-        &__name,
-        &__time {
+        &__name {
             display: block;
         }
 
@@ -50,6 +79,10 @@ withDefaults(defineProps<{ user: User; secondary?: string; link?: boolean }>(), 
             font-weight: 300;
             color: v.$very-dark-gray;
         }
+    }
+
+    &__level {
+        align-self: flex-start;
     }
 }
 </style>

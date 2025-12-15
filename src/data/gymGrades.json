@@ -1,0 +1,179 @@
+[
+  {
+    "gymId": 1,
+    "userId": 1,
+    "grade": 5,
+    "comment": "Excellente salle ! Les ouvreurs sont top et renouvellent régulièrement les blocs. Ambiance conviviale."
+  },
+  {
+    "gymId": 1,
+    "userId": 5,
+    "grade": 4,
+    "comment": "Très bien pour débuter, personnel accueillant et pédagogue."
+  },
+  {
+    "gymId": 2,
+    "userId": 2,
+    "grade": 5,
+    "comment": "Ma salle préférée ! Grand espace voie, bon pour travailler l'endurance."
+  },
+  {
+    "gymId": 2,
+    "userId": 10,
+    "grade": 4,
+    "comment": "Belle installation mais peut être bondée le soir. Les voies sont bien cotées."
+  },
+  {
+    "gymId": 3,
+    "userId": 6,
+    "grade": 5,
+    "comment": "Le paradis du bloc à Paris ! Dévers puissants et blocs techniques, un régal."
+  },
+  {
+    "gymId": 3,
+    "userId": 9,
+    "grade": 5,
+    "comment": "Atmosphère super, musique et ambiance au top pour se motiver."
+  },
+  {
+    "gymId": 3,
+    "userId": 14,
+    "grade": 4,
+    "comment": "Très bonne salle mais manque un peu d'espace aux heures de pointe."
+  },
+  {
+    "gymId": 4,
+    "userId": 7,
+    "grade": 4,
+    "comment": "Bonne salle polyvalente, idéale pour varier entre bloc et voie."
+  },
+  {
+    "gymId": 4,
+    "userId": 13,
+    "grade": 5,
+    "comment": "Super vue depuis la salle ! Les voies extérieures sont magnifiques quand il fait beau."
+  },
+  {
+    "gymId": 5,
+    "userId": 4,
+    "grade": 5,
+    "comment": "Salle familiale avec une belle communauté. Parfait pour l'entraînement technique."
+  },
+  {
+    "gymId": 5,
+    "userId": 9,
+    "grade": 4,
+    "comment": "Bon rapport qualité-prix, voies variées et personnel sympathique."
+  },
+  {
+    "gymId": 6,
+    "userId": 3,
+    "grade": 4,
+    "comment": "Grande salle bien équipée, mais il faut réserver pour avoir de la place le week-end."
+  },
+  {
+    "gymId": 7,
+    "userId": 10,
+    "grade": 3,
+    "comment": "Salle correcte mais un peu vieillissante. Cotations parfois aléatoires."
+  },
+  {
+    "gymId": 8,
+    "userId": 2,
+    "grade": 5,
+    "comment": "La signature Sharma ! Voies créatives et blocs inspirants. Un must à Bordeaux."
+  },
+  {
+    "gymId": 8,
+    "userId": 7,
+    "grade": 4,
+    "comment": "Belle découverte lors de mon passage à Bordeaux. Design moderne et ouvertures originales."
+  },
+  {
+    "gymId": 9,
+    "userId": 4,
+    "grade": 4,
+    "comment": "Salle spacieuse avec de belles hauteurs. Bon pour progresser en résistance."
+  },
+  {
+    "gymId": 10,
+    "userId": 8,
+    "grade": 4,
+    "comment": "Très bonne salle, manque juste un peu plus de dalles à mon goût."
+  },
+  {
+    "gymId": 11,
+    "userId": 6,
+    "grade": 5,
+    "comment": "Ma salle de cœur ! Blocs variés et renouvelés fréquemment."
+  },
+  {
+    "gymId": 12,
+    "userId": 1,
+    "grade": 4,
+    "comment": "Arkose toujours au top niveau, cette salle ne fait pas exception."
+  },
+  {
+    "gymId": 13,
+    "userId": 13,
+    "grade": 3,
+    "comment": "Salle sympathique mais un peu petite. Bien située à Nice."
+  },
+  {
+    "gymId": 14,
+    "userId": 7,
+    "grade": 5,
+    "comment": "Super salle ! Beaucoup de variété dans les profils de voies et blocs."
+  },
+  {
+    "gymId": 15,
+    "userId": 12,
+    "grade": 4,
+    "comment": "Bonne ambiance bretonne, personnel très sympa et accueillant."
+  },
+  {
+    "gymId": 16,
+    "userId": 11,
+    "grade": 5,
+    "comment": "Salle moderne et spacieuse. La zone d'entraînement est top pour les compétiteurs."
+  },
+  {
+    "gymId": 17,
+    "userId": 14,
+    "grade": 4,
+    "comment": "Belle salle près d'Annecy, parfait après une sortie en falaise."
+  },
+  {
+    "gymId": 18,
+    "userId": 15,
+    "grade": 4,
+    "comment": "Idéal pour progresser, bons conseils des coaches présents."
+  },
+  {
+    "gymId": 19,
+    "userId": 8,
+    "grade": 3,
+    "comment": "Salle correcte mais un peu éloignée du centre. Les voies techniques sont intéressantes."
+  },
+  {
+    "gymId": 20,
+    "userId": 3,
+    "grade": 5,
+    "comment": "Emplacement parfait à Paris, salle toujours animée avec une super énergie !"
+  },
+  {
+    "gymId": 1,
+    "userId": 15,
+    "grade": 5
+  },
+  {
+    "gymId": 2,
+    "userId": 12,
+    "grade": 4
+  },
+  {
+    "gymId": 5,
+    "userId": 1,
+    "grade": 5
+  }
+]
