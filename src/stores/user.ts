@@ -2,7 +2,7 @@ import type { User } from '@/types/model';
 import { reactive } from 'vue';
 import dataStore from './data';
 
-const userStore = reactive<{ user: User | null }>({
+const userStore = reactive<{ user: User }>({
     user: {
         id: -1,
         name: 'John Doe',
@@ -17,6 +17,6 @@ const userStore = reactive<{ user: User | null }>({
     }
 });
 
-dataStore.users.push(userStore.user!);
+dataStore.users.push(userStore.user);
 
 export default userStore;

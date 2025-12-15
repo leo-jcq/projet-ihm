@@ -35,7 +35,7 @@ const user = computed(() => dataStore.users.find((u) => u.id == props.comment.us
 
         <div class="comment__actions">
             <button
-                v-if="comment.userId === userStore.user!.id"
+                v-if="comment.userId === userStore.user.id"
                 class="comment__btn comment__btn--delete"
                 title="Supprimer"
                 @click="$emit('delete', comment.id)"

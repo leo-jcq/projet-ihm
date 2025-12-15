@@ -9,8 +9,8 @@ import { useRoute } from 'vue-router';
 const route = useRoute();
 
 const user = computed(() => {
-    if (userStore.user!.id.toString() === route.params.id) {
-        return userStore.user!;
+    if (userStore.user.id.toString() === route.params.id) {
+        return userStore.user;
     }
 
     return dataStore.users.find((u) => u.id.toString() === route.params.id);

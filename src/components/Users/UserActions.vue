@@ -26,7 +26,7 @@ const { isOpen, toggle, close } = useOpen(userActionsRef);
         <Transition name="user-actions">
             <div v-if="isOpen" class="user-actions__content">
                 <div class="user-actions__header">
-                    <UserModal :user="userStore.user!" link />
+                    <UserModal :user="userStore.user" link />
 
                     <GlassBtn class="user-actions__close" title="Fermer" @click="close">
                         <Lineicons :icon="XmarkOutlined" />
@@ -34,12 +34,16 @@ const { isOpen, toggle, close } = useOpen(userActionsRef);
                 </div>
 
                 <div class="user-actions__menu">
-                    <RouterLink :to="`/users/${userStore.user!.id}`" class="user-actions__item">
+                    <RouterLink
+                        :to="`/users/${userStore.user.id}`"
+                        class="user-actions__item"
+                        @click="close"
+                    >
                         <Lineicons :icon="EyeOutlined" class="user-actions__item__icon" />
                         <span class="user-actions__item__text">Voir le profil</span>
                     </RouterLink>
 
-                    <RouterLink to="/settings" class="user-actions__item">
+                    <RouterLink to="/settings" class="user-actions__item" @click="close">
                         <Lineicons :icon="Gear1Outlined" class="user-actions__item__icon" />
                         <span class="user-actions__item__text">Paramètres</span>
                     </RouterLink>
@@ -49,6 +53,7 @@ const { isOpen, toggle, close } = useOpen(userActionsRef);
                     <button
                         class="user-actions__item user-actions__item--danger"
                         title="Se déconnecter"
+                        @click="close"
                     >
                         <Lineicons :icon="ExitOutlined" class="user-actions__item__icon" />
                         <span class="user-actions__item__text">Se déconnecter</span>

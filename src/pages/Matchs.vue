@@ -36,7 +36,7 @@ function handleInput(e: Event) {
 const distance = computed(() => DISTANCES[rawDistance.value]!);
 
 // Matchs
-const passedIds = ref<number[]>([userStore.user!.id]);
+const passedIds = ref<number[]>([userStore.user.id]);
 const liked = ref(false);
 
 const usersToMatch = computed(() =>
@@ -126,7 +126,7 @@ function handleCancelSendMessage() {
                     Plus de grimpeurs pour le moment <br />
                     Revenez plus tard ou ajustez vos filtres
                 </p>
-                <button class="matchs__empty__reset" @click="passedIds = [userStore.user!.id]">
+                <button class="matchs__empty__reset" @click="passedIds = [userStore.user.id]">
                     Recommencer
                 </button>
             </div>

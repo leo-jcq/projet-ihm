@@ -17,14 +17,14 @@ const nbUnreadMessages = computed(
 
 <template>
     <div class="nav-bar">
-        <RouterLink :to="`/user/${userStore.user!.id}`" class="nav-bar__user">
+        <RouterLink :to="`/user/${userStore.user.id}`" class="nav-bar__user">
             <img
                 class="nav-bar__user__avatar"
-                :src="userStore.user!.avatar"
-                :alt="userStore.user!.name"
+                :src="userStore.user.avatar"
+                :alt="userStore.user.name"
             />
-            <h2 class="nav-bar__user__name">{{ userStore.user!.name }}</h2>
-            <span class="nav-bar__user__pseudo">@{{ userStore.user!.pseudo }}</span>
+            <h2 class="nav-bar__user__name">{{ userStore.user.name }}</h2>
+            <span class="nav-bar__user__pseudo">@{{ userStore.user.pseudo }}</span>
         </RouterLink>
 
         <nav class="nav-bar__nav">

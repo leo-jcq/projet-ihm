@@ -83,7 +83,7 @@ function handleSubmit() {
 
     dataStore.posts.unshift({
         id: generateNumberId(),
-        authorId: userStore.user!.id,
+        authorId: userStore.user.id,
         type: newPost.value.type!,
         content: newPost.value.content!,
         image: image.value?.preview,
