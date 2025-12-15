@@ -1,10 +1,11 @@
 <script setup lang="ts">
+import type { TRouteType } from '@/enums/RouteType';
 import dataStore from '@/stores/data';
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import RouteBox from '../Routes/RouteBox.vue';
 
-const props = defineProps<{ preDisplay: boolean }>();
+const props = defineProps<{ preDisplay: boolean; types: 'both' | TRouteType }>();
 
 const route = useRoute();
 
@@ -12,7 +13,9 @@ const routes = computed(() => {
     const query = route.query.q ? String(route.query.q) : '';
 
     const routes = dataStore.routes.filter(
-        (r) => r.name.includes(query) || r.location.includes(query)
+        (r) =>
+            (r.name.includes(query) || r.location.includes(query)) &&
+            (props.types === 'both' || props.types === r.type)
     );
 
     return props.preDisplay ? routes.slice(0, 3) : routes;

@@ -5,6 +5,7 @@ import SearchRoutesTab from '@/components/Search/SearchRoutesTab.vue';
 import SearchTabs from '@/components/Search/SearchTabs.vue';
 import SearchUsersTab from '@/components/Search/SearchUsersTab.vue';
 import usePageTitle from '@/composables/usePageTitle';
+import RouteType, { type TRouteType } from '@/enums/RouteType';
 import dataStore from '@/stores/data';
 import {
     Mountains2Outlined,
@@ -13,13 +14,14 @@ import {
     User4Outlined
 } from '@lineiconshq/free-icons';
 import Lineicons from '@lineiconshq/vue-lineicons';
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
 
 usePageTitle(`${route.query.q ? `${route.query.q} - ` : ''}Recherche`);
 
+// Tabs
 const DEFAULT_TAB = 'all';
 
 const currentTab = computed(() =>
@@ -29,6 +31,9 @@ const currentTab = computed(() =>
 );
 
 const isAllTab = computed(() => currentTab.value === 'all');
+
+// Filters
+const routesTypes = ref<'both' | TRouteType>('both');
 </script>
 
 <template>
@@ -36,7 +41,11 @@ const isAllTab = computed(() => currentTab.value === 'all');
         <SearchTabs :current-tab="currentTab" />
 
         <SearchUsersTab v-if="isAllTab || currentTab === 'users'" :pre-display="isAllTab" />
-        <SearchRoutesTab v-if="isAllTab || currentTab === 'routes'" :pre-display="isAllTab" />
+        <SearchRoutesTab
+            v-if="isAllTab || currentTab === 'routes'"
+            :pre-display="isAllTab"
+            :types="routesTypes"
+        />
         <SearchGymsTab v-if="isAllTab || currentTab === 'gyms'" :pre-display="isAllTab" />
         <SearchPostsTab v-if="isAllTab || currentTab === 'posts'" :pre-display="isAllTab" />
     </main>
@@ -136,18 +145,9 @@ const isAllTab = computed(() => currentTab.value === 'all');
                 <input
                     id="both"
                     type="radio"
-                    name="routeTypes"
                     class="search__filters__filter__input"
-                    checked
-                />
-            </div>
-            <div class="search__filters__filter">
-                <label for="boulder" class="search__filters__filter__label">Bloc</label>
-                <input
-                    id="boulder"
-                    type="radio"
-                    name="routeTypes"
-                    class="search__filters__filter__input"
+                    :checked="routesTypes === 'both'"
+                    @change="routesTypes = 'both'"
                 />
             </div>
             <div class="search__filters__filter">
@@ -155,8 +155,19 @@ const isAllTab = computed(() => currentTab.value === 'all');
                 <input
                     id="route"
                     type="radio"
-                    name="routeTypes"
                     class="search__filters__filter__input"
+                    :checked="routesTypes === RouteType.Route"
+                    @change="routesTypes = RouteType.Route"
+                />
+            </div>
+            <div class="search__filters__filter">
+                <label for="boulder" class="search__filters__filter__label">Bloc</label>
+                <input
+                    id="boulder"
+                    type="radio"
+                    class="search__filters__filter__input"
+                    :checked="routesTypes === RouteType.Boulder"
+                    @change="routesTypes = RouteType.Boulder"
                 />
             </div>
         </div>
