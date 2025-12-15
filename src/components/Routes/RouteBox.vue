@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { Route } from '@/types/model';
 import GradeBox from './GradeBox.vue';
+import { RouteTypeToString } from '@/enums/RouteType';
 
 withDefaults(
     defineProps<{
@@ -16,6 +17,7 @@ withDefaults(
 <template>
     <div class="route-box" :class="{ 'route-box--interactive': interactive }">
         <span class="route-box__name">{{ route.name }}, {{ route.location }}</span>
+        <span class="route-box__type">{{ RouteTypeToString[route.type] }}</span>
         <GradeBox :grade="route.grade" :route-type="route.type" />
         <span class="route-box__length">{{ route.length }}m</span>
     </div>
@@ -52,6 +54,19 @@ withDefaults(
         font-weight: 400;
         white-space: nowrap;
         color: v.$dark-gray;
+    }
+
+    &__type {
+        width: fit-content;
+
+        font-size: 0.875rem;
+        color: v.$grayish-black;
+
+        padding: 0.375rem 0.75rem;
+
+        border-radius: 9999px;
+
+        background-color: v.$very-light-gray;
     }
 
     &--interactive {
