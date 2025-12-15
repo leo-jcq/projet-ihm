@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { Comment1Outlined, HeartStroke, XmarkOutlined } from '@lineiconshq/free-icons';
+import { HeartStroke, XmarkOutlined } from '@lineiconshq/free-icons';
 import Lineicons from '@lineiconshq/vue-lineicons';
 
 defineEmits<{
-    action: ['no' | 'like' | 'message'];
+    action: ['no' | 'like'];
 }>();
 </script>
 
@@ -22,13 +22,6 @@ defineEmits<{
         >
             <Lineicons :icon="HeartStroke" class="match-actions__action__icon" size="42" />
         </button>
-        <button
-            class="match-actions__action match-actions__action--message"
-            title="Envoyer un message"
-            @click="$emit('action', 'message')"
-        >
-            <Lineicons :icon="Comment1Outlined" class="match-actions__action__icon" size="32" />
-        </button>
     </div>
 </template>
 
@@ -44,53 +37,59 @@ defineEmits<{
     margin-top: 1.5rem;
 
     &__action {
-        @include m.size(4rem);
+        @include m.size(4.5rem);
 
         @extend %flex-center;
 
         border: 1px solid currentColor;
         border-radius: 50%;
 
-        color: v.$light-gray;
-
-        background-color: v.$white;
+        position: relative;
 
         cursor: pointer;
 
-        @include m.transition-group(0.3s, ease, color, background-color);
+        @include m.transition-group(0.3s, ease, color, background-color, scale);
 
-        &--no {
-            &:hover {
-                color: v.$red;
+        &:hover {
+            scale: 1.1;
 
-                background-color: v.$light-red;
+            color: v.$white;
+
+            &::before {
+                opacity: 1;
             }
         }
 
-        &--message {
-            &:hover {
-                color: v.$blue;
-
-                background-color: v.$light-blue;
-            }
+        &:active {
+            scale: 0.9;
         }
 
-        &--like {
-            @include m.size(5rem);
+        &::before {
+            content: '';
 
-            border: none;
+            position: absolute;
+            z-index: -1;
+            inset: 0;
 
-            color: v.$white !important;
+            opacity: 0;
+
+            border-radius: 50%;
 
             background-image: v.$main-gradient;
 
-            transition: scale 0.3s ease;
+            transition: opacity 0.3s ease;
+        }
 
-            &:hover {
-                background-image: v.$main-gradient-lighten;
+        &--no {
+            color: v.$red;
 
-                scale: 1.1;
-            }
+            background-color: v.$light-red;
+        }
+
+        &--like {
+            color: v.$blue;
+
+            background-color: v.$light-blue;
         }
     }
 }

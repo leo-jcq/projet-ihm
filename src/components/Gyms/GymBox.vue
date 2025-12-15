@@ -5,19 +5,23 @@ import { computed } from 'vue';
 
 const props = withDefaults(
     defineProps<
-        | {
-              gym: Gym;
-              id: undefined;
-              interactive?: boolean;
-          }
-        | {
-              gym: undefined;
-              id: number;
-              interactive?: boolean;
-          }
+        (
+            | {
+                  gym: Gym;
+                  id: undefined;
+              }
+            | {
+                  gym: undefined;
+                  id: number;
+              }
+        ) & {
+            interactive?: boolean;
+            showRate?: boolean;
+        }
     >(),
     {
-        interactive: true
+        interactive: false,
+        showRate: false
     }
 );
 
@@ -27,12 +31,14 @@ const finalGym = computed(() =>
 </script>
 
 <template>
-    <div v-if="finalGym" class="gym-box">{{ finalGym.name }}, {{ finalGym.location }}</div>
+    <div v-if="finalGym" class="gym-box" :class="{ 'gym-box--interractive': interactive }">
+        {{ finalGym.name }}, {{ finalGym.location }}
+    </div>
 </template>
 
 <style lang="scss">
-@use "@/scss/placeholders";
-@use "@/scss/variables" as v;
+@use '@/scss/placeholders';
+@use '@/scss/variables' as v;
 
 .gym-box {
     @extend %default-border;

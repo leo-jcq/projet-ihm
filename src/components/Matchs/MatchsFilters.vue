@@ -35,7 +35,7 @@ function handleInput(e: Event) {
                 </div>
 
                 <div class="matchs-filters__filter__container">
-                    <label for="near" class="matchs-filters__filter__label"> Proche du mien </label>
+                    <label for="near" class="matchs-filters__filter__label">Proche du mien</label>
                     <input
                         id="near"
                         type="radio"
@@ -46,6 +46,33 @@ function handleInput(e: Event) {
             </div>
 
             <div class="matchs-filters__filter">
+                <h5 class="matchs-filters__filter__title">Salles fréquentées</h5>
+
+                <div class="matchs-filters__filter__container">
+                    <label for="all" class="matchs-filters__filter__label"> Toutes </label>
+                    <input
+                        id="all"
+                        type="radio"
+                        name="gyms"
+                        class="matchs-filters__filter__checkbox"
+                        checked
+                    />
+                </div>
+
+                <div class="matchs-filters__filter__container">
+                    <label for="same" class="matchs-filters__filter__label">
+                        Mêmes que les miennes
+                    </label>
+                    <input
+                        id="same"
+                        type="radio"
+                        name="gyms"
+                        class="matchs-filters__filter__checkbox"
+                    />
+                </div>
+            </div>
+
+            <div class="matchs-filters__filter matchs-filters__filter--full">
                 <label for="distance" class="matchs-filters__filter__label">
                     Distance
                     <span class="matchs-filters__filter__value">{{ distance }}km</span>
@@ -88,9 +115,14 @@ function handleInput(e: Event) {
         display: grid;
         gap: 1rem;
         grid-template-columns: 50% 50%;
+        grid-template-rows: 1fr 1fr;
     }
 
     &__filter {
+        &--full {
+            grid-column: 1/3
+        }
+
         &__top {
             @extend %flex-between;
 

@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import MatchCard from '@/components/Matchs/MatchCard.vue';
+import MatchRegisterForm from '@/components/Matchs/MatchRegisterForm.vue';
 import MatchsActions from '@/components/Matchs/MatchsActions.vue';
 import MatchsFilters from '@/components/Matchs/MatchsFilters.vue';
+import SendMessageMatch from '@/components/Matchs/SendMessageMatch.vue';
+import useLocalStorageRef from '@/composables/useLocalStorageRef';
 import useOpen from '@/composables/useOpen';
 import usePageTitle from '@/composables/usePageTitle';
 import { DEFAULT_DISTANCE, DISTANCES } from '@/constants/matchs';
+import router from '@/router';
 import dataStore from '@/stores/data';
 import userStore from '@/stores/user';
 import { getRandomInt } from '@/utils/random';
@@ -15,6 +19,9 @@ import { computed, ref } from 'vue';
 usePageTitle('Matchs');
 
 const { isOpen, toggle } = useOpen();
+
+// Register
+const hasRegister = useLocalStorageRef('hasRegisterMatch', false);
 
 // Distance
 const rawDistance = ref(DEFAULT_DISTANCE);
@@ -30,6 +37,7 @@ const distance = computed(() => DISTANCES[rawDistance.value]!);
 
 // Matchs
 const passedIds = ref<number[]>([userStore.user!.id]);
+const liked = ref(false);
 
 const usersToMatch = computed(() =>
     dataStore.users.filter((u) => passedIds.value.indexOf(u.id) === -1)
@@ -44,63 +52,86 @@ const user = computed(() => {
     return usersToMatch.value[getRandomInt(0, usersToMatch.value.length - 1)];
 });
 
-function handleAction(action: 'no' | 'like' | 'message') {
-    if (action === 'message') {
-        // TODO
-        return;
-    }
-
+function nextUser() {
     if (!user.value) return;
 
+    window.scrollTo({ top: 0 });
     passedIds.value.push(user.value.id);
+}
+
+function handleAction(action: 'no' | 'like') {
+    if (action === 'like') {
+        liked.value = true;
+    } else {
+        nextUser();
+    }
+}
+
+function handleSendMessage() {
+    liked.value = false;
+    nextUser();
+}
+
+function handleCancelSendMessage() {
+    liked.value = false;
 }
 </script>
 
 <template>
     <main class="matchs">
-        <div class="matchs__top">
-            <div class="matchs__top__right">
-                <h2 class="matchs__title">Trouvez votre partenaire</h2>
-                <h3 class="matchs__sub-title">Grimpeurs compatibles près de chez vous</h3>
+        <template v-if="hasRegister">
+            <div class="matchs__top">
+                <div class="matchs__top__right">
+                    <h2 class="matchs__title">Trouvez votre partenaire</h2>
+                    <h3 class="matchs__sub-title">Grimpeurs compatibles près de chez vous</h3>
+                </div>
+
+                <button
+                    class="matchs__open-filters"
+                    :title="`${isOpen ? 'Fermer' : 'Ouvrir'} les filtres`"
+                    @click="toggle"
+                >
+                    <Lineicons :icon="Funnel1Outlined" />
+                </button>
             </div>
 
-            <button
-                class="matchs__open-filters"
-                :title="`${isOpen ? 'Fermer' : 'Ouvrir'} les filtres`"
-                @click="toggle"
-            >
-                <Lineicons :icon="Funnel1Outlined" />
-            </button>
-        </div>
+            <Transition name="matchs__filters">
+                <MatchsFilters
+                    v-if="isOpen"
+                    :raw-distance="rawDistance"
+                    :distance="distance"
+                    @input="handleInput"
+                />
+            </Transition>
 
-        <Transition name="matchs__filters">
-            <MatchsFilters
-                v-if="isOpen"
-                :raw-distance="rawDistance"
-                :distance="distance"
-                @input="handleInput"
-            />
-        </Transition>
+            <template v-if="user">
+                <MatchCard :user="user" :max-distance="distance" />
 
-        <template v-if="user">
-            <MatchCard :user="user" :max-distance="distance" />
+                <MatchsActions @action="handleAction" />
 
-            <MatchsActions @action="handleAction" />
+                <span class="matchs__indicator">
+                    {{ passedIds.length }}/{{ NB_USERS_TO_MATCHS }} grimpeurs
+                </span>
 
-            <span class="matchs__indicator">
-                {{ passedIds.length }}/{{ NB_USERS_TO_MATCHS }} grimpeurs
-            </span>
+                <SendMessageMatch
+                    v-if="liked"
+                    :user="user"
+                    @send="handleSendMessage"
+                    @cancel="handleCancelSendMessage"
+                />
+            </template>
+            <div v-else class="matchs__empty">
+                <Lineicons :icon="UserMultiple4Outlined" class="matchs__empty__icon" />
+                <p class="matchs__empty__text">
+                    Plus de grimpeurs pour le moment <br />
+                    Revenez plus tard ou ajustez vos filtres
+                </p>
+                <button class="matchs__empty__reset" @click="passedIds = [userStore.user!.id]">
+                    Recommencer
+                </button>
+            </div>
         </template>
-        <div v-else class="matchs__empty">
-            <Lineicons :icon="UserMultiple4Outlined" class="matchs__empty__icon" />
-            <p class="matchs__empty__text">
-                Plus de grimpeurs pour le moment <br />
-                Revenez plus tard ou ajustez vos filtres
-            </p>
-            <button class="matchs__empty__reset" @click="passedIds = [userStore.user!.id]">
-                Recommencer
-            </button>
-        </div>
+        <MatchRegisterForm v-else @accept="hasRegister = true" @reject="router.push('/')" />
     </main>
 </template>
 

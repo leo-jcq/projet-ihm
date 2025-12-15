@@ -1,9 +1,5 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
-<template>
-    Login
-</template>
+<template>Vous avez été déconnecté.</template>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

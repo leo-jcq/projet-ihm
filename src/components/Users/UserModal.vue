@@ -35,6 +35,8 @@ withDefaults(defineProps<{ user: User; secondary?: string; link?: boolean }>(), 
 
     &__avatar {
         @include m.rounded(2.5em);
+
+        object-fit: cover;
     }
 
     &__text {

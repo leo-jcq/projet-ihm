@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { AvailabilityToString } from '@/enums/Availability';
-import { RouteTypeToString } from '@/enums/RouteType';
+import PostType from '@/enums/PostType';
+import RouteType, { RouteTypeToString } from '@/enums/RouteType';
+import dataStore from '@/stores/data';
 import type { User } from '@/types/model';
 import { getRandomNumber } from '@/utils/random';
 import {
@@ -12,10 +14,18 @@ import {
 import Lineicons from '@lineiconshq/vue-lineicons';
 import { computed } from 'vue';
 import GymBox from '../Gyms/GymBox.vue';
+import GradeBox from '../Routes/GradeBox.vue';
 
 const props = defineProps<{ user: User; maxDistance: number }>();
 
 const distance = computed(() => getRandomNumber(0, props.maxDistance));
+
+const nbSuccess = computed(
+    () =>
+        dataStore.posts.filter(
+            (post) => post.authorId === props.user.id && post.type === PostType.Success
+        ).length
+);
 </script>
 
 <template>
@@ -29,7 +39,11 @@ const distance = computed(() => getRandomNumber(0, props.maxDistance));
             </div>
 
             <div class="match-card__picture__bottom">
-                {{ user.name }}, {{ user.age }}
+                <p class="match-card__picture__bottom__name">{{ user.name }}, {{ user.age }}</p>
+                <GradeBox :grade="user.level" :route-type="RouteType.Route" />
+                <span class="match-card__picture__bottom__success">
+                    {{ nbSuccess }} réussite{{ nbSuccess > 1 ? 's' : '' }}
+                </span>
             </div>
         </div>
 
@@ -128,12 +142,38 @@ const distance = computed(() => getRandomNumber(0, props.maxDistance));
         }
 
         &__bottom {
-            position: absolute;
-            bottom: 1rem;
-            left: 1.625rem;
+            width: 100%;
 
-            font-size: 1.5rem;
-            color: v.$white;
+            background-image: linear-gradient(transparent, rgba(v.$black, 0.5));
+
+            padding: 1rem 1.625rem;
+
+            position: absolute;
+            bottom: 0;
+            left: 0;
+
+            &__name {
+                font-size: 1.5rem;
+                color: v.$white;
+
+                margin-bottom: 0.5rem;
+            }
+
+            &__success {
+                padding: 0.125rem 0.375rem;
+
+                @extend %default-border;
+                border-radius: 0.25rem;
+
+                margin-left: 0.5rem;
+
+                font-size: 0.875rem;
+                color: v.$very-dark-gray;
+
+                background-color: v.$white;
+
+                display: inline-block;
+            }
         }
     }
 
@@ -158,6 +198,7 @@ const distance = computed(() => getRandomNumber(0, props.maxDistance));
             margin-bottom: 1rem;
 
             display: flex;
+            flex-wrap: wrap;
             gap: 0.5rem;
             align-items: center;
         }
