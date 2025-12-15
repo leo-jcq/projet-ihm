@@ -40,7 +40,7 @@ function postNewComment() {
         dataStore.comments.unshift({
             id: generateNumberId(),
             postId: props.post.id,
-            userId: userStore.user!.id,
+            userId: userStore.user.id,
             content: newComment.value,
             likes: 0,
             date: "à l'instant"
@@ -52,7 +52,9 @@ function postNewComment() {
 function deleteComment(commentId: number) {
     const index = dataStore.comments.findIndex((comment) => comment.id === commentId);
     if (index !== -1) {
-        dataStore.comments.splice(index, 1);
+        if (confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?')) {
+            dataStore.comments.splice(index, 1);
+        }
     }
 }
 
@@ -295,6 +297,8 @@ const route = computed(() => dataStore.routes.find((route) => route.id === props
 
         padding: 0.75rem 1rem 1rem 1rem;
 
+        overflow: hidden;
+
         &__title {
             font-size: 1.125rem;
             font-weight: 400;
@@ -315,65 +319,20 @@ const route = computed(() => dataStore.routes.find((route) => route.id === props
             display: flex;
             gap: 0.875rem;
             flex-direction: column-reverse;
-
-            & .user-modal {
-                &__text {
-                    &__name {
-                        font-size: 0.875rem;
-                    }
-
-                    &__secondary {
-                        font-size: 1rem;
-                        color: v.$grayish-black;
-                    }
-                }
-            }
         }
 
-        &__comment {
-            @extend %flex-between;
+        &-enter-active,
+        &-leave-active {
+            height: 154px;
 
-            &__actions {
-                display: flex;
-                gap: 0.75rem;
-                align-items: center;
-            }
+            @include m.transition-group(0.2s, ease-in-out, color, opacity, height);
+        }
 
-            &__btn {
-                border: none;
+        &-enter-from,
+        &-leave-to {
+            height: 0;
 
-                background-color: transparent;
-
-                @extend %flex-center;
-                gap: 0.5rem;
-
-                color: v.$very-dark-gray;
-
-                cursor: pointer;
-
-                font-size: 0.875rem;
-
-                &:hover,
-                &--liked {
-                    color: v.$red;
-                }
-
-                &--delete {
-                    opacity: 0;
-
-                    pointer-events: none;
-                }
-
-                &__icon {
-                    @include m.size(1.3125rem);
-                }
-            }
-
-            &:hover &__btn--delete {
-                opacity: 1;
-
-                pointer-events: auto;
-            }
+            opacity: 0;
         }
 
         &__new {
