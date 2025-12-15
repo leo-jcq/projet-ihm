@@ -15,7 +15,7 @@ const message = ref('');
 </script>
 
 <template>
-    <PopUp :title="`Envoyer un message à ${user.name}`">
+    <PopUp :title="`Envoyer un message à ${user.name}`" @close="$emit('cancel')">
         <div class="send-message-match">
             <div class="send-message-match__user">
                 <UserModal :user="user" />
