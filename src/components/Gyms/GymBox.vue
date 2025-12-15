@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ClimStyleToString } from '@/enums/ClimbStyle';
 import dataStore from '@/stores/data';
 import type { Gym } from '@/types/model';
 import { computed } from 'vue';
