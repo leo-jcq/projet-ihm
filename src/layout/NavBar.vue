@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import dataStore from '@/stores/data';
 import userStore from '@/stores/user';
 import {
     Bolt2Outlined,
@@ -7,6 +8,11 @@ import {
     Home2Outlined
 } from '@lineiconshq/free-icons';
 import Lineicons from '@lineiconshq/vue-lineicons';
+import { computed } from 'vue';
+
+const nbUnreadMessages = computed(
+    () => dataStore.messages.filter((message) => !message.read).length
+);
 </script>
 
 <template>
@@ -37,6 +43,7 @@ import Lineicons from '@lineiconshq/vue-lineicons';
             <RouterLink to="/messages" class="nav-bar__nav__link">
                 <Lineicons :icon="Envelope1Outlined" />
                 Messages
+                <span class="nav-bar__nav__link__indicator">{{ nbUnreadMessages }}</span>
                 <div class="nav-bar__nav__link__bg" />
             </RouterLink>
 
@@ -103,9 +110,11 @@ import Lineicons from '@lineiconshq/vue-lineicons';
         flex-direction: column;
 
         &__link {
+            $padding: 1.375rem;
+
             width: 100%;
 
-            padding: 1.375rem;
+            padding: $padding;
 
             display: flex;
             gap: 0.75rem;
@@ -126,6 +135,27 @@ import Lineicons from '@lineiconshq/vue-lineicons';
             &.router-link-active,
             &:hover {
                 color: v.$white;
+            }
+
+            &__indicator {
+                @include m.rounded(1.25rem);
+
+                background-image: v.$main-gradient;
+
+                font-size: 0.75rem;
+                color: v.$white;
+
+                @extend %flex-center;
+
+                position: absolute;
+                top: 50%;
+                right: $padding;
+                transform: translateY(-50%);
+            }
+
+            &.router-link-active &__indicator,
+            &:hover &__indicator {
+                display: none;
             }
 
             &__bg {
