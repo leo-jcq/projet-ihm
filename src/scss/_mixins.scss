@@ -8,3 +8,9 @@
 
     border-radius: 50%;
 }
+
+@mixin transition-group($duration, $timing-function, $properties...) {
+    transition-property: $properties;
+    transition-duration: $duration;
+    transition-timing-function: $timing-function;
+}

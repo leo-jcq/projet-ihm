@@ -166,9 +166,24 @@ function handleRemove(id: string) {
                 right: 0;
                 transform: translate(50%, -50%);
 
+                background-color: v.$light-gray;
+
+                border: 1px solid v.$dark-gray;
                 border-radius: 50%;
 
+                color: v.$dark-gray;
+
                 @extend %flex-center;
+
+                @include m.transition-group(0.3s, ease, background-color, border-color, color);
+
+                &:hover {
+                    background-color: v.$light-red;
+
+                    border-color: v.$red;
+
+                    color: v.$red;
+                }
             }
         }
     }
