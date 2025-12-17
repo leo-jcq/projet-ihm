@@ -106,10 +106,8 @@ export function convertBoulderGradeFromFontainebleau(
 
     if (convertTable) {
         // Recherche de la cotation dans la table de conversion
-        console.log(`base grade : ${grade}`);
         for (let i = 0; i < convertTable.length; i++) {
             const [fontainebleau, conversion] = convertTable[i]!;
-            console.log(`fontainebleau grade : ${fontainebleau}, conversion : ${conversion}`);
             if (fontainebleau === grade) {
                 return conversion;
             }

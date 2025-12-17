@@ -9,10 +9,10 @@ const props = defineProps<{ preDisplay: boolean }>();
 const route = useRoute();
 
 const gyms = computed(() => {
-    const query = route.query.q ? String(route.query.q) : '';
+    const query = route.query.q ? String(route.query.q).toLowerCase() : '';
 
     const gyms = dataStore.gyms.filter(
-        (gym) => gym.name.includes(query) || gym.location.includes(query)
+        (gym) => gym.name.toLowerCase().includes(query) || gym.location.toLowerCase().includes(query)
     );
 
     return props.preDisplay ? gyms.slice(0, 3) : gyms;

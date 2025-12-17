@@ -12,10 +12,12 @@ import { ref } from 'vue';
 import ImageInput from '../ImageInput.vue';
 import PopUp from '../PopUp.vue';
 import RouteBox from '../Routes/RouteBox.vue';
+import RouteForm from '../Routes/RouteForm.vue';
 import SearchSelect from '../SearchSelect.vue';
 import PostTypeBtn from './PostTypeBtn.vue';
 
 const { isOpen, open, close: cClose } = useOpen();
+const { isOpen: isRouteFormOpen, open: routeFormOpen, close: routeFormClose } = useOpen();
 
 const newPost = ref<Partial<Post>>({ type: PostType.Success });
 const image = ref<ImageFile | null>(null);
@@ -77,15 +79,13 @@ function handleSubmit() {
         hasError = true;
     }
 
-    if (hasError) {
-        return;
-    }
+    if (hasError) return;
 
     dataStore.posts.unshift({
         id: generateNumberId(),
         authorId: userStore.user.id,
         type: newPost.value.type!,
-        content: newPost.value.content!,
+        content: newPost.value.content?.trim() ?? '',
         image: image.value?.preview,
         routeId: newPost.value.routeId,
         tryCount: newPost.value.tryCount,
@@ -136,6 +136,18 @@ function handleSubmit() {
                         >
                             <RouteBox :route="item" />
                         </SearchSelect>
+
+                        <span class="new-post__form__indicator">
+                            Vous ne trouvez pas votre voie/bloc ? Ajoutez la/le en cliquant
+                            <button
+                                type="button"
+                                class="new-post__form__open-route-form"
+                                @click="routeFormOpen"
+                            >
+                                ici
+                            </button>
+                            .
+                        </span>
 
                         <RouteBox
                             v-if="selectedRoute"
@@ -212,6 +224,10 @@ function handleSubmit() {
             </div>
         </form>
     </PopUp>
+
+    <PopUp v-if="isRouteFormOpen" title="Nouvelle voie" @close="routeFormClose">
+        <RouteForm @end="routeFormClose" />
+    </PopUp>
 </template>
 
 <style lang="scss">
@@ -281,31 +297,48 @@ function handleSubmit() {
 
         &__input,
         &__textarea {
+            width: 100%;
+
+            @extend %default-border;
+            border-radius: 0.5rem;
+            outline-color: v.$accent;
+
             &::placeholder {
                 color: v.$dark-gray;
             }
         }
 
         &__input {
-            width: 100%;
-
             padding: 1rem 1.5rem;
-
-            @extend %default-border;
-            border-radius: 0.5rem;
-            outline-color: v.$accent;
         }
 
         &__textarea {
-            width: 100%;
-
             resize: none;
 
             padding: 0.5rem 1rem;
+        }
 
-            @extend %default-border;
-            border-radius: 0.5rem;
-            outline-color: v.$accent;
+        &__indicator {
+            font-size: 0.875rem;
+            color: v.$dark-gray;
+
+            display: block;
+
+            margin-top: 0.5rem;
+        }
+
+        &__open-route-form {
+            border: none;
+
+            background-color: transparent;
+
+            color: v.$grayish-black;
+
+            cursor: pointer;
+
+            &:hover {
+                text-decoration: underline;
+            }
         }
 
         &__route {

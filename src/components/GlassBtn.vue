@@ -13,7 +13,7 @@
 
     position: relative;
 
-    padding: 0.5rem;
+    padding: 0.5em;
 
     cursor: pointer;
 

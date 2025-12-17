@@ -7,18 +7,14 @@ import { RouterLink } from 'vue-router';
 import GradeBox from '../Routes/GradeBox.vue';
 
 const props = withDefaults(
-    defineProps<
-        ({ user: User; userId: undefined } | { user: undefined; userId: number }) & {
-            secondary?: string;
-            link?: boolean;
-            displayLevel?: boolean;
-        }
-    >(),
-    {
-        secondary: undefined,
-        link: false,
-        displayLevel: false
-    }
+    defineProps<{
+        user?: User;
+        userId?: number;
+        secondary?: string;
+        link?: boolean;
+        displayLevel?: boolean;
+    }>(),
+    { user: undefined, userId: undefined, secondary: undefined, link: false, displayLevel: false }
 );
 
 const finalUser = computed(() =>
