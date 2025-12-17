@@ -7,9 +7,11 @@ import NotFound from './pages/NotFound.vue';
 import Search from './pages/Search.vue';
 import Settings from './pages/Settings.vue';
 import User from './pages/User.vue';
+import Gym from './pages/Gym.vue';
 
 const routes: RouteRecordRaw[] = [
     { path: '/', component: Home },
+    { path: '/gym/:id', component: Gym },
     { path: '/matchs', component: Matchs },
     { path: '/messages', component: Messages },
     { path: '/user/:id', component: User },

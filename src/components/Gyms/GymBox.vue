@@ -1,10 +1,10 @@
 <script setup lang="ts">
+import { RouteTypeToString } from '@/enums/RouteType';
 import dataStore from '@/stores/data';
 import type { Gym } from '@/types/model';
 import { computed } from 'vue';
 import { RouterLink } from 'vue-router';
 import RatingStars from '../RatingStars.vue';
-import { RouteTypeToString } from '@/enums/RouteType';
 
 const props = withDefaults(
     defineProps<
@@ -58,11 +58,18 @@ const averageGrade = computed(() => {
         :class="{ 'gym-box--link': link, 'gym-box--interractive': interactive }"
     >
         <div class="gym-box__top">
-            <span class="gym-box__name">{{ finalGym.name }}, {{ finalGym.location }}</span>
+            <div class="gym-box__top__left">
+                <img :src="finalGym.logo" :alt="finalGym.name" class="gym-box__logo" />
+                <span class="gym-box__name">{{ finalGym.name }}, {{ finalGym.location }}</span>
+            </div>
             <RatingStars v-if="showDetails" :rating="averageGrade" />
         </div>
         <div v-if="showDetails" class="gym-box__types">
-            <span v-for="routeType in finalGym.routeTypes" :key="routeType" class="gym-box__types__type">
+            <span
+                v-for="routeType in finalGym.routeTypes"
+                :key="routeType"
+                class="gym-box__types__type"
+            >
                 {{ RouteTypeToString[routeType] }}
             </span>
         </div>
@@ -70,6 +77,7 @@ const averageGrade = computed(() => {
 </template>
 
 <style lang="scss">
+    @use "@/scss/mixins" as m;
 @use '@/scss/placeholders';
 @use '@/scss/variables' as v;
 
@@ -90,6 +98,20 @@ const averageGrade = computed(() => {
 
     &__top {
         @extend %flex-between;
+
+        &__left {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+    }
+
+    &__logo {
+        @include m.rounded(3.5rem);
+
+        padding: 0.25rem;
+
+        object-fit: contain; 
     }
 
     &--link:hover &__name {

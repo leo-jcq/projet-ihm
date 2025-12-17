@@ -78,18 +78,6 @@
     "comment": "Salle correcte mais un peu vieillissante. Cotations parfois aléatoires."
   },
   {
-    "gymId": 8,
-    "userId": 2,
-    "grade": 5,
-    "comment": "La signature Sharma ! Voies créatives et blocs inspirants. Un must à Bordeaux."
-  },
-  {
-    "gymId": 8,
-    "userId": 7,
-    "grade": 4,
-    "comment": "Belle découverte lors de mon passage à Bordeaux. Design moderne et ouvertures originales."
-  },
-  {
     "gymId": 9,
     "userId": 4,
     "grade": 4,
@@ -124,12 +112,6 @@
     "userId": 7,
     "grade": 5,
     "comment": "Super salle ! Beaucoup de variété dans les profils de voies et blocs."
-  },
-  {
-    "gymId": 15,
-    "userId": 12,
-    "grade": 4,
-    "comment": "Bonne ambiance bretonne, personnel très sympa et accueillant."
   },
   {
     "gymId": 16,

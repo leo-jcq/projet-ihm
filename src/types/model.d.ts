@@ -2,6 +2,7 @@ import type { TAvailability } from '@/enums/Availability';
 import type { TClimbStyle } from '@/enums/ClimbStyle';
 import type { TPostType } from '@/enums/PostType';
 import type { TRouteType } from '@/enums/RouteType';
+import type { TWeekDay } from '@/enums/WeekDay';
 
 /**
  * Commentaire sur un post.
@@ -82,6 +83,34 @@ interface Gym {
      */
     location: string;
     /**
+     * URL du logo de la salle.
+     *
+     * @type {string}
+     * @memberof Gym
+     */
+    logo: string;
+    /**
+     * Numéro de téléphone de la salle.
+     *
+     * @type {string}
+     * @memberof Gym
+     */
+    phone: string;
+    /**
+     * Site web de la salle.
+     *
+     * @type {(string | undefined)}
+     * @memberof Gym
+     */
+    website?: string;
+    /**
+     * Horaires d'ouverture de la salle.
+     *
+     * @type {Record<TWeekDay, Timetable>}
+     * @memberof Gym
+     */
+    openingHours: Record<TWeekDay, Timetable>;
+    /**
      * Les types de voies disponibles dans la salle.
      *
      * @type {TRouteType[]}
@@ -95,6 +124,13 @@ interface Gym {
      * @memberof Gym
      */
     styles: TClimbStyle[];
+    /**
+     * Les images de la salle.
+     *
+     * @type {string[]}
+     * @memberof Gym
+     */
+    images: string[]
 }
 
 /**
@@ -342,6 +378,29 @@ export interface Route {
      * @memberof Route
      */
     styles: TClimbStyle[];
+}
+
+/**
+ * Horaires d'ouverture et de fermeture.
+ *
+ * @export
+ * @interface Timetable
+ */
+export interface Timetable {
+    /**
+     * Heure d'ouverture.
+     *
+     * @type {string}
+     * @memberof Timetable
+     */
+    open: string;
+    /**
+     * Heure de fermeture.
+     *
+     * @type {string}
+     * @memberof Timetable
+     */
+    close: string;
 }
 
 /**

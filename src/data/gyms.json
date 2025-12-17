@@ -1,142 +1,452 @@
 [
   {
     "id": 1,
-    "name": "Arkose Grenoble",
-    "location": "Grenoble, France",
-    "routeTypes": ["boulder"],
-    "styles": ["physical", "overhang", "dynamic"]
+    "name": "Arkose Nation",
+    "location": "Paris, France",
+    "logo": "https://arkose.com/files/img/favicon/ee00f21511f6c/d6278147d7.ico",
+    "phone": "+33 1 40 38 38 38",
+    "website": "https://arkose.com/nation",
+    "openingHours": {
+      "monday": { "open": "07:00", "close": "00:00" },
+      "tuesday": { "open": "07:00", "close": "00:00" },
+      "wednesday": { "open": "07:00", "close": "00:00" },
+      "thursday": { "open": "07:00", "close": "00:00" },
+      "friday": { "open": "07:00", "close": "00:00" },
+      "saturday": { "open": "07:00", "close": "00:00" },
+      "sunday": { "open": "07:00", "close": "00:00" }
+    },
+    "routeTypes": ["boulder", "route"],
+    "styles": ["dynamic", "physical", "overhang"],
+    "images": [
+      "https://www.vertical-art.fr/wp-content/uploads/2021/05/salledescaladedechevaleret-scaled.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2021/05/coinchillchevaleret-scaled.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2020/05/Salle-descalade-de-bloc-VerticalArt-Yvelines-Saint-Quentin-Versailles.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2020/05/image00007.jpg"
+    ]
   },
   {
     "id": 2,
-    "name": "Climb Up Lyon",
+    "name": "Climb Up Lyon Gerland",
     "location": "Lyon, France",
-    "routeTypes": ["boulder", "route"],
-    "styles": ["technical", "crimpy", "overhang"]
+    "logo": "https://www.climb-up.fr/wp-content/uploads/2020/05/favicon_Cimb-Up.png",
+    "phone": "+33 4 72 76 10 10",
+    "website": "https://lyon-gerland.climb-up.fr",
+    "openingHours": {
+      "monday": { "open": "08:00", "close": "00:00" },
+      "tuesday": { "open": "08:00", "close": "00:00" },
+      "wednesday": { "open": "08:00", "close": "00:00" },
+      "thursday": { "open": "08:00", "close": "00:00" },
+      "friday": { "open": "08:00", "close": "00:00" },
+      "saturday": { "open": "08:00", "close": "00:00" },
+      "sunday": { "open": "08:00", "close": "00:00" }
+    },
+    "routeTypes": ["route"],
+    "styles": ["technical", "crimpy", "overhang"],
+    "images": [
+      "https://www.vertical-art.fr/wp-content/uploads/2021/05/salledescaladedechevaleret-scaled.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2021/05/coinchillchevaleret-scaled.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2020/05/Salle-descalade-de-bloc-VerticalArt-Yvelines-Saint-Quentin-Versailles.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2020/05/image00007.jpg"
+    ]
   },
   {
     "id": 3,
     "name": "Block'Out Paris",
-    "location": "Paris, France",
+    "location": "Saint-Ouen, France",
+    "logo": "https://www.blockout.fr/wp-content/uploads/2025/09/cropped-fav-192x192.png",
+    "phone": "+33 1 40 11 88 55",
+    "website": "https://www.blockout.fr",
+    "openingHours": {
+      "monday": { "open": "12:00", "close": "23:00" },
+      "tuesday": { "open": "09:00", "close": "23:00" },
+      "wednesday": { "open": "09:00", "close": "23:00" },
+      "thursday": { "open": "09:00", "close": "23:00" },
+      "friday": { "open": "09:00", "close": "23:00" },
+      "saturday": { "open": "09:00", "close": "20:00" },
+      "sunday": { "open": "09:00", "close": "20:00" }
+    },
     "routeTypes": ["boulder"],
-    "styles": ["physical", "dynamic", "overhang"]
+    "styles": ["physical", "dynamic", "overhang"],
+    "images": [
+      "https://www.vertical-art.fr/wp-content/uploads/2021/05/salledescaladedechevaleret-scaled.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2021/05/coinchillchevaleret-scaled.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2020/05/Salle-descalade-de-bloc-VerticalArt-Yvelines-Saint-Quentin-Versailles.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2020/05/image00007.jpg"
+    ]
   },
   {
     "id": 4,
     "name": "Vertical'Art Marseille",
     "location": "Marseille, France",
-    "routeTypes": ["boulder"],
-    "styles": ["technical", "slab", "finger"]
+    "logo": "https://www.vertical-art.fr/wp-content/uploads/2021/12/cropped-logo-verticalart-192x192.png",
+    "phone": "+33 4 91 09 29 39",
+    "website": "https://www.verticalart.fr/marseille",
+    "openingHours": {
+      "monday": { "open": "10:00", "close": "23:00" },
+      "tuesday": { "open": "10:00", "close": "23:00" },
+      "wednesday": { "open": "10:00", "close": "23:00" },
+      "thursday": { "open": "10:00", "close": "23:00" },
+      "friday": { "open": "10:00", "close": "23:00" },
+      "saturday": { "open": "10:00", "close": "20:00" },
+      "sunday": { "open": "10:00", "close": "20:00" }
+    },
+    "routeTypes": ["boulder", "route"],
+    "styles": ["technical", "slab", "finger"],
+    "images": [
+      "https://www.vertical-art.fr/wp-content/uploads/2021/05/salledescaladedechevaleret-scaled.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2021/05/coinchillchevaleret-scaled.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2020/05/Salle-descalade-de-bloc-VerticalArt-Yvelines-Saint-Quentin-Versailles.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2020/05/image00007.jpg"
+    ]
   },
   {
     "id": 5,
-    "name": "MurMur Grenoble",
+    "name": "Le Labo",
     "location": "Grenoble, France",
-    "routeTypes": ["boulder", "route"],
-    "styles": ["crimpy", "technical", "finger"]
+    "logo": "/projet-ihm/le-labo.png",
+    "phone": "+33 4 76 95 45 15",
+    "website": "https://www.espacevertical.com/labo",
+    "openingHours": {
+      "monday": { "open": "12:00", "close": "22:30" },
+      "tuesday": { "open": "12:00", "close": "22:30" },
+      "wednesday": { "open": "12:00", "close": "22:30" },
+      "thursday": { "open": "12:00", "close": "22:30" },
+      "friday": { "open": "12:00", "close": "22:30" },
+      "saturday": { "open": "10:00", "close": "19:00" },
+      "sunday": { "open": "10:00", "close": "19:00" }
+    },
+    "routeTypes": ["boulder"],
+    "styles": ["crimpy", "technical", "finger"],
+    "images": [
+      "https://www.vertical-art.fr/wp-content/uploads/2021/05/salledescaladedechevaleret-scaled.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2021/05/coinchillchevaleret-scaled.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2020/05/Salle-descalade-de-bloc-VerticalArt-Yvelines-Saint-Quentin-Versailles.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2020/05/image00007.jpg"
+    ]
   },
   {
     "id": 6,
-    "name": "Arkose Nation Paris",
-    "location": "Paris, France",
+    "name": "Arkose Massy",
+    "location": "Massy, France",
+    "logo": "https://arkose.com/files/img/favicon/ee00f21511f6c/d6278147d7.ico",
+    "phone": "+33 1 69 20 69 00",
+    "website": "https://arkose.com/massy",
+    "openingHours": {
+      "monday": { "open": "07:00", "close": "00:00" },
+      "tuesday": { "open": "07:00", "close": "00:00" },
+      "wednesday": { "open": "07:00", "close": "00:00" },
+      "thursday": { "open": "07:00", "close": "00:00" },
+      "friday": { "open": "07:00", "close": "00:00" },
+      "saturday": { "open": "07:00", "close": "00:00" },
+      "sunday": { "open": "07:00", "close": "00:00" }
+    },
     "routeTypes": ["boulder"],
-    "styles": ["dynamic", "physical", "overhang"]
+    "styles": ["physical", "dynamic", "crimpy"],
+    "images": [
+      "https://www.vertical-art.fr/wp-content/uploads/2021/05/salledescaladedechevaleret-scaled.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2021/05/coinchillchevaleret-scaled.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2020/05/Salle-descalade-de-bloc-VerticalArt-Yvelines-Saint-Quentin-Versailles.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2020/05/image00007.jpg"
+    ]
   },
   {
     "id": 7,
     "name": "Climb Up Lille",
     "location": "Lille, France",
+    "logo": "https://www.climb-up.fr/wp-content/uploads/2020/05/favicon_Cimb-Up.png",
+    "phone": "+33 3 20 21 20 20",
+    "website": "https://lille.climb-up.fr",
+    "openingHours": {
+      "monday": { "open": "10:00", "close": "23:00" },
+      "tuesday": { "open": "10:00", "close": "23:00" },
+      "wednesday": { "open": "10:00", "close": "23:00" },
+      "thursday": { "open": "10:00", "close": "23:00" },
+      "friday": { "open": "10:00", "close": "00:00" },
+      "saturday": { "open": "09:00", "close": "21:00" },
+      "sunday": { "open": "09:00", "close": "21:00" }
+    },
     "routeTypes": ["boulder", "route"],
-    "styles": ["technical", "crimpy", "slab"]
-  },
-  {
-    "id": 8,
-    "name": "Sharma Climbing Bordeaux",
-    "location": "Bordeaux, France",
-    "routeTypes": ["route"],
-    "styles": ["physical", "dynamic", "overhang"]
+    "styles": ["technical", "crimpy", "slab"],
+    "images": [
+      "https://www.vertical-art.fr/wp-content/uploads/2021/05/salledescaladedechevaleret-scaled.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2021/05/coinchillchevaleret-scaled.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2020/05/Salle-descalade-de-bloc-VerticalArt-Yvelines-Saint-Quentin-Versailles.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2020/05/image00007.jpg"
+    ]
   },
   {
     "id": 9,
     "name": "Vertical'Art Nantes",
     "location": "Nantes, France",
-    "routeTypes": ["boulder"],
-    "styles": ["technical", "finger", "slab"]
+    "logo": "https://www.vertical-art.fr/wp-content/uploads/2021/12/cropped-logo-verticalart-192x192.png",
+    "phone": "+33 2 40 48 30 30",
+    "website": "https://www.verticalart.fr/nantes",
+    "openingHours": {
+      "monday": { "open": "10:00", "close": "23:00" },
+      "tuesday": { "open": "10:00", "close": "23:00" },
+      "wednesday": { "open": "10:00", "close": "23:00" },
+      "thursday": { "open": "10:00", "close": "23:00" },
+      "friday": { "open": "10:00", "close": "23:00" },
+      "saturday": { "open": "10:00", "close": "20:00" },
+      "sunday": { "open": "10:00", "close": "20:00" }
+    },
+    "routeTypes": ["route"],
+    "styles": ["technical", "finger", "slab"],
+    "images": [
+      "https://www.vertical-art.fr/wp-content/uploads/2021/05/salledescaladedechevaleret-scaled.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2021/05/coinchillchevaleret-scaled.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2020/05/Salle-descalade-de-bloc-VerticalArt-Yvelines-Saint-Quentin-Versailles.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2020/05/image00007.jpg"
+    ]
   },
   {
     "id": 10,
     "name": "Climb Up Toulouse",
     "location": "Toulouse, France",
+    "logo": "https://www.climb-up.fr/wp-content/uploads/2020/05/favicon_Cimb-Up.png",
+    "phone": "+33 5 61 23 45 67",
+    "website": "https://toulouse.climb-up.fr",
+    "openingHours": {
+      "monday": { "open": "10:00", "close": "23:00" },
+      "tuesday": { "open": "10:00", "close": "23:00" },
+      "wednesday": { "open": "10:00", "close": "23:00" },
+      "thursday": { "open": "10:00", "close": "23:00" },
+      "friday": { "open": "10:00", "close": "00:00" },
+      "saturday": { "open": "09:00", "close": "21:00" },
+      "sunday": { "open": "09:00", "close": "21:00" }
+    },
     "routeTypes": ["boulder"],
-    "styles": ["crimpy", "technical", "overhang"]
+    "styles": ["crimpy", "technical", "overhang"],
+    "images": [
+      "https://www.vertical-art.fr/wp-content/uploads/2021/05/salledescaladedechevaleret-scaled.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2021/05/coinchillchevaleret-scaled.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2020/05/Salle-descalade-de-bloc-VerticalArt-Yvelines-Saint-Quentin-Versailles.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2020/05/image00007.jpg"
+    ]
   },
   {
     "id": 11,
     "name": "Block'Out Strasbourg",
     "location": "Strasbourg, France",
-    "routeTypes": ["boulder"],
-    "styles": ["dynamic", "physical", "overhang"]
+    "logo": "https://www.blockout.fr/wp-content/uploads/2025/09/cropped-fav-192x192.png",
+    "phone": "+33 3 88 14 25 36",
+    "website": "https://www.blockout.fr/strasbourg",
+    "openingHours": {
+      "monday": { "open": "12:00", "close": "23:00" },
+      "tuesday": { "open": "09:00", "close": "23:00" },
+      "wednesday": { "open": "09:00", "close": "23:00" },
+      "thursday": { "open": "09:00", "close": "23:00" },
+      "friday": { "open": "09:00", "close": "23:00" },
+      "saturday": { "open": "09:00", "close": "20:00" },
+      "sunday": { "open": "09:00", "close": "20:00" }
+    },
+    "routeTypes": ["boulder", "route"],
+    "styles": ["dynamic", "physical", "overhang"],
+    "images": [
+      "https://www.vertical-art.fr/wp-content/uploads/2021/05/salledescaladedechevaleret-scaled.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2021/05/coinchillchevaleret-scaled.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2020/05/Salle-descalade-de-bloc-VerticalArt-Yvelines-Saint-Quentin-Versailles.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2020/05/image00007.jpg"
+    ]
   },
   {
     "id": 12,
-    "name": "Arkose Massy",
-    "location": "Massy, France",
-    "routeTypes": ["boulder"],
-    "styles": ["physical", "dynamic", "crimpy"]
+    "name": "Arkose Bordeaux",
+    "location": "Bordeaux, France",
+    "logo": "https://arkose.com/files/img/favicon/ee00f21511f6c/d6278147d7.ico",
+    "phone": "+33 5 56 44 22 00",
+    "website": "https://arkose.com/bordeaux",
+    "openingHours": {
+      "monday": { "open": "07:00", "close": "00:00" },
+      "tuesday": { "open": "07:00", "close": "00:00" },
+      "wednesday": { "open": "07:00", "close": "00:00" },
+      "thursday": { "open": "07:00", "close": "00:00" },
+      "friday": { "open": "07:00", "close": "00:00" },
+      "saturday": { "open": "07:00", "close": "00:00" },
+      "sunday": { "open": "07:00", "close": "00:00" }
+    },
+    "routeTypes": ["route"],
+    "styles": ["physical", "dynamic", "crimpy"],
+    "images": [
+      "https://www.vertical-art.fr/wp-content/uploads/2021/05/salledescaladedechevaleret-scaled.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2021/05/coinchillchevaleret-scaled.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2020/05/Salle-descalade-de-bloc-VerticalArt-Yvelines-Saint-Quentin-Versailles.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2020/05/image00007.jpg"
+    ]
   },
   {
     "id": 13,
-    "name": "Entre-Prises Nice",
+    "name": "Vertical'Art Nice",
     "location": "Nice, France",
-    "routeTypes": ["route"],
-    "styles": ["technical", "slab", "finger"]
+    "logo": "https://www.vertical-art.fr/wp-content/uploads/2021/12/cropped-logo-verticalart-192x192.png",
+    "phone": "+33 4 93 19 85 60",
+    "website": "https://www.verticalart.fr/nice",
+    "openingHours": {
+      "monday": { "open": "10:00", "close": "23:00" },
+      "tuesday": { "open": "10:00", "close": "23:00" },
+      "wednesday": { "open": "10:00", "close": "23:00" },
+      "thursday": { "open": "10:00", "close": "23:00" },
+      "friday": { "open": "10:00", "close": "23:00" },
+      "saturday": { "open": "10:00", "close": "20:00" },
+      "sunday": { "open": "10:00", "close": "20:00" }
+    },
+    "routeTypes": ["boulder"],
+    "styles": ["technical", "slab", "finger"],
+    "images": [
+      "https://www.vertical-art.fr/wp-content/uploads/2021/05/salledescaladedechevaleret-scaled.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2021/05/coinchillchevaleret-scaled.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2020/05/Salle-descalade-de-bloc-VerticalArt-Yvelines-Saint-Quentin-Versailles.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2020/05/image00007.jpg"
+    ]
   },
   {
     "id": 14,
     "name": "Climb Up Montpellier",
     "location": "Montpellier, France",
-    "routeTypes": ["route"],
-    "styles": ["overhang", "physical", "dynamic"]
-  },
-  {
-    "id": 15,
-    "name": "Vertige Rennes",
-    "location": "Rennes, France",
+    "logo": "https://www.climb-up.fr/wp-content/uploads/2020/05/favicon_Cimb-Up.png",
+    "phone": "+33 4 67 64 89 90",
+    "website": "https://montpellier.climb-up.fr",
+    "openingHours": {
+      "monday": { "open": "10:00", "close": "23:00" },
+      "tuesday": { "open": "10:00", "close": "23:00" },
+      "wednesday": { "open": "10:00", "close": "23:00" },
+      "thursday": { "open": "10:00", "close": "23:00" },
+      "friday": { "open": "10:00", "close": "00:00" },
+      "saturday": { "open": "09:00", "close": "21:00" },
+      "sunday": { "open": "09:00", "close": "21:00" }
+    },
     "routeTypes": ["boulder", "route"],
-    "styles": ["technical", "crimpy", "finger"]
+    "styles": ["overhang", "physical", "dynamic"],
+    "images": [
+      "https://www.vertical-art.fr/wp-content/uploads/2021/05/salledescaladedechevaleret-scaled.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2021/05/coinchillchevaleret-scaled.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2020/05/Salle-descalade-de-bloc-VerticalArt-Yvelines-Saint-Quentin-Versailles.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2020/05/image00007.jpg"
+    ]
   },
   {
     "id": 16,
     "name": "Arkose Lyon Confluence",
     "location": "Lyon, France",
-    "routeTypes": ["boulder"],
-    "styles": ["dynamic", "overhang", "physical"]
+    "logo": "https://arkose.com/files/img/favicon/ee00f21511f6c/d6278147d7.ico",
+    "phone": "+33 4 78 92 41 41",
+    "website": "https://arkose.com/confluence",
+    "openingHours": {
+      "monday": { "open": "07:00", "close": "00:00" },
+      "tuesday": { "open": "07:00", "close": "00:00" },
+      "wednesday": { "open": "07:00", "close": "00:00" },
+      "thursday": { "open": "07:00", "close": "00:00" },
+      "friday": { "open": "07:00", "close": "00:00" },
+      "saturday": { "open": "07:00", "close": "00:00" },
+      "sunday": { "open": "07:00", "close": "00:00" }
+    },
+    "routeTypes": ["route"],
+    "styles": ["dynamic", "overhang", "physical"],
+    "images": [
+      "https://www.vertical-art.fr/wp-content/uploads/2021/05/salledescaladedechevaleret-scaled.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2021/05/coinchillchevaleret-scaled.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2020/05/Salle-descalade-de-bloc-VerticalArt-Yvelines-Saint-Quentin-Versailles.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2020/05/image00007.jpg"
+    ]
   },
   {
     "id": 17,
     "name": "Block'Out Annecy",
     "location": "Annecy, France",
+    "logo": "https://www.blockout.fr/wp-content/uploads/2025/09/cropped-fav-192x192.png",
+    "phone": "+33 4 50 66 15 15",
+    "website": "https://www.blockout.fr/annecy",
+    "openingHours": {
+      "monday": { "open": "12:00", "close": "23:00" },
+      "tuesday": { "open": "09:00", "close": "23:00" },
+      "wednesday": { "open": "09:00", "close": "23:00" },
+      "thursday": { "open": "09:00", "close": "23:00" },
+      "friday": { "open": "09:00", "close": "23:00" },
+      "saturday": { "open": "09:00", "close": "20:00" },
+      "sunday": { "open": "09:00", "close": "20:00" }
+    },
     "routeTypes": ["boulder"],
-    "styles": ["physical", "crimpy", "dynamic"]
+    "styles": ["physical", "crimpy", "dynamic"],
+    "images": [
+      "https://www.vertical-art.fr/wp-content/uploads/2021/05/salledescaladedechevaleret-scaled.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2021/05/coinchillchevaleret-scaled.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2020/05/Salle-descalade-de-bloc-VerticalArt-Yvelines-Saint-Quentin-Versailles.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2020/05/image00007.jpg"
+    ]
   },
   {
     "id": 18,
     "name": "Climb Up Aix-en-Provence",
     "location": "Aix-en-Provence, France",
+    "logo": "https://www.climb-up.fr/wp-content/uploads/2020/05/favicon_Cimb-Up.png",
+    "phone": "+33 4 42 16 25 25",
+    "website": "https://aix.climb-up.fr",
+    "openingHours": {
+      "monday": { "open": "10:00", "close": "23:00" },
+      "tuesday": { "open": "10:00", "close": "23:00" },
+      "wednesday": { "open": "10:00", "close": "23:00" },
+      "thursday": { "open": "10:00", "close": "23:00" },
+      "friday": { "open": "10:00", "close": "00:00" },
+      "saturday": { "open": "09:00", "close": "21:00" },
+      "sunday": { "open": "09:00", "close": "21:00" }
+    },
     "routeTypes": ["boulder", "route"],
-    "styles": ["technical", "slab", "finger"]
+    "styles": ["technical", "slab", "finger"],
+    "images": [
+      "https://www.vertical-art.fr/wp-content/uploads/2021/05/salledescaladedechevaleret-scaled.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2021/05/coinchillchevaleret-scaled.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2020/05/Salle-descalade-de-bloc-VerticalArt-Yvelines-Saint-Quentin-Versailles.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2020/05/image00007.jpg"
+    ]
   },
   {
     "id": 19,
     "name": "Vertical'Art Toulon",
     "location": "Toulon, France",
+    "logo": "https://www.vertical-art.fr/wp-content/uploads/2021/12/cropped-logo-verticalart-192x192.png",
+    "phone": "+33 4 94 36 72 72",
+    "website": "https://www.verticalart.fr/toulon",
+    "openingHours": {
+      "monday": { "open": "10:00", "close": "23:00" },
+      "tuesday": { "open": "10:00", "close": "23:00" },
+      "wednesday": { "open": "10:00", "close": "23:00" },
+      "thursday": { "open": "10:00", "close": "23:00" },
+      "friday": { "open": "10:00", "close": "23:00" },
+      "saturday": { "open": "10:00", "close": "20:00" },
+      "sunday": { "open": "10:00", "close": "20:00" }
+    },
     "routeTypes": ["route"],
-    "styles": ["technical", "slab", "crimpy"]
+    "styles": ["technical", "slab", "crimpy"],
+    "images": [
+      "https://www.vertical-art.fr/wp-content/uploads/2021/05/salledescaladedechevaleret-scaled.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2021/05/coinchillchevaleret-scaled.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2020/05/Salle-descalade-de-bloc-VerticalArt-Yvelines-Saint-Quentin-Versailles.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2020/05/image00007.jpg"
+    ]
   },
   {
     "id": 20,
     "name": "Arkose Montparnasse",
     "location": "Paris, France",
-    "routeTypes": ["boulder", "route"],
-    "styles": ["overhang", "dynamic", "physical"]
+    "logo": "https://arkose.com/files/img/favicon/ee00f21511f6c/d6278147d7.ico",
+    "phone": "+33 1 45 44 20 00",
+    "website": "https://arkose.com/montparnasse",
+    "openingHours": {
+      "monday": { "open": "07:00", "close": "00:00" },
+      "tuesday": { "open": "07:00", "close": "00:00" },
+      "wednesday": { "open": "07:00", "close": "00:00" },
+      "thursday": { "open": "07:00", "close": "00:00" },
+      "friday": { "open": "07:00", "close": "00:00" },
+      "saturday": { "open": "07:00", "close": "00:00" },
+      "sunday": { "open": "07:00", "close": "00:00" }
+    },
+    "routeTypes": ["boulder"],
+    "styles": ["overhang", "dynamic", "physical"],
+    "images": [
+      "https://www.vertical-art.fr/wp-content/uploads/2021/05/salledescaladedechevaleret-scaled.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2021/05/coinchillchevaleret-scaled.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2020/05/Salle-descalade-de-bloc-VerticalArt-Yvelines-Saint-Quentin-Versailles.jpg",
+      "https://www.vertical-art.fr/wp-content/uploads/2020/05/image00007.jpg"
+    ]
   }
 ]

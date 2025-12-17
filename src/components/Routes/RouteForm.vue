@@ -246,14 +246,6 @@ function handleSubmit() {
         gap: 1.5rem;
     }
 
-    &__field {
-        &__group {
-            display: flex;
-            gap: 0.75rem;
-            align-items: center;
-        }
-    }
-
     &__label {
         font-size: 0.875rem;
         color: v.$very-dark-gray;
@@ -269,8 +261,7 @@ function handleSubmit() {
         color: v.$accent;
     }
 
-    &__input,
-    &__select {
+    &__input {
         width: 100%;
 
         padding: 1rem 1.5rem;
@@ -278,9 +269,7 @@ function handleSubmit() {
         @extend %default-border;
         border-radius: 0.5rem;
         outline-color: v.$accent;
-    }
-
-    &__input {
+        
         &::placeholder {
             color: v.$dark-gray;
         }
