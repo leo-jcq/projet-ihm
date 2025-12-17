@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { TRouteType } from '@/enums/RouteType';
+import { type TRouteType } from '@/enums/RouteType';
 import dataStore from '@/stores/data';
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
@@ -10,11 +10,11 @@ const props = defineProps<{ preDisplay: boolean; types: 'both' | TRouteType }>()
 const route = useRoute();
 
 const routes = computed(() => {
-    const query = route.query.q ? String(route.query.q) : '';
+    const query = route.query.q ? String(route.query.q).toLowerCase() : '';
 
     const routes = dataStore.routes.filter(
         (r) =>
-            (r.name.includes(query) || r.location.includes(query)) &&
+            (r.name.toLowerCase().includes(query) || r.location.toLowerCase().includes(query)) &&
             (props.types === 'both' || props.types === r.type)
     );
 

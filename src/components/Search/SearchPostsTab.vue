@@ -9,13 +9,13 @@ const props = defineProps<{ preDisplay: boolean }>();
 const route = useRoute();
 
 const posts = computed(() => {
-    const query = route.query.q ? String(route.query.q) : '';
+    const query = route.query.q ? String(route.query.q).toLowerCase() : '';
 
     const posts = dataStore.posts.filter((post) => {
         const author = dataStore.users.find((user) => user.id === post.authorId);
         return (
-            post.content.includes(query) ||
-            (author && (author.name.includes(query) || author.pseudo.includes(query)))
+            post.content.toLowerCase().includes(query) ||
+            (author && (author.name.toLowerCase().includes(query) || author.pseudo.toLowerCase().includes(query)))
         );
     });
 

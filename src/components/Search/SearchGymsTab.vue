@@ -1,10 +1,11 @@
 <script setup lang="ts">
+import { type TRouteType } from '@/enums/RouteType';
 import dataStore from '@/stores/data';
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import GymBox from '../Gyms/GymBox.vue';
 
-const props = defineProps<{ preDisplay: boolean }>();
+const props = defineProps<{ preDisplay: boolean; types: 'both' | TRouteType }>();
 
 const route = useRoute();
 
@@ -12,7 +13,10 @@ const gyms = computed(() => {
     const query = route.query.q ? String(route.query.q).toLowerCase() : '';
 
     const gyms = dataStore.gyms.filter(
-        (gym) => gym.name.toLowerCase().includes(query) || gym.location.toLowerCase().includes(query)
+        (gym) =>
+            (gym.name.toLowerCase().includes(query) ||
+                gym.location.toLowerCase().includes(query)) &&
+            (props.types === 'both' || gym.routeTypes.includes(props.types))
     );
 
     return props.preDisplay ? gyms.slice(0, 3) : gyms;

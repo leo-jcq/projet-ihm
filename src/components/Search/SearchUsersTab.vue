@@ -10,10 +10,10 @@ const props = defineProps<{ preDisplay: boolean }>();
 const route = useRoute();
 
 const users = computed(() => {
-    const query = route.query.q ? String(route.query.q) : '';
+    const query = route.query.q ? String(route.query.q).toLowerCase() : '';
 
     const users = dataStore.users.filter(
-        (user) => user.name.includes(query) || user.pseudo.includes(query)
+        (user) => user.name.toLowerCase().includes(query) || user.pseudo.toLowerCase().includes(query)
     );
 
     return props.preDisplay ? users.slice(0, 3) : users;

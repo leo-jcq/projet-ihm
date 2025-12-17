@@ -46,7 +46,11 @@ const routesTypes = ref<'both' | TRouteType>('both');
             :pre-display="isAllTab"
             :types="routesTypes"
         />
-        <SearchGymsTab v-if="isAllTab || currentTab === 'gyms'" :pre-display="isAllTab" />
+        <SearchGymsTab
+            v-if="isAllTab || currentTab === 'gyms'"
+            :pre-display="isAllTab"
+            :types="routesTypes"
+        />
         <SearchPostsTab v-if="isAllTab || currentTab === 'posts'" :pre-display="isAllTab" />
     </main>
 
