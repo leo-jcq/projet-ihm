@@ -98,7 +98,7 @@ const route = computed(() => dataStore.routes.find((route) => route.id === props
             </span>
         </div>
 
-        <p class="feed-post__content">{{ post.content }}</p>
+        <p v-if="post.content !== ''" class="feed-post__content">{{ post.content }}</p>
 
         <div class="feed-post__actions">
             <button
@@ -241,8 +241,6 @@ const route = computed(() => dataStore.routes.find((route) => route.id === props
         }
 
         &__try-count {
-            // height: fit-content;
-
             display: flex;
             gap: 0.25rem;
             align-items: center;
@@ -258,6 +256,8 @@ const route = computed(() => dataStore.routes.find((route) => route.id === props
 
     &__content {
         padding: 0.75rem 1rem;
+
+        white-space: pre-line;
     }
 
     &__actions {

@@ -55,7 +55,7 @@ function handleRemove(id: string) {
     <label :for="id" class="image-input__label">
         <div v-if="images.length === 0" class="image-input__text">
             <Lineicons :icon="GalleryOutlined" class="image-input__text__icon" />
-            <span class="image-input__text__main">Cliquez pour ajouter une photo</span>
+            <span class="image-input__text__main">Cliquez pour ajouter une image</span>
             <span class="image-input__text__secondary">PNG, JPG jusqu'à 10MB</span>
         </div>
         <div v-else class="image-input__images">
@@ -119,6 +119,7 @@ function handleRemove(id: string) {
 
         &__main {
             font-size: 0.875rem;
+            color: v.$very-dark-gray;
         }
 
         &__secondary {

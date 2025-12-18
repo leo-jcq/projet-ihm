@@ -27,7 +27,7 @@ defineEmits<{ close: [] }>();
 
 <style lang="scss">
 @use '@/scss/mixins' as m;
-@use "@/scss/placeholders";
+@use '@/scss/placeholders';
 @use '@/scss/variables' as v;
 
 .pop-up {
@@ -39,7 +39,7 @@ defineEmits<{ close: [] }>();
     backdrop-filter: blur(2px);
 
     &__content {
-        max-height: 95vh;
+        @include m.max-size(95vw, 95vh);
 
         position: absolute;
         top: 50%;

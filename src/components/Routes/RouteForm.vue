@@ -13,6 +13,8 @@ import { generateNumberId } from '@/utils/generateId';
 import { convertBoulderGradeToFontainebleau, convertRouteGradeToFrench } from '@/utils/grades';
 import { computed, ref } from 'vue';
 import CustomSelect from '../CustomSelect.vue';
+import Form from '../Form/Form.vue';
+import FormField from '../Form/FormField.vue';
 
 const emit = defineEmits<{ end: [] }>();
 
@@ -52,56 +54,56 @@ function handleRemoveStyle(style: TClimbStyle) {
 }
 
 function handleSubmit() {
-    let hasError = false;
-
     // Check name
     if (!newRoute.value.name || newRoute.value.name.trim().length === 0) {
         errors.value.name = 'Le nom de la voie est obligatoire.';
-        hasError = true;
+    } else {
+        errors.value.name = undefined;
     }
 
     // Check type
     if (!newRoute.value.type) {
         errors.value.type = 'Veuillez sélectionner un type.';
-        hasError = true;
-    }
+    } else {
+        errors.value.type = undefined;
 
-    // Check grade
-    else {
+        // Check grade
         if (!newRoute.value.grade) {
-            errors.value.name = 'La cotation est obligatoire.';
-            hasError = true;
+            errors.value.grade = 'La cotation est obligatoire.';
         } else if (newRoute.value.type === RouteType.Route) {
             if (!ROUTE_GRADE_REG_EXPS[gradeSystemStore.route].test(newRoute.value.grade)) {
-                errors.value.name = `La cotation est invalide, veuillez entrer une cotation du système ${
+                errors.value.grade = `La cotation est invalide, veuillez entrer une cotation du système ${
                     RouteGradeSystemToString[gradeSystemStore.route]
                 }.`;
-                hasError = true;
             }
         } else if (!BOULDER_GRADE_REG_EXPS[gradeSystemStore.boulder].test(newRoute.value.grade)) {
-            errors.value.name = `La cotation est invalide, veuillez entrer une cotation du système ${
+            errors.value.grade = `La cotation est invalide, veuillez entrer une cotation du système ${
                 BoulderGradeSystemToString[gradeSystemStore.boulder]
             }.`;
-            hasError = true;
+        } else {
+            errors.value.grade = undefined;
         }
     }
 
     // Check location
     if (!newRoute.value.location || newRoute.value.location.trim().length === 0) {
         errors.value.location = 'La localisation de la voie est obligatoire.';
-        hasError = true;
+    } else {
+        errors.value.location = undefined;
     }
 
     // Check length
     if (!newRoute.value.length) {
         errors.value.length = 'La longueur de la voie est obligatoire.';
-        hasError = true;
+    } else if (typeof newRoute.value.length !== 'number') {
+        errors.value.length = 'La longueur de la voie doit être un nombre.';
     } else if (newRoute.value.length <= 0) {
         errors.value.length = 'La longueur de la voie ne peut pas être inférieur ou égale à 0.';
-        hasError = true;
+    } else {
+        errors.value.length = undefined;
     }
 
-    if (hasError) return;
+    if (Object.values(errors.value).filter((e) => !!e).length > 0) return;
 
     // Conversion de la cotation
     const convertedGrade =
@@ -126,24 +128,20 @@ function handleSubmit() {
 </script>
 
 <template>
-    <form class="route-form" @submit.prevent="handleSubmit">
-        <div class="route-form__main">
-            <!-- Nom -->
-            <div class="route-form__field">
-                <label for="name" class="route-form__label">Nom</label>
-                <input
-                    id="name"
-                    v-model="newRoute.name"
-                    type="text"
-                    class="route-form__input"
-                    placeholder="Nom de la voie"
-                />
-                <span v-if="errors.name" class="route-form__error">{{ errors.name }}</span>
-            </div>
+    <Form title="Nouvelle voie" submit-text="Créer" @submit="handleSubmit" @cancel="$emit('end')">
+        <!-- Nom -->
+        <FormField
+            id="name"
+            v-model="newRoute.name"
+            label="Nom"
+            type="text"
+            :error="errors.name"
+            placeholder="Nom de la voie"
+        />
 
+        <div class="route-form__group">
             <!-- Type -->
-            <div class="route-form__field">
-                <label class="route-form__label">Type</label>
+            <FormField label="Type" :error="errors.type">
                 <CustomSelect
                     v-slot="{ item }"
                     :options="Object.values(RouteType)"
@@ -153,170 +151,62 @@ function handleSubmit() {
                 >
                     {{ RouteTypeToString[item] }}
                 </CustomSelect>
-                <span v-if="errors.type" class="route-form__error">{{ errors.type }}</span>
-            </div>
+            </FormField>
 
-            <!-- Cotation -->
-            <div class="route-form__field">
-                <label for="grade" class="route-form__label">Cotation</label>
-                <input
-                    id="grade"
-                    v-model="newRoute.grade"
-                    type="text"
-                    class="route-form__input"
-                    :placeholder="cotationPlaceholder"
-                />
-                <span v-if="errors.grade" class="route-form__error">{{ errors.grade }}</span>
-            </div>
-
-            <!-- Localisation -->
-            <div class="route-form__field">
-                <label for="location" class="route-form__label">Localisation</label>
-                <input
-                    id="location"
-                    v-model="newRoute.location"
-                    type="text"
-                    class="route-form__input"
-                    placeholder="Lieu où se situe la voie (ex: Fontainebleau, France)"
-                />
-                <span v-if="errors.location" class="route-form__error">{{ errors.location }}</span>
-            </div>
-
-            <!-- Length -->
-            <div class="route-form__field">
-                <label for="length" class="route-form__label">Longueur</label>
-                <input
-                    id="length"
-                    v-model="newRoute.length"
-                    type="number"
-                    class="route-form__input"
-                    min="0"
-                    step="0.1"
-                    placeholder="Longueur de la voie (en m)"
-                />
-                <span v-if="errors.length" class="route-form__error">{{ errors.length }}</span>
-            </div>
-
-            <!-- Styles -->
-            <div class="route-form__field">
-                <label for="styles" class="route-form__label">Styles</label>
-                <CustomSelect
-                    v-slot="{ item }"
-                    :options="Object.values(ClimbStyle)"
-                    :selected="newRoute.styles ?? []"
-                    placeholder="Sélectionnez un type de voie"
-                    options-before
-                    @select="handleAddStyle"
-                    @remove="handleRemoveStyle"
-                >
-                    {{ ClimStyleToString[item] }}
-                </CustomSelect>
-                <span v-if="errors.styles" class="route-form__error">{{ errors.styles }}</span>
-            </div>
+            <!-- Longueur -->
+            <FormField
+                id="length"
+                v-model="newRoute.length"
+                label="Longueur"
+                type="number"
+                :error="errors.length"
+                placeholder="Longueur de la voie (en m)"
+            />
         </div>
 
-        <!-- Actions -->
-        <div class="route-form__bottom">
-            <button
-                type="button"
-                class="route-form__bottom__btn route-form__bottom__btn--cancel"
-                @click="$emit('end')"
+        <!-- Cotation -->
+        <FormField
+            id="grade"
+            v-model="newRoute.grade"
+            label="Cotation"
+            type="text"
+            :error="errors.grade"
+            :placeholder="cotationPlaceholder"
+        />
+
+        <!-- Localisation -->
+        <FormField
+            id="location"
+            v-model="newRoute.location"
+            label="Localisation"
+            type="text"
+            :error="errors.location"
+            placeholder="Lieu où se situe la voie (ex: Fontainebleau, France)"
+        />
+
+        <!-- Styles -->
+        <FormField label="Styles" :error="errors.styles">
+            <CustomSelect
+                v-slot="{ item }"
+                :options="Object.values(ClimbStyle)"
+                :selected="newRoute.styles ?? []"
+                placeholder="Sélectionnez un type de voie"
+                options-before
+                @select="handleAddStyle"
+                @remove="handleRemoveStyle"
             >
-                Annuler
-            </button>
-            <button type="submit" class="route-form__bottom__btn route-form__bottom__btn--confirm">
-                Créer
-            </button>
-        </div>
-    </form>
+                {{ ClimStyleToString[item] }}
+            </CustomSelect>
+        </FormField>
+    </Form>
 </template>
 
 <style lang="scss">
-@use '@/scss/placeholders';
-@use '@/scss/variables' as v;
-
 .route-form {
-    min-width: 650px;
-
-    &__main {
-        padding: 1rem;
-
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-
-    &__label {
-        font-size: 0.875rem;
-        color: v.$very-dark-gray;
-
-        display: inline-block;
-
-        margin-bottom: 8px;
-    }
-
-    &__error {
-        font-size: 0.875rem;
-        font-weight: 300;
-        color: v.$accent;
-    }
-
-    &__input {
-        width: 100%;
-
-        padding: 1rem 1.5rem;
-
-        @extend %default-border;
-        border-radius: 0.5rem;
-        outline-color: v.$accent;
-        
-        &::placeholder {
-            color: v.$dark-gray;
-        }
-    }
-
-    &__bottom {
-        display: flex;
-        gap: 0.75rem;
-        justify-content: flex-end;
-        align-items: center;
-
-        padding: 1rem;
-
-        border-top: 1px solid v.$light-gray;
-
-        background-color: v.$grayish-white;
-
-        &__btn {
-            cursor: pointer;
-
-            padding: 0.75rem 1.5rem;
-
-            border: none;
-            border-radius: 0.625rem;
-
-            background-color: transparent;
-
-            &--cancel {
-                color: v.$grayish-black;
-
-                transition: background-color 0.3s ease;
-
-                &:hover {
-                    background-color: v.$light-gray;
-                }
-            }
-
-            &--confirm {
-                background-image: v.$main-gradient;
-
-                color: v.$white;
-
-                &:hover {
-                    background-image: v.$main-gradient-lighten;
-                }
-            }
-        }
+    &__group {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
     }
 }
 </style>

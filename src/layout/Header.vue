@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import logo from '@/assets/logo.svg';
 import Notifications from '@/components/Notifications.vue';
-import NewPost from '@/components/Posts/NewPost.vue';
+import PostForm from '@/components/Posts/PostForm.vue';
 import SearchBar from '@/components/Search/SearchBar.vue';
 import UserActions from '@/components/Users/UserActions.vue';
 </script>
@@ -17,7 +17,7 @@ import UserActions from '@/components/Users/UserActions.vue';
             <SearchBar />
 
             <div class="header__content__right">
-                <NewPost />
+                <PostForm />
                 <Notifications />
                 <UserActions />
             </div>

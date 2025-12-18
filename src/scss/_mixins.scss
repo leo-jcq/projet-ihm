@@ -3,6 +3,11 @@
     height: $height;
 }
 
+@mixin max-size($max-width, $max-height: $max-width) {
+    max-width: $max-width;
+    max-height: $max-height;
+}
+
 @mixin rounded($size) {
     @include size($size);
 
