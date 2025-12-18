@@ -43,7 +43,7 @@ const nbUnreadMessages = computed(
             <RouterLink to="/messages" class="nav-bar__nav__link">
                 <Lineicons :icon="Envelope1Outlined" />
                 Messages
-                <span class="nav-bar__nav__link__indicator">{{ nbUnreadMessages }}</span>
+                <span v-if="nbUnreadMessages > 0" class="nav-bar__nav__link__indicator">{{ nbUnreadMessages }}</span>
                 <div class="nav-bar__nav__link__bg" />
             </RouterLink>
 
