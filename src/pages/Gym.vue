@@ -398,49 +398,6 @@ function removeComment(grade: GymGrade) {
         }
     }
 
-    &__new-grade {
-        display: flex;
-        gap: 0.75rem;
-
-        margin-bottom: 0.875rem;
-
-        &__input {
-            width: 100%;
-            max-width: 100%;
-
-            resize: vertical;
-
-            @extend %default-border;
-            border-radius: 0.5rem;
-            outline-color: v.$accent;
-
-            padding: 0.5rem 1rem;
-
-            &::placeholder {
-                color: v.$dark-gray;
-            }
-        }
-
-        &__publish {
-            height: fit-content;
-
-            cursor: pointer;
-
-            padding: 0.75rem 1.5rem;
-
-            border: none;
-            border-radius: 0.625rem;
-
-            background-image: v.$main-gradient;
-
-            color: v.$white;
-
-            &:hover {
-                background-image: v.$main-gradient-lighten;
-            }
-        }
-    }
-
     &__grades {
         display: flex;
         gap: 0.875rem;
@@ -462,6 +419,14 @@ function removeComment(grade: GymGrade) {
                 gap: 0.5rem;
                 align-items: baseline;
             }
+        }
+
+        &__new {
+            font-size: 0.875rem;
+            
+            @extend %default-btn;
+
+            border-radius: 9999px
         }
 
         &__grade {
