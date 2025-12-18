@@ -12,6 +12,7 @@ import {
     HeartStroke,
     MapMarker5Outlined,
     Mountains2Outlined,
+    Trash3Outlined,
     XmarkOutlined
 } from '@lineiconshq/free-icons';
 import Lineicons from '@lineiconshq/vue-lineicons';
@@ -101,25 +102,35 @@ const route = computed(() => dataStore.routes.find((route) => route.id === props
         <p v-if="post.content !== ''" class="feed-post__content">{{ post.content }}</p>
 
         <div class="feed-post__actions">
+            <div class="feed-post__actions__left">
+                <button
+                    class="feed-post__actions__btn feed-post__actions__btn--like"
+                    :class="{ 'feed-post__actions__btn--liked': hasLiked }"
+                    title="Aimer"
+                    @click="hasLiked = !hasLiked"
+                >
+                    <Lineicons
+                        :icon="hasLiked ? HeartSolid : HeartStroke"
+                        class="feed-post__actions__btn__icon"
+                    />
+                    {{ post.likes + (hasLiked ? 1 : 0) }}
+                </button>
+                <button
+                    class="feed-post__actions__btn feed-post__actions__btn--comment"
+                    title="Commentaires"
+                    @click="toggle"
+                >
+                    <Lineicons :icon="Comment1Outlined" class="feed-post__actions__btn__icon" />
+                    {{ comments.length }}
+                </button>
+            </div>
             <button
-                class="feed-post__actions__btn feed-post__actions__btn--like"
-                :class="{ 'feed-post__actions__btn--liked': hasLiked }"
-                title="Aimer"
-                @click="hasLiked = !hasLiked"
+                v-if="post.authorId === userStore.user.id"
+                class="feed-post__actions__btn feed-post__actions__btn--delete"
+                title="Supprimer"
+                @click="dataStore.posts = dataStore.posts.filter((p) => p.id !== post.id)"
             >
-                <Lineicons
-                    :icon="hasLiked ? HeartSolid : HeartStroke"
-                    class="feed-post__actions__btn__icon"
-                />
-                {{ post.likes + (hasLiked ? 1 : 0) }}
-            </button>
-            <button
-                class="feed-post__actions__btn feed-post__actions__btn--comment"
-                title="Commentaires"
-                @click="toggle"
-            >
-                <Lineicons :icon="Comment1Outlined" class="feed-post__actions__btn__icon" />
-                {{ comments.length }}
+                <Lineicons :icon="Trash3Outlined" class="feed-post__actions__btn__icon" />
             </button>
         </div>
 
@@ -265,9 +276,14 @@ const route = computed(() => dataStore.routes.find((route) => route.id === props
 
         border-top: 1px solid v.$very-light-gray;
 
-        display: flex;
-        gap: 1.5rem;
-        align-items: center;
+        justify-content: space-between;
+
+        &,
+        &__left {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
 
         &__btn {
             border: none;
@@ -281,6 +297,8 @@ const route = computed(() => dataStore.routes.find((route) => route.id === props
 
             cursor: pointer;
 
+            transition: color 0.3s ease;
+
             &--like:hover,
             &--liked {
                 color: v.$red;
@@ -289,6 +307,24 @@ const route = computed(() => dataStore.routes.find((route) => route.id === props
             &--comment:hover {
                 color: v.$blue;
             }
+
+            &--delete {
+                opacity: 0;
+
+                pointer-events: none;
+
+                transition: opacity 0.3s ease;
+
+                &:hover {
+                    color: v.$red;
+                }
+            }
+        }
+
+        &:hover &__btn--delete {
+            opacity: 1;
+
+            pointer-events: auto;
         }
     }
 
