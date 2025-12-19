@@ -7,7 +7,7 @@ import UserModal from '../Users/UserModal.vue';
 const props = defineProps<{ message: Message }>();
 
 const emit = defineEmits<{
-    (e: 'open', id: number): void;
+    (e: 'open', id: Message): void;
 }>();
 
 const user = computed(() => dataStore.users.find((u) => u.id === props.message.userId));
@@ -18,14 +18,18 @@ const user = computed(() => dataStore.users.find((u) => u.id === props.message.u
         v-if="user"
         class="conv-preview"
         :class="{ 'conv-preview--unread': !message.read }"
-        @click="$emit('open', message.id)"
+        @click="$emit('open', message)"
     >
-        <UserModal :user="user" :secondary="message.text" />
+        <div class="conv-preview__top">
+            <UserModal :user="user" />
 
-        <div class="conv-preview__right">
-            <div class="conv-preview__time">{{ message.date }}</div>
-            <div v-if="!message.read" class="conv-preview__dot" />
+            <div class="conv-preview__right">
+                <div class="conv-preview__time">{{ message.date }}</div>
+                <div v-if="!message.read" class="conv-preview__dot" />
+            </div>
         </div>
+
+        <p class="conv-preview__text">{{ message.text }}</p>
     </article>
 </template>
 
@@ -35,8 +39,6 @@ const user = computed(() => dataStore.users.find((u) => u.id === props.message.u
 @use '@/scss/variables' as v;
 
 .conv-preview {
-    @extend %flex-between;
-
     padding: 0.875rem;
 
     background: v.$white;
@@ -49,6 +51,12 @@ const user = computed(() => dataStore.users.find((u) => u.id === props.message.u
 
     &--unread {
         border-left: 4px solid v.$accent;
+    }
+
+    &__top {
+        @extend %flex-between;
+
+        margin-bottom: 0.5rem;
     }
 
     &__time {
@@ -66,6 +74,15 @@ const user = computed(() => dataStore.users.find((u) => u.id === props.message.u
         border-radius: 50%;
 
         margin: 0 auto;
+    }
+
+    &__text {
+        font-size: 0.875rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: v.$dark-gray;
+
+        overflow: hidden;
     }
 }
 </style>

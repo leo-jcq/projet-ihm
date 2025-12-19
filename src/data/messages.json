@@ -3,56 +3,56 @@
     "id": 1,
     "userId": 1,
     "text": "Hello, dispo pour grimper demain à 14h ?",
-    "date": "2025-12-12T15:25:55.692Z",
+    "date": "18min",
     "read": false
   },
   {
     "id": 2,
     "userId": 2,
     "text": "Top séance aujourd'hui 👍",
-    "date": "2025-12-12T15:25:55.692Z",
+    "date": "1h",
     "read": true
   },
   {
     "id": 3,
     "userId": 3,
     "text": "On se retrouve au mur samedi ?",
-    "date": "2025-12-12T15:25:55.692Z",
+    "date": "2h",
     "read": false
   },
   {
     "id": 4,
     "userId": 4,
     "text": "J'ai mis à jour mon matos.",
-    "date": "2025-12-12T15:25:55.692Z",
+    "date": "3h",
     "read": true
   },
   {
     "id": 5,
     "userId": 5,
     "text": "Super session, merci !",
-    "date": "2025-12-12T15:25:55.692Z",
+    "date": "5h",
     "read": true
   },
   {
     "id": 6,
     "userId": 6,
     "text": "Tu connais ce spot en extérieur ?",
-    "date": "2025-12-12T15:25:55.692Z",
+    "date": "1j",
     "read": false
   },
   {
     "id": 7,
     "userId": 7,
     "text": "Je suis dispo demain matin.",
-    "date": "2025-12-12T15:25:55.692Z",
+    "date": "2j",
     "read": true
   },
   {
     "id": 8,
     "userId": 8,
     "text": "On s'organise un trajet ?",
-    "date": "2025-12-12T15:25:55.692Z",
+    "date": "3j",
     "read": true
   }
 ]

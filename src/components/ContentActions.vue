@@ -61,7 +61,6 @@ const { isOpen, toggle, close } = useOpen(contentRef);
 </template>
 
 <style lang="scss">
-@use '@/scss/mixins' as m;
 @use '@/scss/placeholders';
 @use '@/scss/variables' as v;
 
@@ -98,23 +97,21 @@ const { isOpen, toggle, close } = useOpen(contentRef);
 
         padding: 0.5rem 0;
 
+        transform-origin: bottom right;
+
         &-enter-active,
         &-leave-active {
-            @include m.transition-group(0.2s, ease-in-out, opacity, scale);
+            transition: opacity 0.2s ease;
         }
 
         &-enter-from,
         &-leave-to {
             opacity: 0;
-
-            scale: 0;
         }
 
         &-enter-to,
         &-leave-from {
             opacity: 1;
-
-            scale: 0.95;
         }
     }
 

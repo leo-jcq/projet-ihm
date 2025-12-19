@@ -1,51 +1,77 @@
 <script setup lang="ts">
+import Chat from '@/components/Messages/Chat.vue';
 import ConvPreview from '@/components/Messages/ConvPreview.vue';
 import Tabs from '@/components/Tabs.vue';
 import usePageTitle from '@/composables/usePageTitle';
 import dataStore from '@/stores/data';
-import { ref } from 'vue';
+import type { Message, User } from '@/types/model';
+import { computed, ref } from 'vue';
 
 usePageTitle('Messages');
 
-const tabs = ['Tout', 'Non lus', 'Epinglés', 'Masqués'];
+// Tabs
+const tabs = ['Tout', 'Non lus'];
 const activeTab = ref('Tout');
 
 function handleTabChange(newTab: string) {
     activeTab.value = newTab;
 }
 
-function openMessage(id: number) {
-    const message = dataStore.messages.find((m) => m.id === id);
-    if (message) message.read = true;
-    // TODO : redirection vers la page discussion
+// Chat
+const currentUser = ref<User | null>(null);
+
+// Convs
+function openMessage(message: Message) {
+    message.read = true;
+    currentUser.value = dataStore.users.find((u) => u.id === message.userId) ?? null;
 }
+
+const filteredMessages = computed(() => {
+    if (activeTab.value === tabs[0]) {
+        return dataStore.messages;
+    }
+
+    return dataStore.messages.filter((m) => !m.read);
+});
 </script>
 
 <template>
-    <main class="messages">
-        <Tabs :tabs="tabs" :current-tab="activeTab" @change="handleTabChange" />
+    <div class="messages">
+        <div class="messages__convs">
+            <Tabs :tabs="tabs" :current-tab="activeTab" @change="handleTabChange" />
 
-        <div class="messages__list">
-            <ConvPreview
-                v-for="message in dataStore.messages"
-                :key="message.id"
-                :message="message"
-                @open="openMessage"
-            />
+            <div class="messages__convs__list">
+                <ConvPreview
+                    v-for="message in filteredMessages"
+                    :key="message.id"
+                    :message="message"
+                    @open="openMessage"
+                />
+            </div>
         </div>
-    </main>
+
+        <Chat :user="currentUser" />
+    </div>
 </template>
 
 <style lang="scss">
 .messages {
-    grid-column: 2/3;
+    display: grid;
+    grid-template-columns: 325px 1fr;
+    gap: 1.5rem;
 
-    &__list {
-        display: flex;
-        gap: 14px;
-        flex-direction: column;
+    grid-column: 2/4;
 
-        margin: 0 auto;
+    &__convs {
+        grid-column: 1/2;
+
+        &__list {
+            display: flex;
+            gap: 14px;
+            flex-direction: column;
+
+            margin: 0 auto;
+        }
     }
 }
 </style>

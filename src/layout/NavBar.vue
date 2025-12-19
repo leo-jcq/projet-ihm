@@ -86,6 +86,8 @@ const nbUnreadMessages = computed(
 
             border: 2px solid v.$accent;
 
+        object-fit: cover;
+
             margin-bottom: 0.75rem;
         }
 

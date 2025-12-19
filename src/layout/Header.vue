@@ -41,7 +41,7 @@ import UserActions from '@/components/Users/UserActions.vue';
     justify-content: center;
 
     position: sticky;
-    z-index: 1;
+    z-index: 5;
     top: 0;
 
     border-bottom: 1px solid v.$light-gray;
