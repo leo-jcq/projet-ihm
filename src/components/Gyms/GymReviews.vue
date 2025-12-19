@@ -2,34 +2,34 @@
 import useOpen from '@/composables/useOpen';
 import dataStore from '@/stores/data';
 import userStore from '@/stores/user';
-import type { Gym, GymGrade } from '@/types/model.d';
+import type { Gym, GymReview } from '@/types/model.d';
 import { Pencil1Outlined, Trash3Outlined } from '@lineiconshq/free-icons';
 import Lineicons from '@lineiconshq/vue-lineicons';
 import { computed } from 'vue';
 import RatingStars from '../RatingStars.vue';
-import GymRateForm from './GymRateForm.vue';
+import GymReviewForm from './GymReviewForm.vue';
 
 const props = defineProps<{ gym: Gym }>();
 
 // Notes
-const grades = computed(() => {
-    return dataStore.gymGrades.filter((grade) => grade.gymId === props.gym.id);
+const reviews = computed(() => {
+    return dataStore.gymReviews.filter((grade) => grade.gymId === props.gym.id);
 });
 
 const averageGrade = computed(() => {
-    if (grades.value.length === 0) return null;
+    if (reviews.value.length === 0) return null;
 
     let total = 0;
 
-    for (let i = 0; i < grades.value.length; i++) {
-        total += grades.value[i]!.grade;
+    for (let i = 0; i < reviews.value.length; i++) {
+        total += reviews.value[i]!.grade;
     }
 
-    return total / grades.value.length;
+    return total / reviews.value.length;
 });
 
-function removeRate(grade: GymGrade) {
-    dataStore.gymGrades = dataStore.gymGrades.filter((g) => g !== grade);
+function removeReview(grade: GymReview) {
+    dataStore.gymReviews = dataStore.gymReviews.filter((g) => g !== grade);
 }
 
 // Form
@@ -37,32 +37,37 @@ const { isOpen, open, close } = useOpen();
 </script>
 
 <template>
-    <div class="gym-grades">
-        <div class="gym-grades__top">
-            <div class="gym-grades__top__left">
+    <div class="gym-reviews">
+        <div class="gym-reviews__top">
+            <div class="gym-reviews__top__left">
                 <h3 class="gym__sub-title">Avis :</h3>
-                <RatingStars :rating="averageGrade" class="gym-grades__top__grade" display-number />
+
+                <RatingStars
+                    :rating="averageGrade"
+                    class="gym-reviews__top__grade"
+                    display-number
+                />
             </div>
 
-            <button class="gym-grades__new" @click="open">
-                <Lineicons :icon="Pencil1Outlined" class="gym-grades__new__icon" />
+            <button class="gym-reviews__new" @click="open">
+                <Lineicons :icon="Pencil1Outlined" class="gym-reviews__new__icon" />
                 Rédiger un avis
             </button>
         </div>
 
-        <GymRateForm v-if="isOpen" :gym-id="gym.id" @close="close" />
+        <GymReviewForm v-if="isOpen" :gym-id="gym.id" @close="close" />
 
-        <div v-for="(grade, index) in grades" :key="index" class="gym-grades__grade">
-            <UserModal :user-id="grade.userId" />
+        <div v-for="(review, index) in reviews" :key="index" class="gym-reviews__review">
+            <UserModal :user-id="review.userId" />
 
-            <RatingStars :rating="grade.grade" display-number />
+            <RatingStars :rating="review.grade" display-number />
 
-            <p v-if="grade.comment" class="gym-grades__grade__comment">{{ grade.comment }}</p>
+            <p v-if="review.comment" class="gym-reviews__review__comment">{{ review.comment }}</p>
 
             <GlassBtn
-                v-if="grade.userId === userStore.user.id"
-                class="gym-grades__grade__delete"
-                @click="removeRate(grade)"
+                v-if="review.userId === userStore.user.id"
+                class="gym-reviews__review__delete"
+                @click="removeReview(review)"
             >
                 <Lineicons :icon="Trash3Outlined" />
             </GlassBtn>
@@ -73,7 +78,7 @@ const { isOpen, open, close } = useOpen();
 <style lang="scss">
 @use '@/scss/placeholders';
 
-.gym-grades {
+.gym-reviews {
     display: flex;
     gap: 0.875rem;
     flex-direction: column;
@@ -104,7 +109,7 @@ const { isOpen, open, close } = useOpen();
         border-radius: 9999px;
     }
 
-    &__grade {
+    &__review {
         @extend %default-box;
 
         padding: 1.5rem;

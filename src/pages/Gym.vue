@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import GymRates from '@/components/Gyms/GymRates.vue';
+import GymReviews from '@/components/Gyms/GymReviews.vue';
 import GymSide from '@/components/Gyms/GymSide.vue';
 import ImageCaroussel from '@/components/ImageCaroussel.vue';
 import usePageTitle from '@/composables/usePageTitle';
@@ -54,7 +54,7 @@ usePageTitle(gym.value!.name);
         <ImageCaroussel :images="gym!.images" />
 
         <!-- Avis -->
-        <GymRates :gym="gym!" />
+        <GymReviews :gym="gym!" />
     </main>
 
     <!-- Side -->

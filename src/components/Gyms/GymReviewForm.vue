@@ -19,7 +19,7 @@ function handleSubmit() {
 
     const trimComment = comment.value.trim();
 
-    dataStore.gymGrades.unshift({
+    dataStore.gymReviews.unshift({
         gymId: props.gymId,
         userId: userStore.user.id,
         grade: grade.value,
@@ -41,19 +41,19 @@ function handleSubmit() {
     >
         <!-- Note -->
         <FormField label="Note">
-            <div class="gym-rate-form__group">
+            <div class="gym-review-form__group">
                 <button
                     v-for="g in [1, 2, 3, 4, 5]"
                     :key="g"
                     type="button"
-                    class="gym-rate-form__rate-btn"
-                    :class="{ 'gym-rate-form__rate-btn--active': g <= grade }"
+                    class="gym-review-form__grade-btn"
+                    :class="{ 'gym-review-form__grade-btn--active': g <= grade }"
                     :title="`${g}/5`"
                     @click="grade = grade === g ? 0 : g"
                 >
                     <Lineicons
                         :icon="g <= grade ? StarFatBulk : StarFatOutlined"
-                        class="gym-rate-form__rate-btn__icon"
+                        class="gym-review-form__grade-btn__icon"
                     />
                 </button>
             </div>
@@ -75,13 +75,13 @@ function handleSubmit() {
 @use '@/scss/placeholders';
 @use '@/scss/variables' as v;
 
-.gym-rate-form {
+.gym-review-form {
     &__group {
         @extend %flex-center;
         gap: 0.75rem;
     }
 
-    &__rate-btn {
+    &__grade-btn {
         border: none;
 
         @extend %flex-center;

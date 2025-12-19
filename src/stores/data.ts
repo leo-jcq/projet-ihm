@@ -1,5 +1,5 @@
 import comments from '@/data/comments.json';
-import gymGrades from '@/data/gymGrades.json';
+import gymReviews from '@/data/gymReviews.json';
 import gyms from '@/data/gyms.json';
 import messages from '@/data/messages.json';
 import notifications from '@/data/notifications.json';
@@ -9,7 +9,7 @@ import users from '@/data/users.json';
 import type {
     Comment,
     Gym,
-    GymGrade,
+    GymReview,
     Message,
     Notification,
     Post,
@@ -21,7 +21,7 @@ import { reactive } from 'vue';
 interface IDataStore {
     comments: Comment[];
     gyms: Gym[];
-    gymGrades: GymGrade[];
+    gymReviews: GymReview[];
     messages: Message[];
     notifications: Notification[];
     posts: Post[];
@@ -32,7 +32,7 @@ interface IDataStore {
 const dataStore = reactive<IDataStore>({
     comments: comments,
     gyms: gyms as Gym[],
-    gymGrades,
+    gymReviews,
     messages: messages,
     notifications: notifications,
     posts: posts as Post[],

@@ -136,35 +136,35 @@ interface Gym {
 /**
  * Note d'une salle d'escalade par un utilisateur.
  *
- * @interface GymGrade
+ * @interface GymReview
  */
-interface GymGrade {
+interface GymReview {
     /**
      * Identifiant de la salle d'escalade.
      *
      * @type {number}
-     * @memberof GymGrade
+     * @memberof GymReview
      */
     gymId: number;
     /**
      * Identifiant de l'utilisateur.
      *
      * @type {number}
-     * @memberof GymGrade
+     * @memberof GymReview
      */
     userId: number;
     /**
      * Note attribuée à la salle d'escalade.
      *
      * @type {number}
-     * @memberof GymGrade
+     * @memberof GymReview
      */
     grade: number;
     /**
      * Commentaire.
      *
      * @type {string}
-     * @memberof GymGrade
+     * @memberof GymReview
      */
     comment?: string;
 }

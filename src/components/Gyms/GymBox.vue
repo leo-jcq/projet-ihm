@@ -35,7 +35,7 @@ const finalGym = computed(() =>
 );
 
 const averageGrade = computed(() => {
-    const grades = dataStore.gymGrades.filter((grade) => grade.gymId === finalGym.value.id);
+    const grades = dataStore.gymReviews.filter((grade) => grade.gymId === finalGym.value.id);
 
     if (grades.length === 0) return null;
 
