@@ -6,6 +6,7 @@ import Lineicons from '@lineiconshq/vue-lineicons';
 import { ref } from 'vue';
 import Form from '../Form/Form.vue';
 import FormField from '../Form/FormField.vue';
+import { generateNumberId } from '@/utils/generateId';
 
 const props = defineProps<{ gymId: number }>();
 
@@ -20,6 +21,7 @@ function handleSubmit() {
     const trimComment = comment.value.trim();
 
     dataStore.gymReviews.unshift({
+        id: generateNumberId(),
         gymId: props.gymId,
         userId: userStore.user.id,
         grade: grade.value,
