@@ -134,11 +134,18 @@ interface Gym {
 }
 
 /**
- * Note d'une salle d'escalade par un utilisateur.
+ * Avis d'une salle d'escalade par un utilisateur.
  *
  * @interface GymReview
  */
 interface GymReview {
+    /**
+     * Identifiant unique de l'avis.
+     *
+     * @type {number}
+     * @memberof GymReview
+     */
+    id: number;
     /**
      * Identifiant de la salle d'escalade.
      *

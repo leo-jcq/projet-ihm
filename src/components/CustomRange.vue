@@ -7,6 +7,10 @@ const emits = defineEmits<{
     input: [Event];
 }>();
 
+defineOptions({
+    inheritAttrs: false
+})
+
 function handleInput(e: Event) {
     emits('input', e);
 }
@@ -18,7 +22,7 @@ const trackWidth = computed(() => (props.value * 100) / props.max);
     <div class="custom-range">
         <div class="custom-range__track" :style="`width:${trackWidth}%`" />
         <input
-            v-bind="$attrs"
+            :="$attrs"
             type="range"
             class="custom-range__input"
             :value="value"

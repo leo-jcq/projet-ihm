@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import useOpen from '@/composables/useOpen';
 import dataStore from '@/stores/data';
-import userStore from '@/stores/user';
-import type { Gym, GymReview } from '@/types/model.d';
-import { Pencil1Outlined, Trash3Outlined } from '@lineiconshq/free-icons';
+import type { Gym } from '@/types/model.d';
+import { Pencil1Outlined } from '@lineiconshq/free-icons';
 import Lineicons from '@lineiconshq/vue-lineicons';
 import { computed } from 'vue';
 import RatingStars from '../RatingStars.vue';
+import GymReviewComponent from './GymReview.vue';
 import GymReviewForm from './GymReviewForm.vue';
 
 const props = defineProps<{ gym: Gym }>();
@@ -27,10 +27,6 @@ const averageGrade = computed(() => {
 
     return total / reviews.value.length;
 });
-
-function removeReview(grade: GymReview) {
-    dataStore.gymReviews = dataStore.gymReviews.filter((g) => g !== grade);
-}
 
 // Form
 const { isOpen, open, close } = useOpen();
@@ -57,21 +53,7 @@ const { isOpen, open, close } = useOpen();
 
         <GymReviewForm v-if="isOpen" :gym-id="gym.id" @close="close" />
 
-        <div v-for="(review, index) in reviews" :key="index" class="gym-reviews__review">
-            <UserModal :user-id="review.userId" />
-
-            <RatingStars :rating="review.grade" display-number />
-
-            <p v-if="review.comment" class="gym-reviews__review__comment">{{ review.comment }}</p>
-
-            <GlassBtn
-                v-if="review.userId === userStore.user.id"
-                class="gym-reviews__review__delete"
-                @click="removeReview(review)"
-            >
-                <Lineicons :icon="Trash3Outlined" />
-            </GlassBtn>
-        </div>
+        <GymReviewComponent v-for="review in reviews" :key="review.id" :review="review" />
     </div>
 </template>
 
@@ -107,32 +89,6 @@ const { isOpen, open, close } = useOpen();
         @extend %default-btn;
 
         border-radius: 9999px;
-    }
-
-    &__review {
-        @extend %default-box;
-
-        padding: 1.5rem;
-
-        position: relative;
-
-        &__delete {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-
-            pointer-events: none;
-
-            opacity: 0;
-
-            transition: opacity 0.2s ease, background-color 0.3s ease;
-        }
-
-        &:hover &__delete {
-            pointer-events: auto;
-
-            opacity: 1;
-        }
     }
 }
 </style>

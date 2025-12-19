@@ -12,11 +12,11 @@ import {
     HeartStroke,
     MapMarker5Outlined,
     Mountains2Outlined,
-    Trash3Outlined,
     XmarkOutlined
 } from '@lineiconshq/free-icons';
 import Lineicons from '@lineiconshq/vue-lineicons';
 import { computed, ref, useTemplateRef } from 'vue';
+import ContentActions from '../ContentActions.vue';
 import GlassBtn from '../GlassBtn.vue';
 import GradeBox from '../Routes/GradeBox.vue';
 import UserModal from '../Users/UserModal.vue';
@@ -26,6 +26,22 @@ import PostTypeBox from './PostTypeBox.vue';
 const props = defineProps<{ post: Post }>();
 
 const hasLiked = ref(false);
+
+// Infos
+const user = computed(() => dataStore.users.find((user) => user.id === props.post.authorId)!);
+const route = computed(() => dataStore.routes.find((route) => route.id === props.post.routeId));
+
+// Actions
+const isMouseOver = ref(false);
+
+function deletePost(postId: number) {
+    const index = dataStore.posts.findIndex((p) => p.id === postId);
+    if (index !== -1) {
+        if (confirm('Êtes-vous sûr de vouloir supprimer ce post ?')) {
+            dataStore.posts.splice(index, 1);
+        }
+    }
+}
 
 // Comments
 const postRef = useTemplateRef('post');
@@ -58,14 +74,15 @@ function deleteComment(commentId: number) {
         }
     }
 }
-
-// Infos
-const user = computed(() => dataStore.users.find((user) => user.id === props.post.authorId)!);
-const route = computed(() => dataStore.routes.find((route) => route.id === props.post.routeId));
 </script>
 
 <template>
-    <article ref="post" class="feed-post">
+    <article
+        ref="post"
+        class="feed-post"
+        @mouseenter="isMouseOver = true"
+        @mouseleave="isMouseOver = false"
+    >
         <div class="feed-post__top">
             <UserModal :user="user" :secondary="props.post.date" link />
 
@@ -124,14 +141,13 @@ const route = computed(() => dataStore.routes.find((route) => route.id === props
                     {{ comments.length }}
                 </button>
             </div>
-            <button
-                v-if="post.authorId === userStore.user.id"
-                class="feed-post__actions__btn feed-post__actions__btn--delete"
-                title="Supprimer"
-                @click="dataStore.posts = dataStore.posts.filter((p) => p.id !== post.id)"
-            >
-                <Lineicons :icon="Trash3Outlined" class="feed-post__actions__btn__icon" />
-            </button>
+            <ContentActions
+                :content-id="post.id"
+                :user-id="post.authorId"
+                content-name="post"
+                :mouse-over-parent="isMouseOver"
+                @delete="deletePost"
+            />
         </div>
 
         <Transition name="feed-post__comments">
@@ -307,24 +323,6 @@ const route = computed(() => dataStore.routes.find((route) => route.id === props
             &--comment:hover {
                 color: v.$blue;
             }
-
-            &--delete {
-                opacity: 0;
-
-                pointer-events: none;
-
-                transition: opacity 0.3s ease;
-
-                &:hover {
-                    color: v.$red;
-                }
-            }
-        }
-
-        &:hover &__btn--delete {
-            opacity: 1;
-
-            pointer-events: auto;
         }
     }
 

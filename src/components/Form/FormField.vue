@@ -14,16 +14,16 @@ const model = defineModel<string | number | undefined>();
         <slot>
             <textarea
                 v-if="type === 'textarea'"
-                v-bind="$attrs"
                 :id="id"
                 v-model="model"
+                :="$attrs"
                 class="form-field__textarea"
             />
             <input
                 v-else
-                v-bind="$attrs"
                 :id="id"
                 v-model="model"
+                :="$attrs"
                 :type="type"
                 class="form-field__input"
             />

@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import dataStore from '@/stores/data';
-import userStore from '@/stores/user';
 import type { Comment } from '@/types/model';
-import { HeartSolid, HeartStroke, Trash3Outlined } from '@lineiconshq/free-icons';
+import { HeartSolid, HeartStroke } from '@lineiconshq/free-icons';
 import Lineicons from '@lineiconshq/vue-lineicons';
 import { computed, ref } from 'vue';
+import ContentActions from '../ContentActions.vue';
 
 const props = defineProps<{ comment: Comment }>();
 
@@ -15,10 +15,12 @@ defineEmits<{
 const liked = ref(false);
 
 const user = computed(() => dataStore.users.find((u) => u.id == props.comment.userId));
+
+const isMouseOver = ref(false);
 </script>
 
 <template>
-    <li class="comment">
+    <li class="comment" @mouseenter="isMouseOver = true" @mouseleave="isMouseOver = false">
         <RouterLink v-if="user" :to="`/user/${user.id}`" class="comment__user">
             <img :src="user.avatar" :alt="user.pseudo" class="comment__user__avatar" />
 
@@ -34,14 +36,13 @@ const user = computed(() => dataStore.users.find((u) => u.id == props.comment.us
         </RouterLink>
 
         <div class="comment__actions">
-            <button
-                v-if="comment.userId === userStore.user.id"
-                class="comment__btn comment__btn--delete"
-                title="Supprimer"
-                @click="$emit('delete', comment.id)"
-            >
-                <Lineicons :icon="Trash3Outlined" class="comment__btn__icon" />
-            </button>
+            <ContentActions
+                :content-id="comment.id"
+                :user-id="comment.userId"
+                content-name="commentaire"
+                :mouse-over-parent="isMouseOver"
+                @delete="$emit('delete', comment.id)"
+            />
             <button
                 class="comment__btn comment__btn--like"
                 :class="{
