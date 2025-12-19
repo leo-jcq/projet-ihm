@@ -16,7 +16,7 @@ const ClimbStyle = {
 
 export default ClimbStyle;
 
-export const ClimStyleToString: Record<TClimbStyle, string> = {
+export const ClimbStyleToString: Record<TClimbStyle, string> = {
     [ClimbStyle.Physical]: 'Physique',
     [ClimbStyle.Slab]: 'Dalle',
     [ClimbStyle.Finger]: 'À doigts',

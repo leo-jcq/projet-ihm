@@ -8,6 +8,7 @@ import Search from './pages/Search.vue';
 import Settings from './pages/Settings.vue';
 import User from './pages/User.vue';
 import Gym from './pages/Gym.vue';
+import Route from './pages/Route.vue';
 
 const routes: RouteRecordRaw[] = [
     { path: '/', component: Home },
@@ -15,6 +16,7 @@ const routes: RouteRecordRaw[] = [
     { path: '/matchs', component: Matchs },
     { path: '/messages', component: Messages },
     { path: '/user/:id', component: User },
+    { path: '/route/:id', component: Route },
     { path: '/search', component: Search },
     { path: '/settings', component: Settings },
     { path: '/not-found', component: NotFound },

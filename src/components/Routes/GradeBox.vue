@@ -25,6 +25,8 @@ const converted = computed(() => {
 @use '@/scss/variables' as v;
 
 .grade-box {
+    width: fit-content;
+    
     padding: 0.125rem 0.375rem;
 
     @extend %default-border;

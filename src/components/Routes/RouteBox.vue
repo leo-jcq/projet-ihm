@@ -1,26 +1,34 @@
 <script setup lang="ts">
-import type { Route } from '@/types/model';
-import GradeBox from './GradeBox.vue';
 import { RouteTypeToString } from '@/enums/RouteType';
+import type { Route } from '@/types/model';
+import { RouterLink } from 'vue-router';
+import GradeBox from './GradeBox.vue';
 
 withDefaults(
     defineProps<{
         route: Route;
         interactive?: boolean;
+        link?: boolean;
     }>(),
     {
-        interactive: false
+        interactive: false,
+        link: false
     }
 );
 </script>
 
 <template>
-    <div class="route-box" :class="{ 'route-box--interactive': interactive }">
+    <component
+        :is="link ? RouterLink : 'div'"
+        :to="`/route/${route.id}`"
+        class="route-box"
+        :class="{ 'route-box--interactive': interactive, 'route-box--link': link }"
+    >
         <span class="route-box__name">{{ route.name }}, {{ route.location }}</span>
         <span class="route-box__type">{{ RouteTypeToString[route.type] }}</span>
         <GradeBox :grade="route.grade" :route-type="route.type" />
         <span class="route-box__length">{{ route.length }}m</span>
-    </div>
+    </component>
 </template>
 
 <style lang="scss">
@@ -31,6 +39,8 @@ withDefaults(
     display: flex;
     gap: 0.75rem;
     align-items: center;
+
+    text-decoration: none;
 
     padding: 0.875rem 1rem;
 
@@ -47,6 +57,10 @@ withDefaults(
         font-size: 0.95rem;
         font-weight: 500;
         color: v.$very-dark-gray;
+    }
+
+    &:hover &__name {
+        text-decoration: underline;
     }
 
     &__length {

@@ -2,7 +2,7 @@
 import { BOULDER_GRADE_REG_EXPS, ROUTE_GRADE_REG_EXPS } from '@/constants/regExps';
 import { BoulderGradeSystemToString } from '@/enums/BoulderGradeSystem';
 import type { TClimbStyle } from '@/enums/ClimbStyle';
-import ClimbStyle, { ClimStyleToString } from '@/enums/ClimbStyle';
+import ClimbStyle, { ClimbStyleToString } from '@/enums/ClimbStyle';
 import { RouteGradeSystemToString } from '@/enums/RouteGradeSystem';
 import RouteType, { RouteTypeToString, type TRouteType } from '@/enums/RouteType';
 import dataStore from '@/stores/data';
@@ -195,7 +195,7 @@ function handleSubmit() {
                 @select="handleAddStyle"
                 @remove="handleRemoveStyle"
             >
-                {{ ClimStyleToString[item] }}
+                {{ ClimbStyleToString[item] }}
             </CustomSelect>
         </FormField>
     </Form>

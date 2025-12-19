@@ -3,7 +3,7 @@ import GymReviews from '@/components/Gyms/GymReviews.vue';
 import GymSide from '@/components/Gyms/GymSide.vue';
 import ImageCaroussel from '@/components/ImageCaroussel.vue';
 import usePageTitle from '@/composables/usePageTitle';
-import { ClimStyleToString } from '@/enums/ClimbStyle';
+import { ClimbStyleToString } from '@/enums/ClimbStyle';
 import { RouteTypeToString } from '@/enums/RouteType';
 import router from '@/router';
 import dataStore from '@/stores/data';
@@ -25,40 +25,40 @@ usePageTitle(gym.value!.name);
 
 <template>
     <!-- Main -->
-    <main class="gym">
+    <main v-if="gym" class="gym">
         <div class="gym__top">
-            <img :src="gym!.logo" :alt="gym!.name" class="gym__logo" />
+            <img :src="gym.logo" :alt="gym.name" class="gym__logo" />
 
             <div class="gym__top__text">
-                <h2 class="gym__name">{{ gym!.name }}</h2>
+                <h2 class="gym__name">{{ gym.name }}</h2>
 
                 <div class="gym__route-types">
                     <span
-                        v-for="type in gym!.routeTypes"
+                        v-for="type in gym.routeTypes"
                         :key="type"
                         class="gym__route-types__type"
                     >
                         {{ RouteTypeToString[type] }}
                     </span>
-                    <span v-for="style in gym!.styles" :key="style" class="gym__route-types__type">
-                        {{ ClimStyleToString[style] }}
+                    <span v-for="style in gym.styles" :key="style" class="gym__route-types__type">
+                        {{ ClimbStyleToString[style] }}
                     </span>
                 </div>
 
-                <span class="gym__adress">{{ gym!.location }}</span>
+                <span class="gym__adress">{{ gym.location }}</span>
             </div>
         </div>
 
         <!-- Images -->
-        <h3 class="gym__sub-title">Dernière images</h3>
-        <ImageCaroussel :images="gym!.images" />
+        <h3 class="gym__sub-title">Dernières images</h3>
+        <ImageCaroussel :images="gym.images" />
 
         <!-- Avis -->
-        <GymReviews :gym="gym!" />
+        <GymReviews :gym="gym" />
     </main>
 
     <!-- Side -->
-    <GymSide :gym="gym!" />
+    <GymSide v-if="gym" :gym="gym" />
 </template>
 
 <style lang="scss">
