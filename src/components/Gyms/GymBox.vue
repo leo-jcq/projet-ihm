@@ -87,7 +87,7 @@ const averageGrade = computed(() => {
 
     display: block;
 
-    padding: 0.375rem 0.5rem;
+    padding: 0.375rem 0.75rem;
 
     @extend %default-shadow;
 
