@@ -85,7 +85,7 @@ usePageTitle(gym.value!.name);
     }
 
     &__logo {
-        @include m.rounded(7rem);
+        @include m.rounded(6.25rem);
 
         border: 2px solid v.$accent;
 
