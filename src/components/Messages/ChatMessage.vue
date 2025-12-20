@@ -146,7 +146,7 @@ const { isOpen, open, close } = useOpen();
         &__text {
             color: v.$white;
 
-            background-color: v.$accent;
+            background-image: v.$main-gradient;
         }
     }
 
