@@ -148,7 +148,7 @@ function handleSubmit() {
         <FormField label="Type de post" :error="errors.type">
             <div class="post-form__group">
                 <PostTypeBtn
-                    v-for="postType in Object.values(PostType)"
+                    v-for="postType in PostType"
                     :key="postType"
                     :type="postType"
                     :active="postType === newPost.type"

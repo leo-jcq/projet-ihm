@@ -181,7 +181,7 @@ const matchsTexts = computed(() => {
                 <span class="field-title">Système de cotation (voie)</span>
                 <div class="options rating">
                     <label
-                        v-for="gradeSystem in Object.values(RouteGradeSystem)"
+                        v-for="gradeSystem in RouteGradeSystem"
                         :key="gradeSystem"
                         class="opt"
                     >
@@ -199,7 +199,7 @@ const matchsTexts = computed(() => {
                 <span class="field-title">Système de cotation (bloc)</span>
                 <div class="options rating">
                     <label
-                        v-for="gradeSystem in Object.values(BoulderGradeSystem)"
+                        v-for="gradeSystem in BoulderGradeSystem"
                         :key="gradeSystem"
                         class="opt"
                     >

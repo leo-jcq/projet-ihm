@@ -77,7 +77,7 @@ const gymIsOpen = computed(() => {
 
             <ul class="gym-side__timetable">
                 <li
-                    v-for="weekDay in Object.values(WeekDay)"
+                    v-for="weekDay in WeekDay"
                     :key="weekDay"
                     class="gym-side__timetable__day"
                     :class="{ 'gym-side__timetable__day--today': weekDay === today }"
