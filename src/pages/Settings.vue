@@ -1,15 +1,52 @@
 <script setup lang="ts">
+import useLocalStorageRef from '@/composables/useLocalStorageRef';
 import usePageTitle from '@/composables/usePageTitle';
 import BoulderGradeSystem, { BoulderGradeSystemToString } from '@/enums/BoulderGradeSystem';
 import RouteGradeSystem, { RouteGradeSystemToString } from '@/enums/RouteGradeSystem';
 import gradeSystemStore from '@/stores/gradeSystem';
+import { computed } from 'vue';
 
 usePageTitle('Paramètres');
+
+const hasRegisterMatch = useLocalStorageRef('hasRegisterMatch', false);
+
+const matchsTexts = computed(() => {
+    if (hasRegisterMatch.value) {
+        return {
+            text: `Vous êtes actuellement inscrit aux matchs.
+            Si vous souhaitez vous désinscrire, cliquer sur le bouton ci-dessous.`,
+            button: 'Se désinscrire'
+        };
+    }
+
+    return {
+        text: `Inscrivez-vous aux matchs pour rencontrer d'autres grimpeurs.
+        Pensez à bien remplir les informations de votre profil poour maximiser vos chances.
+        Vous pouvez vous désinscrire à tout moment dans les paramètres.`,
+        button: "S'inscrire"
+    };
+});
 </script>
 
 <template>
     <main class="main">
         <h2>Paramètres</h2>
+
+        <section id="matchs" class="panel">
+            <h3>Matchs</h3>
+
+            <div class="field">
+                <p class="text">{{ matchsTexts.text }}</p>
+
+                <button
+                    class="btn"
+                    :title="`${matchsTexts.button} ${hasRegisterMatch ? 'des' : 'aux'} matchs`"
+                    @click="hasRegisterMatch = !hasRegisterMatch"
+                >
+                    {{ matchsTexts.button }}
+                </button>
+            </div>
+        </section>
 
         <section id="privacy" class="panel">
             <h3>Confidentialité (informations affichées sur mon profile)</h3>
@@ -179,6 +216,10 @@ usePageTitle('Paramètres');
     </main>
 
     <nav class="settings-nav">
+        <a href="#matchs" class="settings-nav__link">
+            Matchs
+            <div class="settings-nav__link__bg" />
+        </a>
         <a href="#privacy" class="settings-nav__link">
             Confidentialité
             <div class="settings-nav__link__bg" />
@@ -200,7 +241,7 @@ usePageTitle('Paramètres');
 
 .main {
     grid-template-columns: 2/4;
-    
+
     h2 {
         font-size: 1.5rem;
         font-weight: 500;
@@ -285,6 +326,31 @@ usePageTitle('Paramètres');
 
     input[type='radio'] {
         @extend %custom-checkbox;
+    }
+}
+
+#matchs {
+    .field {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .text {
+        font-size: 1.0625rem;
+        text-align: center;
+        white-space: pre;
+        color: v.$grayish-black;
+    }
+
+    .btn {
+        @extend %default-btn;
+
+        margin-top: 1rem;
+
+        padding: 0.75rem 1rem;
+
+        border-radius: 9999px;
     }
 }
 
