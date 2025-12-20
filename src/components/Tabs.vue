@@ -56,7 +56,7 @@ defineEmits<{
 
             border-radius: 9999px;
 
-            transition: height 0.3s ease;
+            transition: height 0.15s ease;
         }
 
         &--active,
