@@ -13,7 +13,8 @@ const users = computed(() => {
     const query = route.query.q ? String(route.query.q).toLowerCase() : '';
 
     const users = dataStore.users.filter(
-        (user) => user.name.toLowerCase().includes(query) || user.pseudo.toLowerCase().includes(query)
+        (user) =>
+            user.name.toLowerCase().includes(query) || user.pseudo.toLowerCase().includes(query)
     );
 
     return props.preDisplay ? users.slice(0, 3) : users;
@@ -26,14 +27,17 @@ const users = computed(() => {
 
         <ul class="search-users-tab__list">
             <li v-for="user in users" :key="user.id" class="search-users-tab__list__user">
-                <UserModal :user="user" link />
+                <div class="search-users-tab__list__user__left">
+                    <UserModal :user="user" link />
+                    <p class="search-users-tab__list__user__description">{{ user.description }}</p>
+                </div>
                 <FollowBtn />
             </li>
             <li v-if="users.length === 0" class="search-users-tab__list__empty">
                 Aucun utilisateur trouvé.
             </li>
         </ul>
-        
+
         <hr v-if="preDisplay" class="search__content__divider" />
     </div>
 </template>
@@ -57,6 +61,13 @@ const users = computed(() => {
             margin-bottom: 0.8rem;
 
             @extend %flex-between;
+            gap: 1rem;
+
+            &__description {
+                margin-top: 0.25rem;
+
+                color: v.$very-dark-gray;
+            }
         }
 
         &__empty {
