@@ -11,7 +11,7 @@ import router from '@/router';
 import dataStore from '@/stores/data';
 import userStore from '@/stores/user';
 import { getRandomInt } from '@/utils/random';
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
@@ -44,6 +44,9 @@ const nbFollowing = computed(() => getRandomInt(0, 150));
 
 // Edit
 const { isOpen, open, close } = useOpen();
+
+// Follow
+const followed = ref(Math.random() > 0.5);
 </script>
 
 <template>
@@ -96,11 +99,19 @@ const { isOpen, open, close } = useOpen();
 
                 <button
                     v-if="isLoggedUser"
-                    class="user__main__edit"
+                    class="user__main__btn user__main__btn--edit"
                     title="Modifier le profil"
                     @click="open"
                 >
                     Modifier le profil
+                </button>
+                <button
+                    v-else
+                    class="user__main__btn user__main__btn--follow"
+                    :title="followed ? 'Ne plus suivre' : 'Suivre'"
+                    @click="followed = !followed"
+                >
+                    {{ followed ? 'Suivi(e)' : 'Suivre' }}
                 </button>
 
                 <UserEditForm v-if="isOpen" @close="close" />
@@ -194,7 +205,7 @@ const { isOpen, open, close } = useOpen();
             }
         }
 
-        &__edit {
+        &__btn {
             width: fit-content;
 
             @extend %default-btn;
