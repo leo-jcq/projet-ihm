@@ -437,7 +437,7 @@ export interface User {
      * @type {number}
      * @memberof User
      */
-    age: number;
+    age?: number;
     /**
      * Pseudo de l'utilisateur.
      *
@@ -465,7 +465,7 @@ export interface User {
      * @type {string}
      * @memberof User
      */
-    level: string;
+    level?: string;
     /**
      * Les styles d'escalade préférés de l'utilisateur.
      *

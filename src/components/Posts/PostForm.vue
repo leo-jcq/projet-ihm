@@ -3,7 +3,7 @@ import useOpen from '@/composables/useOpen';
 import PostType, { type TPostType } from '@/enums/PostType';
 import dataStore from '@/stores/data';
 import userStore from '@/stores/user';
-import type { Errors, ImageFile } from '@/types/app';
+import type { Errors } from '@/types/app';
 import type { Post, Route } from '@/types/model';
 import { generateNumberId } from '@/utils/generateId';
 import { PlusOutlined } from '@lineiconshq/free-icons';
@@ -21,7 +21,6 @@ const { isOpen, open, close } = useOpen();
 const { isOpen: isRouteFormOpen, open: routeFormOpen, close: routeFormClose } = useOpen();
 
 const newPost = ref<Partial<Post>>({ type: PostType.Success });
-const image = ref<ImageFile | null>(null);
 const selectedRoute = ref<Route | null>(null);
 
 const errors = ref<Errors<Post>>({});
@@ -31,7 +30,6 @@ const errors = ref<Errors<Post>>({});
  */
 function fullClose() {
     newPost.value = { type: PostType.Success };
-    image.value = null;
     selectedRoute.value = null;
     errors.value = {};
     close();
@@ -64,19 +62,19 @@ function selectRoute(route: Route) {
 /**
  * Met à jour l'image.
  *
- * @param newImages - La liste des nouvelles images.
+ * @param {string} newImage - La nouvelle image.
  */
-function addImage(newImages: ImageFile[]) {
-    image.value = newImages[0] ?? null;
+function addImage(newImage: string) {
+    newPost.value.image = newImage;
 }
 
 /**
  * Supprime l'image.
  */
 function removeImage() {
-    if (image.value) {
-        URL.revokeObjectURL(image.value.preview);
-        image.value = null;
+    if (newPost.value.image) {
+        URL.revokeObjectURL(newPost.value.image);
+        newPost.value.image = undefined;
     }
 }
 
@@ -122,7 +120,7 @@ function handleSubmit() {
         authorId: userStore.user.id,
         type: newPost.value.type!,
         content: newPost.value.content?.trim() ?? '',
-        image: image.value?.preview,
+        image: newPost.value.image,
         routeId: newPost.value.routeId,
         tryCount: newPost.value.tryCount,
         likes: 0,
@@ -198,12 +196,7 @@ function handleSubmit() {
 
         <!-- Image -->
         <FormField id="image" label="Image" :error="errors.image">
-            <ImageInput
-                id="image"
-                :images="image ? [image] as ImageFile[] : []"
-                @add="addImage"
-                @remove="removeImage"
-            />
+            <ImageInput id="image" :image="newPost.image" @add="addImage" @remove="removeImage" />
         </FormField>
 
         <!-- Description -->
@@ -229,7 +222,7 @@ function handleSubmit() {
 .post-form {
     &__open {
         @extend %default-btn;
-        
+
         border-radius: 9999px;
     }
 

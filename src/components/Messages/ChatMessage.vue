@@ -70,11 +70,9 @@ const { isOpen, open, close } = useOpen();
         />
     </div>
 
-    <Teleport to="body">
-        <PopUp v-if="isOpen" title="" @close="close">
-            <img :src="message.image" alt="Photo" class="chat-message__image-big" />
-        </PopUp>
-    </Teleport>
+    <PopUp v-if="isOpen" title="" @close="close">
+        <img :src="message.image" alt="Photo" class="chat-message__image-big" />
+    </PopUp>
 </template>
 
 <style lang="scss">

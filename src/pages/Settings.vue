@@ -339,7 +339,7 @@ const matchsTexts = computed(() => {
     .text {
         font-size: 1.0625rem;
         text-align: center;
-        white-space: pre;
+        white-space: pre-line;
         color: v.$grayish-black;
     }
 

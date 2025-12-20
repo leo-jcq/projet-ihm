@@ -14,6 +14,8 @@ const emits = defineEmits<{
     select: [T];
 }>();
 
+defineSlots()
+
 const containerRef = useTemplateRef('search-select');
 const { isOpen, open, close } = useOpen(containerRef);
 const searchQuery = ref('');

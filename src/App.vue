@@ -1,23 +1,17 @@
 <script setup lang="ts">
 import Header from './layout/Header.vue';
 import NavBar from './layout/NavBar.vue';
-import Login from './pages/Login.vue';
-import userStore from './stores/user';
 </script>
 
 <template>
-    <template v-if="userStore.user">
-        <Header />
+    <Header />
 
-        <div class="app__content">
-            <div class="app__content__container">
-                <NavBar />
-                <RouterView />
-            </div>
+    <div class="app__content">
+        <div class="app__content__container">
+            <NavBar />
+            <RouterView />
         </div>
-    </template>
-
-    <Login v-else />
+    </div>
 </template>
 
 <style lang="scss">

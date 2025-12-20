@@ -61,7 +61,9 @@ const filterOptions = computed(() => {
                     :key="index"
                     class="custom-select__selected__multiple"
                 >
-                    <slot :item="option">{{ String(option) }}</slot>
+                    <slot name="selected-item" :item="option">
+                        <slot :item="option">{{ String(option) }}</slot>
+                    </slot>
                     <GlassBtn
                         class="custom-select__selected__multiple__remove"
                         title="Retirer"
@@ -95,7 +97,12 @@ const filterOptions = computed(() => {
                     class="custom-select__options__option"
                     @click="onSelect(option)"
                 >
-                    <slot :item="option">{{ String(option) }}</slot>
+                    <slot name="list-item" :item="option">
+                        <slot :item="option">{{ String(option) }}</slot>
+                    </slot>
+                </li>
+                <li v-if="filterOptions.length === 0" class="custom-select__options__empty">
+                    Aucune autre option
                 </li>
             </ul>
         </Transition>
@@ -226,6 +233,12 @@ const filterOptions = computed(() => {
             &:hover {
                 background-color: v.$very-light-gray;
             }
+        }
+
+        &__empty {
+            color: v.$dark-gray;
+
+            margin: 0.5rem;
         }
     }
 }

@@ -41,7 +41,7 @@ const finalUser = computed(() =>
         </div>
 
         <GradeBox
-            v-if="displayLevel"
+            v-if="displayLevel && finalUser.level"
             :grade="finalUser.level"
             :route-type="RouteType.Route"
             class="user-modal__level"

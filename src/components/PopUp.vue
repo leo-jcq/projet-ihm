@@ -9,20 +9,22 @@ defineEmits<{ close: [] }>();
 </script>
 
 <template>
-    <div class="pop-up" @click="$emit('close')">
-        <div class="pop-up__content" @click.stop>
-            <div class="pop-up__content__top">
-                <h2 class="pop-up__title">{{ title }}</h2>
-                <GlassBtn class="pop-up__close" @click="$emit('close')">
-                    <Lineicons :icon="XmarkOutlined" class="pop-up__close__icon" />
-                </GlassBtn>
-            </div>
+    <Teleport to="body">
+        <div class="pop-up" @click="$emit('close')">
+            <div class="pop-up__content" @click.stop>
+                <div class="pop-up__content__top">
+                    <h2 class="pop-up__title">{{ title }}</h2>
+                    <GlassBtn class="pop-up__close" @click="$emit('close')">
+                        <Lineicons :icon="XmarkOutlined" class="pop-up__close__icon" />
+                    </GlassBtn>
+                </div>
 
-            <div class="pop-up__content__main">
-                <slot />
+                <div class="pop-up__content__main">
+                    <slot />
+                </div>
             </div>
         </div>
-    </div>
+    </Teleport>
 </template>
 
 <style lang="scss">

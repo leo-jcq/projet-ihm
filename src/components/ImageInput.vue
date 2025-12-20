@@ -1,43 +1,30 @@
 <script setup lang="ts">
-import type { ImageFile } from '@/types/app';
-import { generateId } from '@/utils/generateId';
 import { GalleryOutlined, XmarkOutlined } from '@lineiconshq/free-icons';
 import Lineicons from '@lineiconshq/vue-lineicons';
 import { useTemplateRef } from 'vue';
 
-const props = withDefaults(defineProps<{ id: string; images: ImageFile[]; multiple?: boolean }>(), {
-    multiple: false
-});
+defineProps<{ id: string; image: string | undefined }>();
 
 const emit = defineEmits<{
-    add: [ImageFile[]];
-    remove: [string];
+    add: [string];
+    remove: [];
 }>();
 
 const inputRef = useTemplateRef('input');
 
 function handleChange(e: Event) {
     const target = e.target as HTMLInputElement;
-    if (target.files) {
-        const files = Array.from(target.files);
-
-        emit(
-            'add',
-            files.map((file) => ({
-                id: generateId(),
-                file,
-                preview: URL.createObjectURL(file)
-            }))
-        );
+    if (target.files && target.files.length > 0) {
+        emit('add', URL.createObjectURL(target.files[0]!));
     }
 }
 
-function handleRemove(id: string) {
-    if (!props.multiple && inputRef.value) {
+function handleRemove() {
+    if (inputRef.value) {
         // Clear input
         inputRef.value.value = '';
     }
-    emit('remove', id);
+    emit('remove');
 }
 </script>
 
@@ -48,31 +35,27 @@ function handleRemove(id: string) {
         type="file"
         class="image-input__input"
         accept=".png,.jpeg,.jpg"
-        :multiple="multiple"
         @change="handleChange"
     />
 
     <label :for="id" class="image-input__label">
-        <div v-if="images.length === 0" class="image-input__text">
-            <Lineicons :icon="GalleryOutlined" class="image-input__text__icon" />
-            <span class="image-input__text__main">Cliquez pour ajouter une image</span>
-            <span class="image-input__text__secondary">PNG, JPG jusqu'à 10MB</span>
-        </div>
-        <div v-else class="image-input__images">
-            <div v-for="image in images" :key="image.id" class="image-input__images__image">
-                <img
-                    :src="image.preview"
-                    :alt="image.file.name"
-                    class="image-input__images__image__img"
-                />
+        <div v-if="image" class="image-input__preview">
+            <div class="image-input__preview__image">
+                <img :src="image" alt="Image importée" class="image-input__preview__image__img" />
                 <button
-                    class="image-input__images__image__remove"
+                    type="button"
+                    class="image-input__preview__image__remove"
                     title="Supprimer l'image"
-                    @mousedown.stop="handleRemove(image.id)"
+                    @mousedown.stop="handleRemove()"
                 >
                     <Lineicons :icon="XmarkOutlined" />
                 </button>
             </div>
+        </div>
+        <div v-else class="image-input__text">
+            <Lineicons :icon="GalleryOutlined" class="image-input__text__icon" />
+            <span class="image-input__text__main">Cliquez pour ajouter une image</span>
+            <span class="image-input__text__secondary">PNG, JPG jusqu'à 10MB</span>
         </div>
     </label>
 </template>
@@ -132,7 +115,7 @@ function handleRemove(id: string) {
         }
     }
 
-    &__images {
+    &__preview {
         display: flex;
         flex-wrap: wrap;
         gap: 1.25rem;

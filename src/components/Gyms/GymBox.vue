@@ -55,7 +55,7 @@ const averageGrade = computed(() => {
         v-if="finalGym"
         :to="`/gym/${finalGym.id}`"
         class="gym-box"
-        :class="{ 'gym-box--link': link, 'gym-box--interractive': interactive }"
+        :class="{ 'gym-box--link': link, 'gym-box--interactive': interactive }"
     >
         <div class="gym-box__top">
             <div class="gym-box__top__left">
@@ -96,6 +96,18 @@ const averageGrade = computed(() => {
     text-decoration: none;
     color: v.$black;
 
+    &--interactive {
+        cursor: pointer;
+
+        &:hover {
+            border-color: v.$accent;
+
+            @extend %default-shadow;
+
+            transform: translateY(-1px);
+        }
+    }
+
     &__top {
         @extend %flex-between;
 
@@ -107,7 +119,7 @@ const averageGrade = computed(() => {
     }
 
     &__logo {
-        @include m.rounded(3.5rem);
+        @include m.rounded(2.5rem);
 
         padding: 0.25rem;
 

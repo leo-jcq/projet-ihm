@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import GymBox from '@/components/Gyms/GymBox.vue';
 import FeedPost from '@/components/Posts/FeedPost.vue';
+import PostForm from '@/components/Posts/PostForm.vue';
 import GradeBox from '@/components/Routes/GradeBox.vue';
+import UserEditForm from '@/components/Users/UserEditForm.vue';
+import useOpen from '@/composables/useOpen';
 import usePageTitle from '@/composables/usePageTitle';
 import RouteType, { RouteTypeToString } from '@/enums/RouteType';
 import router from '@/router';
@@ -13,8 +16,12 @@ import { useRoute } from 'vue-router';
 
 const route = useRoute();
 
+const isLoggedUser = computed(
+    () => route.fullPath.startsWith('/me') || userStore.user.id.toString() === route.params.id
+);
+
 const user = computed(() => {
-    if (route.fullPath.startsWith('/me') || userStore.user.id.toString() === route.params.id) {
+    if (isLoggedUser.value) {
         return userStore.user;
     }
 
@@ -34,6 +41,9 @@ const postsCount = computed(() => posts.value.length);
 
 const nbFollowers = computed(() => getRandomInt(0, 150));
 const nbFollowing = computed(() => getRandomInt(0, 150));
+
+// Edit
+const { isOpen, open, close } = useOpen();
 </script>
 
 <template>
@@ -68,9 +78,11 @@ const nbFollowing = computed(() => getRandomInt(0, 150));
                     </div>
                 </div>
 
-                <p class="user__description">{{ user.description }}</p>
+                <p v-if="user.description.length > 0" class="user__description">
+                    {{ user.description }}
+                </p>
 
-                <GradeBox :grade="user.level" :route-type="RouteType.Route" />
+                <GradeBox v-if="user.level" :grade="user.level" :route-type="RouteType.Route" />
 
                 <div class="user__main__styles">
                     <span
@@ -81,6 +93,17 @@ const nbFollowing = computed(() => getRandomInt(0, 150));
                         {{ RouteTypeToString[style] }}
                     </span>
                 </div>
+
+                <button
+                    v-if="isLoggedUser"
+                    class="user__main__edit"
+                    title="Modifier le profil"
+                    @click="open"
+                >
+                    Modifier le profil
+                </button>
+
+                <UserEditForm v-if="isOpen" @close="close" />
             </div>
         </div>
 
@@ -101,7 +124,17 @@ const nbFollowing = computed(() => getRandomInt(0, 150));
 
         <!-- Posts -->
         <div class="user__posts">
-            <FeedPost v-for="post in posts" :key="post.id" :post="post" />
+            <template v-if="posts.length > 0">
+                <FeedPost v-for="post in posts" :key="post.id" :post="post" />
+            </template>
+            <div v-else class="user__posts__empty">
+                <p class="user__posts__empty__text">
+                    Aucune publication{{
+                        isLoggedUser ? ', créez-en une en cliquant sur le bouton ci-dessous :' : ''
+                    }}
+                </p>
+                <PostForm />
+            </div>
         </div>
     </main>
 </template>
@@ -112,6 +145,8 @@ const nbFollowing = computed(() => getRandomInt(0, 150));
 @use '@/scss/variables' as v;
 
 .user {
+    grid-column: 2/3;
+
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -158,6 +193,16 @@ const nbFollowing = computed(() => getRandomInt(0, 150));
                 background-color: v.$very-light-gray;
             }
         }
+
+        &__edit {
+            width: fit-content;
+
+            @extend %default-btn;
+
+            border-radius: 9999px;
+
+            padding: 0.75rem 1rem;
+        }
     }
 
     &__title {
@@ -198,6 +243,7 @@ const nbFollowing = computed(() => getRandomInt(0, 150));
     }
 
     &__description {
+        white-space: pre-line;
         color: v.$grayish-black;
     }
 
@@ -220,6 +266,17 @@ const nbFollowing = computed(() => getRandomInt(0, 150));
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
+
+        &__empty {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+
+            &__text {
+                font-size: 1.125rem;
+            }
+        }
     }
 }
 </style>
