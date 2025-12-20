@@ -118,6 +118,7 @@ function handleSubmit() {
 
     userStore.user = {
         id: formData.value.id,
+        followed: true,
         name: formData.value.name,
         age: formData.value.age,
         pseudo: formData.value.pseudo,

@@ -27,8 +27,9 @@ const users = computed(() => {
     const loweredQuery = query.value.toString();
     return dataStore.users.filter(
         (u) =>
-            u.name.toLowerCase().includes(loweredQuery) ||
-            u.pseudo.toLowerCase().includes(loweredQuery)
+            u.followed &&
+            (u.name.toLowerCase().includes(loweredQuery) ||
+                u.pseudo.toLowerCase().includes(loweredQuery))
     );
 });
 </script>
@@ -65,7 +66,13 @@ const users = computed(() => {
                 </div>
             </div>
 
-            <button v-if="selectedUsers.length > 0" class="share-post__share" @click="$emit('close')">Envoyer</button>
+            <button
+                v-if="selectedUsers.length > 0"
+                class="share-post__share"
+                @click="$emit('close')"
+            >
+                Envoyer
+            </button>
         </div>
     </PopUp>
 </template>

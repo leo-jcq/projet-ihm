@@ -1,26 +1,22 @@
 <script setup lang="ts">
+import type { User } from '@/types/model';
 import { User4Outlined } from '@lineiconshq/free-icons';
-import { Lineicons, type IconData } from '@lineiconshq/vue-lineicons';
-import { ref } from 'vue';
+import { Lineicons } from '@lineiconshq/vue-lineicons';
 
-withDefaults(defineProps<{ text?: string; followedText?: string; icon?: IconData }>(), {
-    text: 'Suivre',
-    followedText: 'Suivi',
-    icon: User4Outlined
-});
+defineProps<{ user: User }>();
 
-const followed = ref(false);
+defineEmits<{ follow: [] }>();
 </script>
 
 <template>
     <button
         class="follow-btn"
-        :class="{ 'follow-btn--followed': followed }"
-        :title="followed ? `Ne plus ${text.toLowerCase()}` : text"
-        @click="followed = !followed"
+        :class="{ 'follow-btn--followed': user.followed }"
+        :title="user.followed ? 'Ne plus suivre' : 'Suivre'"
+        @click="$emit('follow')"
     >
-        <Lineicons :icon="icon" class="follow-btn__icon" />
-        {{ followed ? followedText : text }}
+        <Lineicons :icon="User4Outlined" class="follow-btn__icon" />
+        {{ user.followed ? 'Suivi' : 'Suivre' }}
     </button>
 </template>
 
@@ -30,14 +26,14 @@ const followed = ref(false);
 @use '@/scss/variables' as v;
 
 .follow-btn {
-    height: 2rem;
+    height: 2em;
 
     @extend %flex-center;
-    gap: 0.5rem;
+    gap: 0.5em;
 
-    font-size: 0.75rem;
+    font-size: 0.75em;
 
-    padding: 0 0.75rem;
+    padding: 0 0.75em;
 
     cursor: pointer;
 

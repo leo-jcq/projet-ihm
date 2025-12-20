@@ -3,6 +3,7 @@ import GymBox from '@/components/Gyms/GymBox.vue';
 import FeedPost from '@/components/Posts/FeedPost.vue';
 import PostForm from '@/components/Posts/PostForm.vue';
 import GradeBox from '@/components/Routes/GradeBox.vue';
+import FollowBtn from '@/components/Users/FollowBtn.vue';
 import UserEditForm from '@/components/Users/UserEditForm.vue';
 import useOpen from '@/composables/useOpen';
 import usePageTitle from '@/composables/usePageTitle';
@@ -11,7 +12,7 @@ import router from '@/router';
 import dataStore from '@/stores/data';
 import userStore from '@/stores/user';
 import { getRandomInt } from '@/utils/random';
-import { computed, ref } from 'vue';
+import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
@@ -40,13 +41,12 @@ const posts = computed(() => dataStore.posts.filter((p) => p.authorId === user.v
 const postsCount = computed(() => posts.value.length);
 
 const nbFollowers = computed(() => getRandomInt(0, 150));
-const nbFollowing = computed(() => getRandomInt(0, 150));
+const nbFollowing = computed(() =>
+    isLoggedUser.value ? dataStore.users.filter((u) => u.followed).length : getRandomInt(0, 150)
+);
 
 // Edit
 const { isOpen, open, close } = useOpen();
-
-// Follow
-const followed = ref(Math.random() > 0.5);
 </script>
 
 <template>
@@ -99,20 +99,18 @@ const followed = ref(Math.random() > 0.5);
 
                 <button
                     v-if="isLoggedUser"
-                    class="user__main__btn user__main__btn--edit"
+                    class="user__main__edit"
                     title="Modifier le profil"
                     @click="open"
                 >
                     Modifier le profil
                 </button>
-                <button
+                <FollowBtn
                     v-else
-                    class="user__main__btn user__main__btn--follow"
-                    :title="followed ? 'Ne plus suivre' : 'Suivre'"
-                    @click="followed = !followed"
-                >
-                    {{ followed ? 'Suivi(e)' : 'Suivre' }}
-                </button>
+                    class="user__main__follow"
+                    :user="user"
+                    @follow="user.followed = !user.followed"
+                />
 
                 <UserEditForm v-if="isOpen" @close="close" />
             </div>
@@ -205,7 +203,7 @@ const followed = ref(Math.random() > 0.5);
             }
         }
 
-        &__btn {
+        &__edit {
             width: fit-content;
 
             @extend %default-btn;
@@ -213,6 +211,10 @@ const followed = ref(Math.random() > 0.5);
             border-radius: 9999px;
 
             padding: 0.75rem 1rem;
+        }
+
+        &__follow {
+            font-size: 1rem;
         }
     }
 

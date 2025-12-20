@@ -425,6 +425,13 @@ export interface User {
      */
     id: number;
     /**
+     * Indique si l'on suit l'utilisateur ou non.
+     *
+     * @type {boolean}
+     * @memberof User
+     */
+    followed: boolean;
+    /**
      * Nom complet de l'utilisateur.
      *
      * @type {string}

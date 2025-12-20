@@ -31,7 +31,7 @@ const users = computed(() => {
                     <UserModal :user="user" link />
                     <p class="search-users-tab__list__user__description">{{ user.description }}</p>
                 </div>
-                <FollowBtn />
+                <FollowBtn :user="user" @follow="user.followed = !user.followed" />
             </li>
             <li v-if="users.length === 0" class="search-users-tab__list__empty">
                 Aucun utilisateur trouvé.

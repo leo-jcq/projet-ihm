@@ -5,15 +5,13 @@ import UserModal from '@/components/Users/UserModal.vue';
 import dataStore from '@/stores/data';
 import {
     BarChart4Outlined,
-    Bolt2Outlined,
     CheckOutlined,
-    HeartStroke,
-    MapPin5Outlined
+    MapPin5Outlined,
+    User4Outlined
 } from '@lineiconshq/free-icons';
 import Lineicons from '@lineiconshq/vue-lineicons';
-import { computed } from 'vue';
 
-const suggestions = computed(() => dataStore.users.slice(0, 3));
+const suggestions = dataStore.users.filter((u) => !u.followed).slice(0, 3);
 </script>
 
 <template>
@@ -24,8 +22,8 @@ const suggestions = computed(() => dataStore.users.slice(0, 3));
     <div class="home__side">
         <div class="home__side__box">
             <h3 class="home__side__box__title">
-                <Lineicons :icon="Bolt2Outlined" class="home__side__box__title__icon" />
-                Suggestions de match
+                <Lineicons :icon="User4Outlined" class="home__side__box__title__icon" />
+                Suggestions
             </h3>
 
             <ul class="home__suggestions__list">
@@ -36,7 +34,7 @@ const suggestions = computed(() => dataStore.users.slice(0, 3));
                 >
                     <UserModal :user="user" link />
 
-                    <FollowBtn text="Liker" followed-text="Liké" :icon="HeartStroke" />
+                    <FollowBtn :user="user" @follow="user.followed = !user.followed" />
                 </li>
             </ul>
         </div>

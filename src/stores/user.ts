@@ -5,6 +5,7 @@ import dataStore from './data';
 const userStore = reactive<{ user: User }>({
     user: {
         id: -1,
+        followed: true,
         name: 'John Doe',
         pseudo: 'john-doe',
         age: 20,
