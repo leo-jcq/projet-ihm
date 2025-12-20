@@ -4,7 +4,7 @@ import { type SendedMessage } from '@/constants/defaultMessages';
 import messageStore from '@/stores/messages';
 import userStore from '@/stores/user';
 import type { User } from '@/types/model';
-import { computed, ref } from 'vue';
+import { computed, ref, Teleport } from 'vue';
 import ContentActions from '../ContentActions.vue';
 import PopUp from '../PopUp.vue';
 
@@ -70,9 +70,11 @@ const { isOpen, open, close } = useOpen();
         />
     </div>
 
-    <PopUp v-if="isOpen" title="" @close="close">
-        <img :src="message.image" alt="Photo" class="chat-message__image-big" />
-    </PopUp>
+    <Teleport to="body">
+        <PopUp v-if="isOpen" title="" @close="close">
+            <img :src="message.image" alt="Photo" class="chat-message__image-big" />
+        </PopUp>
+    </Teleport>
 </template>
 
 <style lang="scss">

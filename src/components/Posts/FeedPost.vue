@@ -12,6 +12,7 @@ import {
     HeartStroke,
     MapMarker5Outlined,
     Mountains2Outlined,
+    Share1Outlined,
     XmarkOutlined
 } from '@lineiconshq/free-icons';
 import Lineicons from '@lineiconshq/vue-lineicons';
@@ -22,6 +23,7 @@ import GradeBox from '../Routes/GradeBox.vue';
 import UserModal from '../Users/UserModal.vue';
 import Comment from './Comment.vue';
 import PostTypeBox from './PostTypeBox.vue';
+import SharePost from './SharePost.vue';
 
 const props = defineProps<{ post: Post }>();
 
@@ -45,7 +47,11 @@ function deletePost(postId: number) {
 
 // Comments
 const postRef = useTemplateRef('post');
-const { isOpen, close, toggle } = useOpen(postRef);
+const {
+    isOpen: isCommentsOpen,
+    close: closeComments,
+    toggle: toggleOpenComments
+} = useOpen(postRef);
 const newComment = ref('');
 
 const comments = computed(() =>
@@ -74,6 +80,9 @@ function deleteComment(commentId: number) {
         }
     }
 }
+
+// Share
+const { isOpen: isShareOpen, close: closeShare, open: openShare } = useOpen();
 </script>
 
 <template>
@@ -135,7 +144,7 @@ function deleteComment(commentId: number) {
                 <button
                     class="feed-post__actions__btn feed-post__actions__btn--comment"
                     title="Commentaires"
-                    @click="toggle"
+                    @click="toggleOpenComments"
                 >
                     <Lineicons :icon="Comment1Outlined" class="feed-post__actions__btn__icon" />
                     {{ comments.length }}
@@ -147,14 +156,21 @@ function deleteComment(commentId: number) {
                 content-name="post"
                 :mouse-over-parent="isMouseOver"
                 @delete="deletePost"
-            />
+            >
+                <button class="feed-post__share" title="Partager" @click="openShare">
+                    <Lineicons :icon="Share1Outlined" class="share-post__open__icon" />
+                    Partager
+                </button>
+            </ContentActions>
         </div>
 
+        <SharePost v-if="isShareOpen" @close="closeShare" />
+
         <Transition name="feed-post__comments">
-            <div v-if="isOpen" class="feed-post__comments">
+            <div v-if="isCommentsOpen" class="feed-post__comments">
                 <h3 class="feed-post__comments__title">
                     Commentaires
-                    <GlassBtn title="Fermer" @click="close">
+                    <GlassBtn title="Fermer" @click="closeComments">
                         <Lineicons :icon="XmarkOutlined" />
                     </GlassBtn>
                 </h3>
@@ -323,6 +339,30 @@ function deleteComment(commentId: number) {
             &--comment:hover {
                 color: v.$blue;
             }
+        }
+    }
+
+    &__share {
+        width: 100%;
+
+        display: flex;
+        gap: 0.754rem;
+        align-items: center;
+
+        padding: 0.75rem 1rem;
+
+        border: none;
+
+        background-color: transparent;
+
+        cursor: pointer;
+
+        color: v.$grayish-black;
+
+        transition: background-color 0.2s ease;
+
+        &:hover {
+            background-color: v.$very-light-gray;
         }
     }
 

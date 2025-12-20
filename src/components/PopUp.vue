@@ -1,30 +1,37 @@
 <script setup lang="ts">
 import { XmarkOutlined } from '@lineiconshq/free-icons';
 import Lineicons from '@lineiconshq/vue-lineicons';
+import { onMounted, onUnmounted } from 'vue';
 import GlassBtn from './GlassBtn.vue';
 
 defineProps<{ title: string }>();
 
 defineEmits<{ close: [] }>();
+
+onMounted(() => {
+    document.body.style.overflow = 'hidden';
+});
+
+onUnmounted(() => {
+    document.body.style.overflow = '';
+});
 </script>
 
 <template>
-    <Teleport to="body">
-        <div class="pop-up" @click="$emit('close')">
-            <div class="pop-up__content" @click.stop>
-                <div class="pop-up__content__top">
-                    <h2 class="pop-up__title">{{ title }}</h2>
-                    <GlassBtn class="pop-up__close" @click="$emit('close')">
-                        <Lineicons :icon="XmarkOutlined" class="pop-up__close__icon" />
-                    </GlassBtn>
-                </div>
+    <div class="pop-up" @click="$emit('close')">
+        <div class="pop-up__content" @click.stop>
+            <div class="pop-up__content__top">
+                <h2 class="pop-up__title">{{ title }}</h2>
+                <GlassBtn class="pop-up__close" @click="$emit('close')">
+                    <Lineicons :icon="XmarkOutlined" class="pop-up__close__icon" />
+                </GlassBtn>
+            </div>
 
-                <div class="pop-up__content__main">
-                    <slot />
-                </div>
+            <div class="pop-up__content__main">
+                <slot />
             </div>
         </div>
-    </Teleport>
+    </div>
 </template>
 
 <style lang="scss">

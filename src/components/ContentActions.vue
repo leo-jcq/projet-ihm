@@ -15,8 +15,8 @@ withDefaults(
         mouseOverParent?: boolean;
     }>(),
     {
-        mouseOverParent: true,
-        contentPronoun: 'le'
+        contentPronoun: 'le',
+        mouseOverParent: true
     }
 );
 
@@ -38,6 +38,7 @@ const { isOpen, toggle, close } = useOpen(contentRef);
 
         <Transition name="content-actions__actions">
             <div v-if="isOpen" class="content-actions__actions">
+                <slot @close="close" />
                 <button
                     class="content-actions__action content-actions__action--report"
                     :title="`Signaler ${contentPronoun} ${contentName}`"
