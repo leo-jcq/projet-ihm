@@ -196,6 +196,9 @@ const routesTypes = ref<'both' | TRouteType>('both');
     &__filters {
         height: fit-content;
 
+        position: sticky;
+        top: calc(v.$header-height + v.$top-gap);
+
         @extend %default-box;
 
         padding: 1.375rem 1.5rem;
