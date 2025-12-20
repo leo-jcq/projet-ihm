@@ -17,7 +17,7 @@ const nbUnreadMessages = computed(
 
 <template>
     <div class="nav-bar">
-        <RouterLink :to="`/user/${userStore.user.id}`" class="nav-bar__user">
+        <RouterLink to="/me" class="nav-bar__user">
             <img
                 class="nav-bar__user__avatar"
                 :src="userStore.user.avatar"
@@ -43,7 +43,9 @@ const nbUnreadMessages = computed(
             <RouterLink to="/messages" class="nav-bar__nav__link">
                 <Lineicons :icon="Envelope1Outlined" />
                 Messages
-                <span v-if="nbUnreadMessages > 0" class="nav-bar__nav__link__indicator">{{ nbUnreadMessages }}</span>
+                <span v-if="nbUnreadMessages > 0" class="nav-bar__nav__link__indicator">
+                    {{ nbUnreadMessages }}
+                </span>
                 <div class="nav-bar__nav__link__bg" />
             </RouterLink>
 
@@ -86,7 +88,7 @@ const nbUnreadMessages = computed(
 
             border: 2px solid v.$accent;
 
-        object-fit: cover;
+            object-fit: cover;
 
             margin-bottom: 0.75rem;
         }

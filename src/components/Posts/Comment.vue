@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import dataStore from '@/stores/data';
+import userStore from '@/stores/user';
 import type { Comment } from '@/types/model';
 import { HeartSolid, HeartStroke } from '@lineiconshq/free-icons';
 import Lineicons from '@lineiconshq/vue-lineicons';
@@ -21,7 +22,11 @@ const isMouseOver = ref(false);
 
 <template>
     <li class="comment" @mouseenter="isMouseOver = true" @mouseleave="isMouseOver = false">
-        <RouterLink v-if="user" :to="`/user/${user.id}`" class="comment__user">
+        <RouterLink
+            v-if="user"
+            :to="user.id === userStore.user.id ? '/me' : `/user/${user.id}`"
+            class="comment__user"
+        >
             <img :src="user.avatar" :alt="user.pseudo" class="comment__user__avatar" />
 
             <div class="comment__user__text">
@@ -98,6 +103,10 @@ const isMouseOver = ref(false);
                 font-size: 0.75rem;
                 color: v.$dark-gray;
             }
+        }
+
+        &:hover &__text__name {
+            text-decoration: underline;
         }
     }
 
