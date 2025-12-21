@@ -30,3 +30,9 @@ npm start
 L'application sera accessible à l'adresse [http://localhost:4173/projet-ihm/](http://localhost:4173/projet-ihm/) par défaut.
 
 > Les changements effectuées dans le code ne seront pas pris en compte car cela lance un serveur de production
+
+## Documents
+
+Les documents sont présents dans le dossier [docs](./docs).
+
+Pour ouvrir le modèle d'interface, rendez-vous sur figma et importez le fichier [Modèle d'interface.fig](./docs/Modèle%20d'interface.fig), plus d'informations sur [https://help.figma.com/hc/fr/articles/360041003114-Importez-des-fichiers-dans-le-navigateur-de-fichiers](https://help.figma.com/hc/fr/articles/360041003114-Importez-des-fichiers-dans-le-navigateur-de-fichiers).
