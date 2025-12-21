@@ -90,7 +90,7 @@ const currentIndex = ref(0);
 
         @include m.transition-group(0.3s, ease, color, background-color, opacity);
 
-        &:hover:not(:disabled) {
+        @include m.hover() {
             background-color: v.$light-orange;
 
             color: v.$orange;

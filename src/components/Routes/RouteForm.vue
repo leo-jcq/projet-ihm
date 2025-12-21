@@ -93,10 +93,8 @@ function handleSubmit() {
     }
 
     // Check length
-    if (!newRoute.value.length) {
+    if (typeof newRoute.value.length !== 'number') {
         errors.value.length = 'La longueur de la voie est obligatoire.';
-    } else if (typeof newRoute.value.length !== 'number') {
-        errors.value.length = 'La longueur de la voie doit être un nombre.';
     } else if (newRoute.value.length <= 0) {
         errors.value.length = 'La longueur de la voie ne peut pas être inférieur ou égale à 0.';
     } else {
@@ -190,7 +188,7 @@ function handleSubmit() {
                 v-slot="{ item }"
                 :options="Object.values(ClimbStyle)"
                 :selected="newRoute.styles ?? []"
-                placeholder="Sélectionnez un type de voie"
+                placeholder="Sélectionnez un stye de grimpe"
                 options-before
                 @select="handleAddStyle"
                 @remove="handleRemoveStyle"

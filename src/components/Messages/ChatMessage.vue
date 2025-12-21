@@ -4,7 +4,7 @@ import { type SendedMessage } from '@/constants/defaultMessages';
 import messageStore from '@/stores/messages';
 import userStore from '@/stores/user';
 import type { User } from '@/types/model';
-import { computed, ref } from 'vue';
+import { computed, ref, Teleport } from 'vue';
 import ContentActions from '../ContentActions.vue';
 import PopUp from '../PopUp.vue';
 
@@ -117,8 +117,6 @@ const { isOpen, open, close } = useOpen();
         padding: 0.75rem;
 
         border-radius: 0.5rem;
-
-        word-break: break-all;
     }
 
     &__image {
@@ -146,7 +144,7 @@ const { isOpen, open, close } = useOpen();
         &__text {
             color: v.$white;
 
-            background-color: v.$accent;
+            background-image: v.$main-gradient;
         }
     }
 

@@ -128,7 +128,7 @@ function handleSendImage(e: Event) {
 
             background-image: v.$main-gradient;
 
-            &:hover {
+            @include m.hover() {
                 background-image: v.$main-gradient-lighten;
             }
         }
@@ -136,7 +136,7 @@ function handleSendImage(e: Event) {
         &--image {
             transition: background-color 0.3s ease;
 
-            &:hover {
+            @include m.hover() {
                 background-color: v.$grayish-white;
             }
         }

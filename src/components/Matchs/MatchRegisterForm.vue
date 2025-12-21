@@ -5,7 +5,12 @@ defineEmits<{ accept: []; reject: [] }>();
 <template>
     <div class="match-register-form">
         <h2 class="match-register-form__title">S'inscrire aux "matchs"</h2>
-        <p class="match-register-form__text">Inscrivez-vous pour rencontrer d'autres grimpeurs.</p>
+        <p class="match-register-form__text">
+            Inscrivez-vous pour rencontrer d'autres grimpeurs.<br />
+            Pensez à bien remplir les informations de votre profil poour maximiser vos chances.
+            <br />
+            Vous pouvez vous désinscrire à tout moment dans les paramètres.<br />
+        </p>
 
         <div class="match-register-form__actions">
             <button
@@ -25,9 +30,9 @@ defineEmits<{ accept: []; reject: [] }>();
 </template>
 
 <style lang="scss">
+@use '@/scss/mixins' as m;
 @use '@/scss/placeholders';
 @use '@/scss/variables' as v;
-@use '@/scss/mixins' as m;
 
 .match-register-form {
     @extend %default-box;
@@ -50,7 +55,7 @@ defineEmits<{ accept: []; reject: [] }>();
 
     &__text {
         line-height: 1.5;
-        color: v.$dark-gray;
+        color: v.$grayish-black;
 
         margin-bottom: 1.5rem;
     }
@@ -80,7 +85,7 @@ defineEmits<{ accept: []; reject: [] }>();
 
             border: 1px solid v.$gray;
 
-            &:hover {
+            @include m.hover() {
                 background-color: v.$very-light-gray;
             }
 
@@ -94,7 +99,7 @@ defineEmits<{ accept: []; reject: [] }>();
 
             color: v.$white;
 
-            &:hover {
+            @include m.hover() {
                 background: v.$main-gradient-lighten;
             }
 

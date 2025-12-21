@@ -3,7 +3,7 @@ import useOpen from '@/composables/useOpen';
 import PostType, { type TPostType } from '@/enums/PostType';
 import dataStore from '@/stores/data';
 import userStore from '@/stores/user';
-import type { Errors, ImageFile } from '@/types/app';
+import type { Errors } from '@/types/app';
 import type { Post, Route } from '@/types/model';
 import { generateNumberId } from '@/utils/generateId';
 import { PlusOutlined } from '@lineiconshq/free-icons';
@@ -17,11 +17,12 @@ import RouteForm from '../Routes/RouteForm.vue';
 import SearchSelect from '../SearchSelect.vue';
 import PostTypeBtn from './PostTypeBtn.vue';
 
+withDefaults(defineProps<{ inHeader?: boolean }>(), { inHeader: false });
+
 const { isOpen, open, close } = useOpen();
 const { isOpen: isRouteFormOpen, open: routeFormOpen, close: routeFormClose } = useOpen();
 
 const newPost = ref<Partial<Post>>({ type: PostType.Success });
-const image = ref<ImageFile | null>(null);
 const selectedRoute = ref<Route | null>(null);
 
 const errors = ref<Errors<Post>>({});
@@ -31,7 +32,6 @@ const errors = ref<Errors<Post>>({});
  */
 function fullClose() {
     newPost.value = { type: PostType.Success };
-    image.value = null;
     selectedRoute.value = null;
     errors.value = {};
     close();
@@ -64,19 +64,19 @@ function selectRoute(route: Route) {
 /**
  * Met à jour l'image.
  *
- * @param newImages - La liste des nouvelles images.
+ * @param {string} newImage - La nouvelle image.
  */
-function addImage(newImages: ImageFile[]) {
-    image.value = newImages[0] ?? null;
+function addImage(newImage: string) {
+    newPost.value.image = newImage;
 }
 
 /**
  * Supprime l'image.
  */
 function removeImage() {
-    if (image.value) {
-        URL.revokeObjectURL(image.value.preview);
-        image.value = null;
+    if (newPost.value.image) {
+        URL.revokeObjectURL(newPost.value.image);
+        newPost.value.image = undefined;
     }
 }
 
@@ -122,7 +122,7 @@ function handleSubmit() {
         authorId: userStore.user.id,
         type: newPost.value.type!,
         content: newPost.value.content?.trim() ?? '',
-        image: image.value?.preview,
+        image: newPost.value.image,
         routeId: newPost.value.routeId,
         tryCount: newPost.value.tryCount,
         likes: 0,
@@ -134,9 +134,9 @@ function handleSubmit() {
 </script>
 
 <template>
-    <button class="post-form__open" @click="open">
+    <button class="post-form__open" :class="{ 'post-form__open--header': inHeader }" @click="open">
         <Lineicons :icon="PlusOutlined" />
-        Nouveau post
+        <span class="post-form__open__text">Nouveau post</span>
     </button>
 
     <Form
@@ -150,7 +150,7 @@ function handleSubmit() {
         <FormField label="Type de post" :error="errors.type">
             <div class="post-form__group">
                 <PostTypeBtn
-                    v-for="postType in Object.values(PostType)"
+                    v-for="postType in PostType"
                     :key="postType"
                     :type="postType"
                     :active="postType === newPost.type"
@@ -198,12 +198,7 @@ function handleSubmit() {
 
         <!-- Image -->
         <FormField id="image" label="Image" :error="errors.image">
-            <ImageInput
-                id="image"
-                :images="image ? [image] as ImageFile[] : []"
-                @add="addImage"
-                @remove="removeImage"
-            />
+            <ImageInput id="image" :image="newPost.image" @add="addImage" @remove="removeImage" />
         </FormField>
 
         <!-- Description -->
@@ -222,6 +217,7 @@ function handleSubmit() {
 </template>
 
 <style lang="scss">
+@use "@/scss/breakpoints" as bp;
 @use '@/scss/mixins' as m;
 @use '@/scss/placeholders';
 @use '@/scss/variables' as v;
@@ -229,8 +225,20 @@ function handleSubmit() {
 .post-form {
     &__open {
         @extend %default-btn;
-        
+
         border-radius: 9999px;
+
+        &--header {
+            @media screen and (max-width: bp.$medium) {
+                padding: 0.5rem;
+            }
+        }
+
+        &--header &__text {
+            @media screen and (max-width: bp.$medium) {
+                display: none;
+            }
+        }
     }
 
     &__group {
@@ -262,7 +270,7 @@ function handleSubmit() {
 
         cursor: pointer;
 
-        &:hover {
+        @include m.hover() {
             text-decoration: underline;
         }
     }

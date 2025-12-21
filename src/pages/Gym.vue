@@ -33,11 +33,7 @@ usePageTitle(gym.value!.name);
                 <h2 class="gym__name">{{ gym.name }}</h2>
 
                 <div class="gym__route-types">
-                    <span
-                        v-for="type in gym.routeTypes"
-                        :key="type"
-                        class="gym__route-types__type"
-                    >
+                    <span v-for="type in gym.routeTypes" :key="type" class="gym__route-types__type">
                         {{ RouteTypeToString[type] }}
                     </span>
                     <span v-for="style in gym.styles" :key="style" class="gym__route-types__type">
@@ -49,6 +45,9 @@ usePageTitle(gym.value!.name);
             </div>
         </div>
 
+        <!-- Side mobile -->
+        <GymSide v-if="gym" :gym="gym" class="gym__side--mobile" />
+
         <!-- Images -->
         <h3 class="gym__sub-title">Dernières images</h3>
         <ImageCaroussel :images="gym.images" />
@@ -58,16 +57,25 @@ usePageTitle(gym.value!.name);
     </main>
 
     <!-- Side -->
-    <GymSide v-if="gym" :gym="gym" />
+    <GymSide v-if="gym" :gym="gym" class="gym__side--desktop" />
 </template>
 
 <style lang="scss">
+@use '@/scss/breakpoints' as bp;
 @use '@/scss/mixins' as m;
 @use '@/scss/placeholders';
 @use '@/scss/variables' as v;
 
 .gym {
-    grid-template-columns: 2/3;
+    grid-column: 2/3;
+
+    @media screen and (max-width: bp.$extra-large) {
+        grid-column: 1/2;
+    }
+
+    @media screen and (max-width: bp.$medium) {
+        grid-column: 1/3;
+    }
 
     &__top {
         @extend %default-box;
@@ -85,7 +93,7 @@ usePageTitle(gym.value!.name);
     }
 
     &__logo {
-        @include m.rounded(7rem);
+        @include m.rounded(6.25rem);
 
         border: 2px solid v.$accent;
 
@@ -130,6 +138,22 @@ usePageTitle(gym.value!.name);
         align-items: baseline;
 
         margin: 1.5rem 0 0.625rem;
+    }
+
+    &__side {
+        &--mobile {
+            margin-top: 1.5rem;
+
+            @media screen and (min-width: bp.$medium) {
+                display: none;
+            }
+        }
+
+        &--desktop {
+            @media screen and (max-width: bp.$medium) {
+                display: none;
+            }
+        }
     }
 }
 </style>

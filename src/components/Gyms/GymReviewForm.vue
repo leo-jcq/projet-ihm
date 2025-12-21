@@ -45,7 +45,7 @@ function handleSubmit() {
         <FormField label="Note">
             <div class="gym-review-form__group">
                 <button
-                    v-for="g in [1, 2, 3, 4, 5]"
+                    v-for="g in 5"
                     :key="g"
                     type="button"
                     class="gym-review-form__grade-btn"

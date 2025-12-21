@@ -55,7 +55,7 @@ const averageGrade = computed(() => {
         v-if="finalGym"
         :to="`/gym/${finalGym.id}`"
         class="gym-box"
-        :class="{ 'gym-box--link': link, 'gym-box--interractive': interactive }"
+        :class="{ 'gym-box--link': link, 'gym-box--interactive': interactive }"
     >
         <div class="gym-box__top">
             <div class="gym-box__top__left">
@@ -77,7 +77,7 @@ const averageGrade = computed(() => {
 </template>
 
 <style lang="scss">
-    @use "@/scss/mixins" as m;
+@use '@/scss/mixins' as m;
 @use '@/scss/placeholders';
 @use '@/scss/variables' as v;
 
@@ -87,7 +87,7 @@ const averageGrade = computed(() => {
 
     display: block;
 
-    padding: 0.375rem 0.5rem;
+    padding: 0.375rem 0.75rem;
 
     @extend %default-shadow;
 
@@ -95,6 +95,18 @@ const averageGrade = computed(() => {
 
     text-decoration: none;
     color: v.$black;
+
+    &--interactive {
+        cursor: pointer;
+
+        @include m.hover() {
+            border-color: v.$accent;
+
+            box-shadow: 0 1px 3px rgba(v.$black, 10%), 0 1px 2px -1px rgba(v.$black, 10%);
+
+            transform: translateY(-1px);
+        }
+    }
 
     &__top {
         @extend %flex-between;
@@ -107,11 +119,11 @@ const averageGrade = computed(() => {
     }
 
     &__logo {
-        @include m.rounded(3.5rem);
+        @include m.rounded(2.5rem);
 
         padding: 0.25rem;
 
-        object-fit: contain; 
+        object-fit: contain;
     }
 
     &--link:hover &__name {

@@ -51,9 +51,9 @@ const message = ref('');
 </template>
 
 <style lang="scss">
-@use '@/scss/variables' as v;
 @use '@/scss/mixins' as m;
 @use '@/scss/placeholders';
+@use '@/scss/variables' as v;
 
 .send-message-match {
     width: 400px;
@@ -172,7 +172,7 @@ const message = ref('');
 
             transition: background-color 0.3s ease;
 
-            &:hover {
+            @include m.hover() {
                 background-color: v.$light-gray;
             }
         }
@@ -181,7 +181,7 @@ const message = ref('');
             background: v.$main-gradient;
             color: v.$white;
 
-            &:hover {
+            @include m.hover() {
                 background: v.$main-gradient-lighten;
             }
         }

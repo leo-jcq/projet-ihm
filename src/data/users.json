@@ -1,6 +1,7 @@
 [
   {
     "id": 1,
+    "followed": true,
     "name": "Sophie Dubois",
     "age": 28,
     "pseudo": "sofi_climb",
@@ -13,6 +14,7 @@
   },
   {
     "id": 2,
+    "followed": false,
     "name": "Thomas Martin",
     "age": 34,
     "pseudo": "tommy_vertigo",
@@ -25,6 +27,7 @@
   },
   {
     "id": 3,
+    "followed": true,
     "name": "Léa Petit",
     "age": 23,
     "pseudo": "lea_on_rock",
@@ -37,6 +40,7 @@
   },
   {
     "id": 4,
+    "followed": false,
     "name": "Alexandre Rousseau",
     "age": 31,
     "pseudo": "alex_grip",
@@ -49,6 +53,7 @@
   },
   {
     "id": 5,
+    "followed": true,
     "name": "Camille Bernard",
     "age": 26,
     "pseudo": "cami_climbs",
@@ -61,6 +66,7 @@
   },
   {
     "id": 6,
+    "followed": false,
     "name": "Julien Moreau",
     "age": 29,
     "pseudo": "ju_climber",
@@ -73,6 +79,7 @@
   },
   {
     "id": 7,
+    "followed": true,
     "name": "Emma Leroy",
     "age": 25,
     "pseudo": "emma_sends",
@@ -85,6 +92,7 @@
   },
   {
     "id": 8,
+    "followed": false,
     "name": "Lucas Fournier",
     "age": 36,
     "pseudo": "luc_on_wall",
@@ -97,6 +105,7 @@
   },
   {
     "id": 9,
+    "followed": true,
     "name": "Chloé Girard",
     "age": 27,
     "pseudo": "chloe_boulders",
@@ -109,6 +118,7 @@
   },
   {
     "id": 10,
+    "followed": false,
     "name": "Nicolas Roux",
     "age": 32,
     "pseudo": "nico_crimp",
@@ -121,6 +131,7 @@
   },
   {
     "id": 11,
+    "followed": true,
     "name": "Marie Blanc",
     "age": 24,
     "pseudo": "mary_climber",
@@ -133,6 +144,7 @@
   },
   {
     "id": 12,
+    "followed": false,
     "name": "Pierre Durand",
     "age": 30,
     "pseudo": "pierre_escalade",
@@ -145,6 +157,7 @@
   },
   {
     "id": 13,
+    "followed": true,
     "name": "Sarah Cohen",
     "age": 28,
     "pseudo": "sarah_rocks",
@@ -157,6 +170,7 @@
   },
   {
     "id": 14,
+    "followed": false,
     "name": "Maxime Mercier",
     "age": 35,
     "pseudo": "max_power",
@@ -169,6 +183,7 @@
   },
   {
     "id": 15,
+    "followed": true,
     "name": "Laura Fontaine",
     "age": 26,
     "pseudo": "lau_climbs",

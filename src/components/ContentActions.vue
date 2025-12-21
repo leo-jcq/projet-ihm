@@ -15,8 +15,8 @@ withDefaults(
         mouseOverParent?: boolean;
     }>(),
     {
-        mouseOverParent: true,
-        contentPronoun: 'le'
+        contentPronoun: 'le',
+        mouseOverParent: true
     }
 );
 
@@ -38,6 +38,7 @@ const { isOpen, toggle, close } = useOpen(contentRef);
 
         <Transition name="content-actions__actions">
             <div v-if="isOpen" class="content-actions__actions">
+                <slot @close="close" />
                 <button
                     class="content-actions__action content-actions__action--report"
                     :title="`Signaler ${contentPronoun} ${contentName}`"
@@ -61,6 +62,7 @@ const { isOpen, toggle, close } = useOpen(contentRef);
 </template>
 
 <style lang="scss">
+@use "@/scss/mixins" as m;
 @use '@/scss/placeholders';
 @use '@/scss/variables' as v;
 
@@ -135,18 +137,16 @@ const { isOpen, toggle, close } = useOpen(contentRef);
         transition: background-color 0.2s ease;
 
         &--report {
-            &:hover {
+            @include m.hover() {
                 background-color: v.$very-light-gray;
             }
         }
 
         &--delete {
-            &:hover {
+            @include m.hover() {
                 color: v.$red;
 
-                &:hover {
-                    background-color: rgba(v.$red, 0.05);
-                }
+                background-color: rgba(v.$red, 0.05);
             }
         }
     }

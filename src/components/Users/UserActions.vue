@@ -108,7 +108,7 @@ const { isOpen, toggle, close } = useOpen(userActionsRef);
 
         padding: 0.25rem;
 
-        &:hover {
+        @include m.hover() {
             background-color: v.$dark-gray;
         }
     }
@@ -136,7 +136,7 @@ const { isOpen, toggle, close } = useOpen(userActionsRef);
 
         transition: background-color 0.2s ease;
 
-        &:hover {
+        @include m.hover() {
             background-color: v.$very-light-gray;
         }
 
@@ -149,7 +149,7 @@ const { isOpen, toggle, close } = useOpen(userActionsRef);
         &--danger {
             color: v.$red;
 
-            &:hover {
+            @include m.hover() {
                 background-color: rgba(v.$red, 0.05);
             }
         }

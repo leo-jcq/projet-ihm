@@ -26,6 +26,7 @@ defineEmits<{
 </template>
 
 <style lang="scss">
+@use '@/scss/breakpoints' as bp;
 @use '@/scss/mixins' as m;
 @use '@/scss/placeholders';
 @use '@/scss/variables' as v;
@@ -50,7 +51,7 @@ defineEmits<{
 
         @include m.transition-group(0.3s, ease, color, background-color, scale);
 
-        &:hover {
+        @include m.hover() {
             scale: 1.1;
 
             color: v.$white;
@@ -58,6 +59,10 @@ defineEmits<{
             &::before {
                 opacity: 1;
             }
+        }
+
+        @media screen and (max-width: bp.$medium) {
+            @include m.size(3rem);
         }
 
         &:active {
@@ -90,6 +95,12 @@ defineEmits<{
             color: v.$blue;
 
             background-color: v.$light-blue;
+        }
+
+        &__icon {
+            @media screen and (max-width: bp.$medium) {
+                @include m.size(2rem);
+            }
         }
     }
 }

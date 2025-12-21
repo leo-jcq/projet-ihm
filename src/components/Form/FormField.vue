@@ -24,7 +24,7 @@ const model = defineModel<string | number | undefined>();
                 :id="id"
                 v-model="model"
                 :="$attrs"
-                :type="type"
+                :type="type ?? 'text'"
                 class="form-field__input"
             />
         </slot>
@@ -80,7 +80,7 @@ const model = defineModel<string | number | undefined>();
     &__error {
         font-size: 0.875rem;
         font-weight: 300;
-        color: v.$accent;
+        color: v.$red;
     }
 }
 </style>

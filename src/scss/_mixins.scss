@@ -19,3 +19,11 @@
     transition-duration: $duration;
     transition-timing-function: $timing-function;
 }
+
+@mixin hover() {
+    @media (pointer: fine) {
+        &:not([disabled]):hover {
+            @content;
+        }
+    }
+}

@@ -7,13 +7,20 @@
 </template>
 
 <style lang="scss">
+@use '@/scss/breakpoints' as bp;
 @use '@/scss/mixins' as m;
 @use '@/scss/variables' as v;
 
 .not-found {
+    grid-column: 2/3;
+
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media screen and (max-width: bp.$extra-large) {
+        grid-column: 1/3;
+    }
 
     &__title {
         font-size: 2.5rem;
@@ -41,7 +48,7 @@
 
         border-radius: 9999px;
 
-        &:hover {
+        @include m.hover() {
             background-color: v.$main-gradient-lighten;
         }
     }

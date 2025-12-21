@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import RouteType from '@/enums/RouteType';
 import dataStore from '@/stores/data';
+import userStore from '@/stores/user';
 import type { User } from '@/types/model';
 import { computed } from 'vue';
 import { RouterLink } from 'vue-router';
@@ -26,8 +27,9 @@ const finalUser = computed(() =>
     <component
         :is="link ? RouterLink : 'div'"
         v-if="finalUser"
-        :to="`/user/${finalUser.id}`"
+        :to="link ? (finalUser.id === userStore.user.id ? '/me' : `/user/${finalUser.id}`) : undefined"
         class="user-modal"
+        :class="{ 'user-modal--link': link }"
     >
         <img :src="finalUser.avatar" :alt="finalUser.pseudo" class="user-modal__avatar" />
 
@@ -39,7 +41,7 @@ const finalUser = computed(() =>
         </div>
 
         <GradeBox
-            v-if="displayLevel"
+            v-if="displayLevel && finalUser.level"
             :grade="finalUser.level"
             :route-type="RouteType.Route"
             class="user-modal__level"
@@ -75,6 +77,10 @@ const finalUser = computed(() =>
             font-weight: 300;
             color: v.$very-dark-gray;
         }
+    }
+
+    &--link:hover &__text__name {
+        text-decoration: underline;
     }
 
     &__level {

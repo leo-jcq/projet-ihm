@@ -1,10 +1,11 @@
 <template>
-    <button class="glass-btn">
+    <button type="button" class="glass-btn">
         <slot />
     </button>
 </template>
 
 <style lang="scss">
+@use '@/scss/mixins' as m;
 @use '@/scss/placeholders';
 @use '@/scss/variables' as v;
 
@@ -26,7 +27,7 @@
 
     transition: background-color 0.3s ease;
 
-    &:hover {
+    @include m.hover() {
         background-color: v.$very-light-gray;
     }
 }

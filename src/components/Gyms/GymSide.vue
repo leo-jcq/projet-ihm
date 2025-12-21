@@ -77,7 +77,7 @@ const gymIsOpen = computed(() => {
 
             <ul class="gym-side__timetable">
                 <li
-                    v-for="weekDay in Object.values(WeekDay)"
+                    v-for="weekDay in WeekDay"
                     :key="weekDay"
                     class="gym-side__timetable__day"
                     :class="{ 'gym-side__timetable__day--today': weekDay === today }"
@@ -116,13 +116,14 @@ const gymIsOpen = computed(() => {
 </template>
 
 <style lang="scss">
+@use "@/scss/mixins" as m;
 @use '@/scss/placeholders';
 @use '@/scss/variables' as v;
 
 .gym-side {
     height: fit-content;
 
-    grid-template-columns: 3/4;
+    grid-column: 3/4;
 
     padding: 1.5rem;
 
@@ -186,7 +187,7 @@ const gymIsOpen = computed(() => {
 
         text-decoration: none;
 
-        &:hover {
+        @include m.hover() {
             text-decoration: underline;
         }
     }

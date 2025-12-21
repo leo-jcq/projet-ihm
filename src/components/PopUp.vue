@@ -1,11 +1,20 @@
 <script setup lang="ts">
 import { XmarkOutlined } from '@lineiconshq/free-icons';
 import Lineicons from '@lineiconshq/vue-lineicons';
+import { onMounted, onUnmounted } from 'vue';
 import GlassBtn from './GlassBtn.vue';
 
 defineProps<{ title: string }>();
 
 defineEmits<{ close: [] }>();
+
+onMounted(() => {
+    document.body.style.overflow = 'hidden';
+});
+
+onUnmounted(() => {
+    document.body.style.overflow = '';
+});
 </script>
 
 <template>
@@ -26,6 +35,7 @@ defineEmits<{ close: [] }>();
 </template>
 
 <style lang="scss">
+@use '@/scss/breakpoints' as bp;
 @use '@/scss/mixins' as m;
 @use '@/scss/placeholders';
 @use '@/scss/variables' as v;
@@ -55,6 +65,13 @@ defineEmits<{ close: [] }>();
         border-radius: 1rem;
 
         animation: pop-appear 0.3s ease-in-out;
+
+        @media screen and (max-width: bp.$extra-large) {
+            max-height: calc(95vh - 51px);
+
+            top: 1.5rem;
+            transform: translateX(-50%);
+        }
 
         &__top {
             @extend %flex-between;

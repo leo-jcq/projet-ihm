@@ -5,15 +5,17 @@ import dataStore from './data';
 const userStore = reactive<{ user: User }>({
     user: {
         id: -1,
+        followed: true,
         name: 'John Doe',
         pseudo: 'john-doe',
         age: 20,
-        description: '',
+        description:
+            'Grimpeur du dimanche devenu accro. Voie sportive principalement, niveau 6c/7a.',
         avatar: `${import.meta.env.BASE_URL}connected.jpg`,
-        level: '6a',
-        styles: [],
-        gymsIds: [],
-        availabilities: []
+        level: '7a',
+        styles: ['route', 'boulder'],
+        gymsIds: [1, 2, 3],
+        availabilities: ['week-ends', 'week-evenings']
     }
 });
 

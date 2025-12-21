@@ -14,6 +14,7 @@ const routes: RouteRecordRaw[] = [
     { path: '/', component: Home },
     { path: '/gym/:id', component: Gym },
     { path: '/matchs', component: Matchs },
+    { path: '/me', component: User },
     { path: '/messages', component: Messages },
     { path: '/user/:id', component: User },
     { path: '/route/:id', component: Route },

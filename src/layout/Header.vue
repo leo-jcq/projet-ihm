@@ -14,10 +14,10 @@ import UserActions from '@/components/Users/UserActions.vue';
                 <h1 class="header__title">VerticalMeet</h1>
             </RouterLink>
 
-            <SearchBar />
+            <SearchBar class="header__search-bar" />
 
             <div class="header__content__right">
-                <PostForm />
+                <PostForm in-header />
                 <Notifications />
                 <UserActions />
             </div>
@@ -26,7 +26,8 @@ import UserActions from '@/components/Users/UserActions.vue';
 </template>
 
 <style lang="scss">
-@use "@/scss/mixins" as m;
+@use "@/scss/breakpoints" as bp;
+@use '@/scss/mixins' as m;
 @use '@/scss/placeholders';
 @use '@/scss/variables' as v;
 
@@ -71,9 +72,19 @@ import UserActions from '@/components/Users/UserActions.vue';
         }
     }
 
+    &__logo {
+        @include m.size(2.5rem);
+    }
+
     &__title {
         font-size: 1.25rem;
         font-weight: 400;
+    }
+
+    &__search-bar {
+        @media screen and (max-width: bp.$large) {
+            display: none;
+        }
     }
 }
 </style>

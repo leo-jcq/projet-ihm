@@ -39,8 +39,10 @@ const nbSuccess = computed(
             </div>
 
             <div class="match-card__picture__bottom">
-                <p class="match-card__picture__bottom__name">{{ user.name }}, {{ user.age }}</p>
-                <GradeBox :grade="user.level" :route-type="RouteType.Route" />
+                <p class="match-card__picture__bottom__name">
+                    {{ user.name }}{{ user.age ? `, ${user.age}` : '' }}
+                </p>
+                <GradeBox v-if="user.level" :grade="user.level" :route-type="RouteType.Route" />
                 <span class="match-card__picture__bottom__success">
                     {{ nbSuccess }} réussite{{ nbSuccess > 1 ? 's' : '' }}
                 </span>
