@@ -136,12 +136,17 @@ function handleCancelSendMessage() {
 </template>
 
 <style lang="scss">
+@use '@/scss/breakpoints' as bp;
 @use '@/scss/mixins' as m;
 @use '@/scss/placeholders';
 @use '@/scss/variables' as v;
 
 .matchs {
     grid-column: 2/3;
+
+    @media screen and (max-width: bp.$extra-large) {
+        grid-column: 1/3;
+    }
 
     &__top {
         @extend %flex-between;
@@ -174,7 +179,7 @@ function handleCancelSendMessage() {
 
         transition: border-color 0.3s ease;
 
-        &:hover {
+        @include m.hover() {
             border-color: v.$accent;
         }
     }
@@ -240,7 +245,7 @@ function handleCancelSendMessage() {
 
             transition: scale 0.3s ease;
 
-            &:hover {
+            @include m.hover() {
                 background-image: v.$main-gradient-lighten;
             }
 

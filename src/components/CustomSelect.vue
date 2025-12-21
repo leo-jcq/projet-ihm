@@ -230,7 +230,7 @@ const filterOptions = computed(() => {
 
             transition: background-color 0.3s ease;
 
-            &:hover {
+            @include m.hover() {
                 background-color: v.$very-light-gray;
             }
         }

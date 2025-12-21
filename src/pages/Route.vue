@@ -64,11 +64,16 @@ const images = computed(() =>
 </template>
 
 <style lang="scss">
+@use "@/scss/breakpoints" as bp;
 @use '@/scss/placeholders';
 @use '@/scss/variables' as v;
 
 .route {
-    grid-template-columns: 2/3;
+    grid-column: 2/3;
+
+    @media screen and (max-width: bp.$extra-large) {
+        grid-column: 1/3;
+    }
 
     &__top {
         @extend %default-box;

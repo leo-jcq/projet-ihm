@@ -15,6 +15,7 @@ import NavBar from './layout/NavBar.vue';
 </template>
 
 <style lang="scss">
+@use '@/scss/breakpoints' as bp;
 @use '@/scss/variables' as v;
 
 .app {
@@ -26,6 +27,10 @@ import NavBar from './layout/NavBar.vue';
         display: flex;
         justify-content: center;
 
+        @media screen and (max-width: bp.$extra-large) {
+            padding-bottom: calc(51px + 1.5rem);
+        }
+
         &__container {
             width: 100%;
             max-width: v.$content-max-width;
@@ -33,6 +38,10 @@ import NavBar from './layout/NavBar.vue';
             display: grid;
             gap: v.$top-gap;
             grid-template-columns: 278px 1fr 308px;
+
+            @media screen and (max-width: bp.$extra-large) {
+                grid-template-columns: 1fr 278px;
+            }
         }
     }
 }

@@ -35,6 +35,7 @@ onUnmounted(() => {
 </template>
 
 <style lang="scss">
+@use '@/scss/breakpoints' as bp;
 @use '@/scss/mixins' as m;
 @use '@/scss/placeholders';
 @use '@/scss/variables' as v;
@@ -64,6 +65,13 @@ onUnmounted(() => {
         border-radius: 1rem;
 
         animation: pop-appear 0.3s ease-in-out;
+
+        @media screen and (max-width: bp.$extra-large) {
+            max-height: calc(95vh - 51px);
+
+            top: 1.5rem;
+            transform: translateX(-50%);
+        }
 
         &__top {
             @extend %flex-between;

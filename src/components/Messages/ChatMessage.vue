@@ -117,8 +117,6 @@ const { isOpen, open, close } = useOpen();
         padding: 0.75rem;
 
         border-radius: 0.5rem;
-
-        word-break: break-all;
     }
 
     &__image {

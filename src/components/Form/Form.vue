@@ -40,12 +40,17 @@ defineEmits<{ cancel: []; submit: [] }>();
 </template>
 
 <style lang="scss">
+@use "@/scss/mixins" as m;
 @use '@/scss/variables' as v;
 
 .form {
     min-width: 650px;
 
     overflow: hidden;
+
+    @media screen and (max-width: 650px) {
+        min-width: 75vw;
+    }
 
     &__main {
         padding: 1rem;
@@ -82,7 +87,7 @@ defineEmits<{ cancel: []; submit: [] }>();
 
                 transition: background-color 0.3s ease;
 
-                &:hover {
+                @include m.hover() {
                     background-color: v.$light-gray;
                 }
             }
@@ -92,7 +97,7 @@ defineEmits<{ cancel: []; submit: [] }>();
 
                 color: v.$white;
 
-                &:hover {
+                @include m.hover() {
                     background-image: v.$main-gradient-lighten;
                 }
             }

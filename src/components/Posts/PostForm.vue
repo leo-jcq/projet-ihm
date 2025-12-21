@@ -17,6 +17,8 @@ import RouteForm from '../Routes/RouteForm.vue';
 import SearchSelect from '../SearchSelect.vue';
 import PostTypeBtn from './PostTypeBtn.vue';
 
+withDefaults(defineProps<{ inHeader?: boolean }>(), { inHeader: false });
+
 const { isOpen, open, close } = useOpen();
 const { isOpen: isRouteFormOpen, open: routeFormOpen, close: routeFormClose } = useOpen();
 
@@ -132,9 +134,9 @@ function handleSubmit() {
 </script>
 
 <template>
-    <button class="post-form__open" @click="open">
+    <button class="post-form__open" :class="{ 'post-form__open--header': inHeader }" @click="open">
         <Lineicons :icon="PlusOutlined" />
-        Nouveau post
+        <span class="post-form__open__text">Nouveau post</span>
     </button>
 
     <Form
@@ -215,6 +217,7 @@ function handleSubmit() {
 </template>
 
 <style lang="scss">
+@use "@/scss/breakpoints" as bp;
 @use '@/scss/mixins' as m;
 @use '@/scss/placeholders';
 @use '@/scss/variables' as v;
@@ -224,6 +227,18 @@ function handleSubmit() {
         @extend %default-btn;
 
         border-radius: 9999px;
+
+        &--header {
+            @media screen and (max-width: bp.$medium) {
+                padding: 0.5rem;
+            }
+        }
+
+        &--header &__text {
+            @media screen and (max-width: bp.$medium) {
+                display: none;
+            }
+        }
     }
 
     &__group {
@@ -255,7 +270,7 @@ function handleSubmit() {
 
         cursor: pointer;
 
-        &:hover {
+        @include m.hover() {
             text-decoration: underline;
         }
     }

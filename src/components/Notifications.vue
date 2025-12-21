@@ -103,6 +103,15 @@ function deleteNotification(id: number) {
 
         overflow: hidden;
 
+        @media screen and (max-width: 430px) {
+            max-width: 95vw;
+
+            position: fixed;
+            top: 65px;
+            right: 50%;
+            transform: translateX(50%);
+        }
+
         &-enter-active,
         &-leave-active {
             @include m.transition-group(0.2s, ease-in-out, opacity, transform);
@@ -112,12 +121,16 @@ function deleteNotification(id: number) {
         &-leave-to {
             opacity: 0;
             transform: translateY(-10px) scale(0.95);
+
+            @media screen and (max-width: 430px) {
+                transform: translate(50%, -10px) scale(0.95);
+            }
         }
 
         &-enter-to,
         &-leave-from {
             opacity: 1;
-            transform: translateY(0) scale(1);
+            transform: translate(50%, 0) scale(1);
         }
     }
 
@@ -162,7 +175,7 @@ function deleteNotification(id: number) {
 
         transition: background-color 0.2s ease;
 
-        &:hover {
+        @include m.hover() {
             background-color: v.$very-light-gray;
         }
 
@@ -193,8 +206,12 @@ function deleteNotification(id: number) {
 
             opacity: 0;
 
-            &:hover {
+            @include m.hover() {
                 background-color: v.$light-gray;
+            }
+
+            @media (pointer: coarse) {
+                opacity: 1;
             }
         }
 

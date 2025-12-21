@@ -22,6 +22,7 @@ defineEmits<{ follow: [] }>();
 
 <style lang="scss">
 @use 'sass:color';
+@use "@/scss/mixins" as m;
 @use '@/scss/placeholders';
 @use '@/scss/variables' as v;
 
@@ -44,7 +45,7 @@ defineEmits<{ follow: [] }>();
     border: none;
     border-radius: 9999px;
 
-    &:hover {
+    @include m.hover() {
         background-image: v.$main-gradient-lighten;
     }
 
@@ -54,7 +55,7 @@ defineEmits<{ follow: [] }>();
 
         transition: background-color 0.3s ease;
 
-        &:hover {
+        @include m.hover() {
             background-image: none;
             background-color: color.adjust(v.$grayish-black, $lightness: 5%);
         }

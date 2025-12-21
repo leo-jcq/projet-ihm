@@ -116,13 +116,14 @@ const gymIsOpen = computed(() => {
 </template>
 
 <style lang="scss">
+@use "@/scss/mixins" as m;
 @use '@/scss/placeholders';
 @use '@/scss/variables' as v;
 
 .gym-side {
     height: fit-content;
 
-    grid-template-columns: 3/4;
+    grid-column: 3/4;
 
     padding: 1.5rem;
 
@@ -186,7 +187,7 @@ const gymIsOpen = computed(() => {
 
         text-decoration: none;
 
-        &:hover {
+        @include m.hover() {
             text-decoration: underline;
         }
     }

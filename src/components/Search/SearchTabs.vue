@@ -18,7 +18,12 @@ defineProps<{ currentTab: string }>();
 const route = useRoute();
 
 function changeTab(newTab: string) {
-    router.push(`/search?q=${route.query.q}&tab=${newTab}`);
+    const params = new URLSearchParams();
+    if (route.query.q) {
+        params.set('q', String(route.query.q));
+    }
+    params.set('tab', newTab);
+    router.push(`/search?${params.toString()}`);
 }
 </script>
 

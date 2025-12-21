@@ -166,25 +166,13 @@ const matchsTexts = computed(() => {
             </div>
         </section>
 
-        <section id="languages" class="panel">
-            <h3>Langue et système de cotation</h3>
-
-            <div class="field">
-                <span class="field-title">Langue de l'application</span>
-                <div class="language-row">
-                    <label class="opt"><input type="radio" name="lang" checked /> Français</label>
-                    <input class="lang-search" placeholder="Rechercher..." />
-                </div>
-            </div>
+        <section id="grades" class="panel">
+            <h3>Cotations</h3>
 
             <div class="field">
                 <span class="field-title">Système de cotation (voie)</span>
                 <div class="options rating">
-                    <label
-                        v-for="gradeSystem in RouteGradeSystem"
-                        :key="gradeSystem"
-                        class="opt"
-                    >
+                    <label v-for="gradeSystem in RouteGradeSystem" :key="gradeSystem" class="opt">
                         <input
                             type="radio"
                             :checked="gradeSystemStore.route === gradeSystem"
@@ -198,11 +186,7 @@ const matchsTexts = computed(() => {
             <div class="field">
                 <span class="field-title">Système de cotation (bloc)</span>
                 <div class="options rating">
-                    <label
-                        v-for="gradeSystem in BoulderGradeSystem"
-                        :key="gradeSystem"
-                        class="opt"
-                    >
+                    <label v-for="gradeSystem in BoulderGradeSystem" :key="gradeSystem" class="opt">
                         <input
                             type="radio"
                             :checked="gradeSystemStore.boulder === gradeSystem"
@@ -228,19 +212,25 @@ const matchsTexts = computed(() => {
             Notifications
             <div class="settings-nav__link__bg" />
         </a>
-        <a href="#languages" class="settings-nav__link">
-            Languages
+        <a href="#grades" class="settings-nav__link">
+            Cotations
             <div class="settings-nav__link__bg" />
         </a>
     </nav>
 </template>
 
 <style lang="scss">
+@use '@/scss/breakpoints' as bp;
+@use '@/scss/mixins' as m;
 @use '@/scss/placeholders';
 @use '@/scss/variables' as v;
 
 .main {
-    grid-template-columns: 2/4;
+    grid-column: 2/4;
+
+    @media screen and (max-width: bp.$extra-large) {
+        grid-column: 1/2;
+    }
 
     h2 {
         font-size: 1.5rem;
@@ -372,6 +362,10 @@ const matchsTexts = computed(() => {
     position: sticky;
     top: calc(v.$header-height + v.$top-gap);
 
+    @media screen and (max-width: bp.$extra-large) {
+        grid-column: 2/3;
+    }
+
     &__link {
         width: 100%;
 
@@ -389,7 +383,7 @@ const matchsTexts = computed(() => {
 
         transition: color 0.3s ease;
 
-        &:hover {
+        @include m.hover() {
             color: v.$white;
         }
 

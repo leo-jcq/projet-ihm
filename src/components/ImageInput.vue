@@ -82,7 +82,7 @@ function handleRemove() {
 
         transition: border-color 0.3s ease;
 
-        &:hover {
+        @include m.hover() {
             border-color: v.$accent;
         }
     }
@@ -161,7 +161,7 @@ function handleRemove() {
 
                 @include m.transition-group(0.3s, ease, background-color, border-color, color);
 
-                &:hover {
+                @include m.hover() {
                     background-color: v.$light-red;
 
                     border-color: v.$red;

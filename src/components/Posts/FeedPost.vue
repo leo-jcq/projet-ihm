@@ -361,7 +361,7 @@ const { isOpen: isShareOpen, close: closeShare, open: openShare } = useOpen();
 
         transition: background-color 0.2s ease;
 
-        &:hover {
+        @include m.hover() {
             background-color: v.$very-light-gray;
         }
     }
@@ -438,7 +438,7 @@ const { isOpen: isShareOpen, close: closeShare, open: openShare } = useOpen();
 
                 cursor: pointer;
 
-                &:hover {
+                @include m.hover() {
                     background-image: v.$main-gradient-lighten;
                 }
             }

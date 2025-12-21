@@ -105,7 +105,7 @@ function handleSendMessage() {
             font-size: 0.875rem;
             color: v.$very-dark-gray;
 
-            &:hover {
+            @include m.hover() {
                 text-decoration: underline;
             }
         }

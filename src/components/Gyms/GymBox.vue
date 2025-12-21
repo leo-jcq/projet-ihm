@@ -77,7 +77,7 @@ const averageGrade = computed(() => {
 </template>
 
 <style lang="scss">
-    @use "@/scss/mixins" as m;
+@use '@/scss/mixins' as m;
 @use '@/scss/placeholders';
 @use '@/scss/variables' as v;
 
@@ -99,10 +99,10 @@ const averageGrade = computed(() => {
     &--interactive {
         cursor: pointer;
 
-        &:hover {
+        @include m.hover() {
             border-color: v.$accent;
 
-            @extend %default-shadow;
+            box-shadow: 0 1px 3px rgba(v.$black, 10%), 0 1px 2px -1px rgba(v.$black, 10%);
 
             transform: translateY(-1px);
         }
@@ -123,7 +123,7 @@ const averageGrade = computed(() => {
 
         padding: 0.25rem;
 
-        object-fit: contain; 
+        object-fit: contain;
     }
 
     &--link:hover &__name {

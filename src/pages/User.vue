@@ -149,6 +149,7 @@ const { isOpen, open, close } = useOpen();
 </template>
 
 <style lang="scss">
+@use '@/scss/breakpoints' as bp;
 @use '@/scss/mixins' as m;
 @use '@/scss/placeholders';
 @use '@/scss/variables' as v;
@@ -160,6 +161,10 @@ const { isOpen, open, close } = useOpen();
     flex-direction: column;
     gap: 2rem;
 
+    @media screen and (max-width: bp.$extra-large) {
+        grid-column: 1/3;
+    }
+
     &__main {
         @extend %default-box;
 
@@ -167,6 +172,11 @@ const { isOpen, open, close } = useOpen();
         gap: 1.5rem;
 
         padding: 1.5rem;
+
+        @media screen and (max-width: bp.$small) {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
 
         &__text {
             display: flex;
@@ -179,6 +189,7 @@ const { isOpen, open, close } = useOpen();
             &__top {
                 display: flex;
                 flex-wrap: wrap;
+                gap: 0.5rem;
                 justify-content: space-between;
             }
         }
@@ -229,6 +240,14 @@ const { isOpen, open, close } = useOpen();
         object-fit: cover;
 
         border: 2px solid v.$accent;
+        
+        @media screen and (max-width: bp.$medium) {
+            @include m.rounded(5rem);
+        }
+
+        @media screen and (max-width: bp.$small) {
+            @include m.rounded(4rem);
+        }
     }
 
     &__name {
@@ -288,6 +307,7 @@ const { isOpen, open, close } = useOpen();
 
             &__text {
                 font-size: 1.125rem;
+                text-align: center;
             }
         }
     }

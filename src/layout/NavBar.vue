@@ -5,7 +5,8 @@ import {
     Bolt2Outlined,
     Envelope1Outlined,
     Gear1Outlined,
-    Home2Outlined
+    Home2Outlined,
+    Search2Outlined
 } from '@lineiconshq/free-icons';
 import Lineicons from '@lineiconshq/vue-lineicons';
 import { computed } from 'vue';
@@ -29,20 +30,30 @@ const nbUnreadMessages = computed(
 
         <nav class="nav-bar__nav">
             <RouterLink to="/" class="nav-bar__nav__link">
-                <Lineicons :icon="Home2Outlined" />
-                Accueil
+                <Lineicons :icon="Home2Outlined" class="nav-bar__nav__link__icon" />
+                <span class="nav-bar__nav__link__text">Accueil</span>
+
+                <div class="nav-bar__nav__link__bg" />
+            </RouterLink>
+
+            <RouterLink to="/search" class="nav-bar__nav__link nav-bar__nav__link--search">
+                <Lineicons :icon="Search2Outlined" class="nav-bar__nav__link__icon" />
+                <span class="nav-bar__nav__link__text">Recherche</span>
+
                 <div class="nav-bar__nav__link__bg" />
             </RouterLink>
 
             <RouterLink to="/matchs" class="nav-bar__nav__link">
-                <Lineicons :icon="Bolt2Outlined" />
-                Matchs
+                <Lineicons :icon="Bolt2Outlined" class="nav-bar__nav__link__icon" />
+                <span class="nav-bar__nav__link__text">Matchs</span>
+
                 <div class="nav-bar__nav__link__bg" />
             </RouterLink>
 
             <RouterLink to="/messages" class="nav-bar__nav__link">
-                <Lineicons :icon="Envelope1Outlined" />
-                Messages
+                <Lineicons :icon="Envelope1Outlined" class="nav-bar__nav__link__icon" />
+                <span class="nav-bar__nav__link__text">Messages</span>
+
                 <span v-if="nbUnreadMessages > 0" class="nav-bar__nav__link__indicator">
                     {{ nbUnreadMessages }}
                 </span>
@@ -50,8 +61,9 @@ const nbUnreadMessages = computed(
             </RouterLink>
 
             <RouterLink to="/settings" class="nav-bar__nav__link">
-                <Lineicons :icon="Gear1Outlined" />
-                Paramètres
+                <Lineicons :icon="Gear1Outlined" class="nav-bar__nav__link__icon" />
+                <span class="nav-bar__nav__link__text">Paramètres</span>
+
                 <div class="nav-bar__nav__link__bg" />
             </RouterLink>
         </nav>
@@ -59,6 +71,7 @@ const nbUnreadMessages = computed(
 </template>
 
 <style lang="scss">
+@use '@/scss/breakpoints' as bp;
 @use '@/scss/mixins' as m;
 @use '@/scss/placeholders';
 @use '@/scss/variables' as v;
@@ -73,6 +86,26 @@ const nbUnreadMessages = computed(
     position: sticky;
     top: calc(v.$header-height + v.$top-gap);
 
+    @media screen and (max-width: bp.$extra-large) {
+        position: fixed;
+        z-index: 50;
+        top: unset;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        padding: 0;
+
+        display: flex;
+        gap: 2rem;
+        flex-direction: row-reverse;
+        justify-content: center;
+        align-items: center;
+
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
     &__user {
         display: flex;
         flex-direction: column;
@@ -83,6 +116,10 @@ const nbUnreadMessages = computed(
         text-decoration: none;
         color: v.$black;
 
+        @media screen and (max-width: bp.$extra-large) {
+            margin-bottom: 0rem;
+        }
+
         &__avatar {
             @include m.rounded(5rem);
 
@@ -91,6 +128,19 @@ const nbUnreadMessages = computed(
             object-fit: cover;
 
             margin-bottom: 0.75rem;
+
+            @media screen and (max-width: bp.$extra-large) {
+                @include m.size(2rem);
+
+                margin-bottom: 0rem;
+            }
+        }
+
+        &__name,
+        &__pseudo {
+            @media screen and (max-width: bp.$extra-large) {
+                display: none;
+            }
         }
 
         &__name {
@@ -102,7 +152,7 @@ const nbUnreadMessages = computed(
             font-size: 0.875rem;
             color: v.$very-dark-gray;
 
-            &:hover {
+            @include m.hover() {
                 text-decoration: underline;
             }
         }
@@ -112,6 +162,10 @@ const nbUnreadMessages = computed(
         display: flex;
         gap: 0.75rem;
         flex-direction: column;
+
+        @media screen and (max-width: bp.$extra-large) {
+            flex-direction: row;
+        }
 
         &__link {
             $padding: 1.375rem;
@@ -128,17 +182,41 @@ const nbUnreadMessages = computed(
             text-decoration: none;
             color: v.$black;
 
-            overflow: hidden;
-
-            border-radius: 10px;
+            border-radius: 0.625rem;
 
             position: relative;
 
             transition: color 0.3s ease;
 
+            @media screen and (max-width: bp.$extra-large) {
+                @include m.size(3.5rem);
+
+                justify-content: center;
+
+                padding: 0;
+            }
+
+            &--search {
+                display: none;
+
+                @media screen and (max-width: bp.$large) {
+                    display: flex;
+                }
+            }
+
             &.router-link-active,
             &:hover {
                 color: v.$white;
+            }
+
+            &__icon {
+                @include m.size(1.5rem);
+            }
+
+            &__text {
+                @media screen and (max-width: bp.$extra-large) {
+                    display: none;
+                }
             }
 
             &__indicator {
@@ -155,6 +233,16 @@ const nbUnreadMessages = computed(
                 top: 50%;
                 right: $padding;
                 transform: translateY(-50%);
+
+                @media screen and (max-width: bp.$extra-large) {
+                    @include m.size(0.625rem);
+
+                    top: 25%;
+                    right: 25%;
+                    transform: unset;
+
+                    content-visibility: hidden;
+                }
             }
 
             &.router-link-active &__indicator,
@@ -171,9 +259,20 @@ const nbUnreadMessages = computed(
 
                 user-select: none;
 
+                border-radius: 0.625rem;
+
                 background-image: v.$main-gradient;
 
                 transition: opacity 0.3s ease;
+
+                @media screen and (max-width: bp.$extra-large) {
+                    @include m.size(75%);
+
+                    inset: unset;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
             }
 
             &.router-link-active &__bg,

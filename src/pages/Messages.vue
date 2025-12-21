@@ -55,12 +55,20 @@ const filteredMessages = computed(() => {
 </template>
 
 <style lang="scss">
+@use '@/scss/breakpoints' as bp;
+
 .messages {
     display: grid;
     grid-template-columns: 325px 1fr;
     gap: 1.5rem;
 
     grid-column: 2/4;
+
+    @media screen and (max-width: bp.$extra-large) {
+        grid-template-columns: 250px 1fr;
+
+        grid-column: 1/3;
+    }
 
     &__convs {
         grid-column: 1/2;

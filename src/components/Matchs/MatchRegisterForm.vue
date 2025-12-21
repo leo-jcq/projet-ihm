@@ -30,9 +30,9 @@ defineEmits<{ accept: []; reject: [] }>();
 </template>
 
 <style lang="scss">
+@use '@/scss/mixins' as m;
 @use '@/scss/placeholders';
 @use '@/scss/variables' as v;
-@use '@/scss/mixins' as m;
 
 .match-register-form {
     @extend %default-box;
@@ -85,7 +85,7 @@ defineEmits<{ accept: []; reject: [] }>();
 
             border: 1px solid v.$gray;
 
-            &:hover {
+            @include m.hover() {
                 background-color: v.$very-light-gray;
             }
 
@@ -99,7 +99,7 @@ defineEmits<{ accept: []; reject: [] }>();
 
             color: v.$white;
 
-            &:hover {
+            @include m.hover() {
                 background: v.$main-gradient-lighten;
             }
 
